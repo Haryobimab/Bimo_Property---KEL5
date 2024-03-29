@@ -1,0 +1,753 @@
+.container {
+    margin-top: 100px;
+    margin-left: 80px;
+    margin-right: 80px;
+    /* Anda bisa menyesuaikan nilai margin sesuai kebutuhan */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 36px;
+    font-weight: 800;
+}
+
+h4 {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+h5 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+
+.navbar {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.img-nav {
+    margin-right: 28px;
+}
+
+.navbar h1 {
+    font-size: 60px;
+}
+
+.navbar h2 {
+    font-size: 48px;
+}
+
+.navbar h3 {
+    font-size: 36px;
+}
+
+.navbar h4 {
+    font-size: 30px;
+}
+
+.navbar {
+    padding: 0;
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar li+li {
+    margin-left: 30px;
+}
+
+.navbar a,
+.navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #8C8F93;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.navbar a i,
+.navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+.navbar a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #4BA30D;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar a:hover:before,
+.navbar li:hover>a:before,
+.navbar .active:before {
+    visibility: visible;
+    width: 25px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+    font-weight: 500;
+    color: #010101;
+}
+
+
+/* .navbar button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 70px;
+    transition: background-color .4s, color .4s;
+} */
+
+.nav-button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    justify-content: space-between;
+    display: flex;
+}
+
+.nav-button i {
+    margin-top: 28px;
+    margin-right: 32px;
+    /* width: 64px;
+    height: 64px; */
+}
+
+.img-profile {
+     
+        border-radius: 50%;
+        padding: 0%;
+        margin-top: 400px;
+      
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px; 
+  }
+
+.nav-profile {
+    margin-top: 5px;
+    margin-right: 32px;
+    display: inline-flex;
+
+
+}
+.nav-profile img {
+    
+    margin-right: 5px;
+}
+.nav-textprofile {
+    color:black;
+
+}
+
+.hover-link {
+    color: black; /* Warna tautan default */
+    text-decoration: none; /* Menghapus garis bawah */
+    transition: color 0.3s; /* Transisi warna saat hover */
+}
+
+.hover-link:hover {
+    color: #4BA30D;
+    font-weight: bold; /* Warna tautan saat hover */
+  }
+
+/* .nav-button:hover {
+    background-color: #bbb;
+} */
+
+.btn-primary {
+    background-color: #4BA30D;
+    color: white;
+    margin: 16px 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #4BA30D;
+    margin: 16px 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid #4BA30D;
+    border-radius: 5px;
+}
+
+
+/*--------------------------------------------------------------
+# Welcome
+--------------------------------------------------------------*/
+
+.welcome .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.welcome h1 {
+    font-size: 60px;
+}
+
+.welcome h2 {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.welcome h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.welcome img {
+    border-radius: 16px;
+}
+
+.welcome button {
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 28px;
+    margin-bottom: 120px;
+}
+
+
+/* .col-lg-8-welcome-kiri {
+    position: absolute;
+}
+
+.col-lg-4-welcome-kanan {
+    margin-left: 80px;
+} */
+
+.welcome-kanan {
+    width: 20%;
+    margin-top: 80px;
+}
+
+.welcome-kanan .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.welcome-kanan img {
+    margin-right: 20px;
+}
+
+.header h3 {
+    text-align: left;
+    margin-right: 64px;
+}
+
+.welcome-kanan .content {
+    margin: 8px 0;
+}
+
+.bawah {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bawah p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 200px;
+}
+
+.bawah i {
+    width: 24px;
+    height: 24px;
+    color: orange;
+}
+
+
+/*--------------------------------------------------------------
+# Description
+--------------------------------------------------------------*/
+
+.description {
+    position: relative;
+    display: inline-block;
+}
+
+.img-description {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    margin: 0 80px;
+    margin-bottom: 40px;
+}
+
+
+/*--------------------------------------------------------------
+# Fitur Deskripsi
+--------------------------------------------------------------*/
+
+.fitur-deskripsi {
+    margin: 48px 0;
+}
+
+.fitur-deskripsi h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #4BA30D;
+}
+
+.fitur-deskripsi h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #010101;
+    margin-right: 440px;
+    margin-top: 16px;
+}
+
+.fitur-deskripsi p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #667085;
+    /* margin-right: 440px; */
+    margin-top: 12px;
+}
+
+.row-fitur-deskripsi {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row-fitur-deskripsi h1 {
+    margin: 4px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.row-fitur-deskripsi p {
+    font-size: 16px;
+    color: #667085;
+}
+
+.row-fitur-deskripsi button {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4BA30D;
+    margin-top: 20px;
+}
+
+.row-fitur-deskripsi i {
+    background-color: #D0F8AB;
+    border-radius: 28px;
+    color: #3B7C0F;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.card-beli-rumah {
+    width: 30%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: content-box;
+    border-radius: 18px;
+    /* border: #bbb; */
+    padding: 16px 12px;
+}
+
+.card-cari-agen {
+    width: 30%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: content-box;
+    border-radius: 18px;
+    /* border: #bbb; */
+    padding: 16px 12px;
+}
+
+.card-janji-temu {
+    width: 30%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: content-box;
+    border-radius: 18px;
+    /* border: #bbb; */
+    padding: 16px 12px;
+}
+
+
+/*--------------------------------------------------------------
+# Rekomendasi
+--------------------------------------------------------------*/
+
+.rekomendasi {
+    margin: 48px 0x;
+}
+
+.rekomendasi .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rekomendasi .content h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.rekomendasi .btn-secondary {
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid #4BA30D;
+    cursor: pointer;
+}
+
+.row-rekomendasi {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row-rekomendasi h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.row-rekomendasi img {
+    width: 100%;
+}
+
+.card-1 {
+    width: 30%;
+    padding: 16px 12px;
+}
+
+.card-2 {
+    width: 30%;
+    padding: 16px 12px;
+}
+
+.card-3 {
+    width: 30%;
+    padding: 16px 12px;
+}
+
+
+/*--------------------------------------------------------------
+# Visi Misi
+--------------------------------------------------------------*/
+
+.visi-misi {
+    display: flex;
+    justify-content: space-between;
+    margin: 48px 0;
+}
+
+.visi-misi img {
+    width: 50%;
+    margin-right: 60px;
+}
+
+.visi-misi h4 {
+    font-size: 20px;
+}
+
+.visi-misi span {
+    color: #3B7C0F;
+    font-size: 20px;
+    margin: 0 16px;
+}
+
+.visi-misi h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 16px;
+}
+
+.visi-misi h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.visi-misi h5 {
+    font-size: 18px;
+    color: #667085;
+    margin-top: 16px;
+}
+
+.visi-misi p {
+    color: #667085;
+}
+
+.visi-misi i {
+    opacity: 60%;
+}
+
+.visi {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px;
+}
+
+.visi i {
+    font-size: 64px;
+    color: #4BA30D;
+    padding: 8px;
+}
+
+.misi {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 28px;
+}
+
+.misi i {
+    font-size: 64px;
+    color: #4BA30D;
+    padding: 16px;
+}
+
+
+/*--------------------------------------------------------------
+# Keunggulan
+--------------------------------------------------------------*/
+
+.keunggulan {
+    margin: 48px 0;
+}
+
+.keunggulan .header {
+    text-align: center;
+}
+
+.header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4BA30D;
+}
+
+.header h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.header p {
+    color: #667085;
+}
+
+.row-keunggulan {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.row-keunggulan h1 {
+    margin: 4px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.row-keunggulan p {
+    font-size: 16px;
+    color: #667085;
+}
+
+.row-keunggulan i {
+    background-color: #D0F8AB;
+    border-radius: 28px;
+    color: #3B7C0F;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.keunggulan .card-1 {
+    width: 25%;
+    padding: 16px 12px;
+}
+
+.keunggulan .card-2 {
+    width: 25%;
+    padding: 16px 12px;
+}
+
+.keunggulan .card-3 {
+    width: 25%;
+    padding: 16px 12px;
+}
+
+
+/* .keunggulan .card-4 {
+    width: 25%;
+    padding: 16px 12px;
+} */
+
+
+/*--------------------------------------------------------------
+# Ulasan
+--------------------------------------------------------------*/
+
+.ulasan-pengguna {
+    text-align: center;
+    padding: 48px 0;
+}
+
+.ulasan-pengguna h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.ulasan-pengguna h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 32px;
+}
+
+.ulasan-pengguna h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 16px;
+}
+
+.ulasan-pengguna h5 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 24px;
+    color: #667085;
+}
+
+.ulasan-pengguna p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #667085;
+    margin-top: 4px;
+}
+
+.ulasan-pengguna img {
+    width: 64px;
+    height: 64px;
+    border-radius: 36px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.footer {
+    padding: 48px 0;
+    background-color: #60a97a;
+}
+
+.main {
+    margin: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.deskripsi p {
+    margin-right: 40%;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.added {
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    opacity: 60%;
+}
+
+.footer-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 50%;
+    margin-top: 24px;
+}
+
+.kanan {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-right: 20px;
+}
+
+.kanan h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.kanan p {
+    font-weight: 300;
+}
+
+.footer .header h3 {
+    font-size: 24px;
+    color: white;
+}
+
+.about {
+    margin-right: 64px;
+}
