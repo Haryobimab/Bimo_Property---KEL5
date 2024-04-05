@@ -4,21 +4,33 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('Auth.Login');
 })->middleware('guest');
 
-//Login
-// Show login form
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('Auth.login');
-// Handle login form submission
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('login', [AuthController::class,'index'])->name('login');
+Route::get('register', [AuthController::class,'register'])->name('register');
+Route::post('proses_login', [AuthController::class,'proses_login'])->name('proses_login');
+Route::get('logout', [AuthController::class,'logout'])->name('logout');
 
+Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
 
-//Register
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('Auth.register');
-Route::post('/register', [RegisterController::class, 'register']);
+// kita atur juga untuk middleware menggunakan group pada routing
+// didalamnya terdapat group untuk mengecek kondisi login
+// jika user yang login merupakan admin maka akan diarahkan ke AdminController
+// jika user yang login merupakan user biasa maka akan diarahkan ke UserController
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['cek_login:admin']], function () {
+        Route::resource('admin', AdminController::class);
+    });
+    Route::group(['middleware' => ['cek_login:user']], function () {
+        Route::resource('user', UserController::class);
+    });
+});
 
 //Rute Auth
 Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
