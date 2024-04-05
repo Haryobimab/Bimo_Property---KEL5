@@ -147,10 +147,13 @@
             }
         });
     });
+
+    //masih belum selesai
 </script>
 
 </body>
 </center>
 </html>   
 @endsection
+
 

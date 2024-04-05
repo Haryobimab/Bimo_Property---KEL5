@@ -26,3 +26,4 @@ declare class Editor extends ClassicEditor {
     static defaultConfig: EditorConfig;
 }
 export default Editor;
+

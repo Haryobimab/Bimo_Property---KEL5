@@ -34,4 +34,3 @@ class UlasanController extends Controller
         return view('Ulasan.ulasan');
     }
 }
-

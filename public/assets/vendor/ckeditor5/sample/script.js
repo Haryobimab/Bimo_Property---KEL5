@@ -22,3 +22,4 @@ function handleSampleError( error ) {
 	console.error( message );
 	console.error( error );
 }
+

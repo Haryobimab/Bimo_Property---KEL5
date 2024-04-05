@@ -37,7 +37,7 @@ Route::get('/ulasan', function(){
     return view('Ulasan.ulasan');
 })->name('ulasan');
 
-// Route untuk menampilkan halaman daftar ulasan
+// Route untuk menampilkan halaman daftar ulasan (masih belum fix)
 Route::get('/daftar_ulasan', [daftar_ulasan::class, 'index'])->name('daftar_ulasan');
 Route::get('/daftar_ulasan/list', [daftar_ulasan::class, 'list'])->name('daftar_ulasan_list');
 Route::post('/daftar_ulasan/store', [daftar_ulasan::class, 'store'])->name('daftar_ulasan.store');

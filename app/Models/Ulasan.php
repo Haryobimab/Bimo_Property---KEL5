@@ -11,6 +11,6 @@ class Ulasan extends Model
 
     protected $table = 'ulasans';
     protected $fillable = ['title', 'body'];
-    // Tambahan properti atau metode model lainnya jika diperlukan
+    // Tambahan properti 
 }
 
