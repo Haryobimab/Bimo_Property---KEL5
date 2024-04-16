@@ -10,7 +10,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
