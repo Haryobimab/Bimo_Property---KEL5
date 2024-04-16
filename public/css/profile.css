@@ -1,0 +1,232 @@
+.container {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.container .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Poppins", sans-serif;
+}
+
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+
+.navbar {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.img-nav {
+    margin-right: 28px;
+}
+
+.navbar h1 {
+    font-size: 60px;
+}
+
+.navbar h2 {
+    font-size: 48px;
+}
+
+.navbar h3 {
+    font-size: 36px;
+}
+
+.navbar h4 {
+    font-size: 30px;
+}
+
+.navbar {
+    padding: 0;
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar li+li {
+    margin-left: 30px;
+}
+
+.navbar a,
+.navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #8C8F93;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.navbar a i,
+.navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+.navbar a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #4BA30D;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar a:hover:before,
+.navbar li:hover>a:before,
+.navbar .active:before {
+    visibility: visible;
+    width: 25px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+    font-weight: 500;
+    color: #010101;
+}
+
+
+/* .navbar button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 70px;
+    transition: background-color .4s, color .4s;
+} */
+
+.nav-button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    justify-content: space-between;
+}
+
+.nav-button:hover {
+    background-color: #bbb;
+}
+
+.btn1 {
+    background-color: #4BA30D;
+    color: white;
+    margin: 16px 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn2 {
+    background-color: white;
+    color: #4BA30D;
+    margin: 16px 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+/*--------------------------------------------------------------
+# Biodata kiri
+--------------------------------------------------------------*/
+
+.profil-title {
+    margin-top: 44px;
+}
+
+.profil-title h2 {
+    font-size: 30px;
+}
+
+.profil-title p {
+    font-size: 16px;
+    color: #8C8F93;
+}
+
+.biodata-kiri {
+    margin-top: 20px;
+    width: 50%;
+}
+
+
+/* .biodata-kiri form {
+    margin: 20px;
+} */
+
+.placeholder {
+    padding: 8px 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 200%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.biodata-kiri .btn1 {
+    margin-top: 36px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color .4s, color .4s;
+}
+
+
+/*--------------------------------------------------------------
+# Biodata kanan
+--------------------------------------------------------------*/
+
+.biodata-kanan {
+    margin-right: 40px;
+    margin-top: 140px;
+}
+
+.biodata-kanan img {
+    width: 240px;
+    height: 240px;
+    border-radius: 60px;
+}
+
+.biodata-kanan h2 {
+    font-weight: 600;
+    margin-top: 36px;
+    text-align: center;
+}
+
+.biodata-kanan p {
+    text-align: center;
+    color: #8C8F93;
+    margin: 4px 0;
+}
