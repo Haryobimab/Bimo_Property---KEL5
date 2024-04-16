@@ -1,0 +1,17 @@
+.ulasan-pengguna {
+    text-align: left; /* Untuk mengatur teks berada di tengah */
+    margin: 0 auto; /* Untuk memposisikan elemen di tengah secara horizontal */
+    padding: 10px; /* Tambahkan padding untuk memberikan ruang */
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    text-align: left;
+  }
+
+  label {
+    text-align: left;
+  }
+
+ 

@@ -172,6 +172,7 @@ h6 {
     height: 64px; */
 }
 
+
 .img-profile {
      
         border-radius: 50%;
@@ -213,6 +214,7 @@ h6 {
     color: #4BA30D;
     font-weight: bold; /* Warna tautan saat hover */
   }
+
 
 /* .nav-button:hover {
     background-color: #bbb;
@@ -327,6 +329,11 @@ h6 {
 # Description
 --------------------------------------------------------------*/
 
+
+
+/* .description img {
+    position: absolute;
+} */
 .description {
     position: relative;
     display: inline-block;
@@ -338,6 +345,7 @@ h6 {
     margin: 0 80px;
     margin-bottom: 40px;
 }
+
 
 
 /*--------------------------------------------------------------
@@ -636,6 +644,7 @@ h6 {
 
 
 /*--------------------------------------------------------------
+
 # Ulasan
 --------------------------------------------------------------*/
 
@@ -687,12 +696,17 @@ h6 {
 
 
 /*--------------------------------------------------------------
+
 # Footer
 --------------------------------------------------------------*/
 
 .footer {
     padding: 48px 0;
+
+    background-color: #262829;
+
     background-color: #60a97a;
+
 }
 
 .main {
@@ -712,7 +726,10 @@ h6 {
     margin-top: 40px;
     text-align: center;
     color: white;
+
+
     opacity: 60%;
+
 }
 
 .footer-header {

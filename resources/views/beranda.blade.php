@@ -6,6 +6,7 @@
 
         <title>Bimo Property</title>
 
+
         <!-- Style -->
         
         <link rel="stylesheet" href="/css/beranda.css" >
@@ -21,7 +22,27 @@
     </head>
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
+
                     <img src="/assets/img/Logo_Bimo_Property.png" alt="" class="img-nav">
+                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li><a class="nav-link" href="#beli">Beli</a></li>
+                    <li><a class="nav-link" href="#rental">Rental</a></li>
+                    <li><a class="nav-link" href="#jual">Jual</a></li>
+                    <li><a class="nav-link" href="#cariagen">Cari Agen</a></li>
+                    <li><a class="nav-link" href="#berita">Berita</a></li>
+                    <li><a class="nav-link" href="#award">Award</a></li>
+                    <li><a class="nav-link" href="#faq">FAQ</a></li>
+                    <!-- <button type="login" class="btn1 ">Login</button>
+                    <button type="sign up" class="btn2 ">Sign Up</button> -->
+                </ul>
+                <div class="nav-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <button class="btn-secondary">Sign Up</button>
+                    <button class="btn-primary">Login</button>
+                </div>
+                <!-- <i class="bi bi-list mobile-nav-toggle"></i> -->
+
+                    <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
                     <li><a class="nav-link active" href="#beranda">Beranda</a></li>
                     <li><a class="nav-link" href="/beli">Beli</a></li>
                     <li><a class="nav-link" href="/rental">Rental</a></li>
@@ -33,16 +54,21 @@
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 </ul>
-            
+
                 <div class="nav-profile" style="align-items:center ">
                         <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> 
                         <li><a href="/profile" class="hover-link" > Admin </a></li> 
+
+                <div class="nav-profile">
+                        <img src=" /IMG/profile_1.jpg" alt="" class="profile-pic"> 
+                        <li><a href="/profile" class="hover-link" > Tripoli </a></li>
+
 
 
                 
                 
                     {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top36px;">Tripoli</a>
+                    <img src=" /IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
                     
                  --}}
                     
@@ -52,7 +78,12 @@
 
                 
                  {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
+
     </nav>
+
+
+            </nav>
+
     <body>
     <div class="container">
         <div class="welcome">
@@ -67,7 +98,11 @@
                 </div>
                 <div class="welcome-kanan">
                     <div class="header">
-                        <img src="/assets/img/profile_1.jpg" alt="">
+
+                        <img src="/assets/img/user profile/profile_1.jpg" alt="">
+
+                        <img src=" /IMG/profile_1.jpg" alt="">
+
                         <h3>Ulasan Terbaik</h3>
                     </div>
                     <div class="content">
@@ -82,7 +117,14 @@
             </div>
         </div>
         <div class="description">
-            <img src="/assets/img/rumah_1.jpg" alt="">
+
+            <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+            <h2>Kita Disini Untuk Kalian</h2>
+        </div>
+        <div class="fitur-deskripsi">
+            <h4>Fitur</h4>
+
+            <img src=" /IMG/rumah_1.jpg" alt="">
             <div class="img-description">
                 <div class="image-text"> 
                     <h1>Kita Disini </h1>
@@ -92,6 +134,7 @@
             </div>
         </div>
         <div class="fitur-deskripsi">
+
             <h2>Fitur-fitur di Bimo Property akan membawa pengalaman baru dalam menjelajahi dunia properti</h2>
             <p>Selamat datang di Bimo Property, di mana fitur-fitur inovatif mengubah cara Anda menjelajahi pasar properti</p>
             <div class="row-fitur-deskripsi">
@@ -131,22 +174,41 @@
             </div>
             <div class="row-rekomendasi">
                 <div class="card-1">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+
+                    <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+
+                    <img src=" /IMG/rumah_1.jpg" alt="">
+
                     <h1>Reka Residence</h1>
                     <p>Bojongsoang, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-2">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+
+                    <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+                    <h1>Reka Residence</h1>
+                    <p>Bojongsoang, Bandung, Jawa Barat</p>
+                </div> 
+                <div class="card-3">
+                    <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+                    <h1>Reka Residence</h1>
+                    <p>Bojongsoang, Bandung, Jawa Barat</p>
+                </div> 
+                <div class="card-3">
+                    <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+                    <h1>Reka Residence</h1>
+                    <p>Bojongsoang, Bandung, Jawa Barat</p>
+
+                    <img src=" /IMG/rumah_1.jpg" alt="">
                     <h1>Tamara Residence</h1>
                     <p>Buah Batu, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-3">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+                    <img src=" /IMG/rumah_1.jpg" alt="">
                     <h1>Classy Residence</h1>
                     <p>Dago, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-3">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+                    <img src="  /IMG/rumah_1.jpg" alt="">
                     <h1>Harry Residence</h1>
                     <p>Kopo, Bandung, Jawa Barat</p>
                 </div> 
@@ -162,29 +224,33 @@
             </div>
             <div class="row-rekomendasi">
                 <div class="card-1">
-                    <img src="/assets/img/inspirasi1.jpeg" alt="">
+                    <img src=" /IMG/inspirasi1.jpeg" alt="">
                     <h1>Minimalis Design</h1>
                     <p>Desain ini cenderung mengurangi bentuk artistik atas dasar pertimbangan logika dan kesederhanaan. </p>
                 </div> 
                 <div class="card-2">
-                    <img src="/assets/img/inspirasi2.jpeg" alt="">
+                    <img src=" /IMG/inspirasi2.jpeg" alt="">
                     <h1>Bohemian Design</h1>
                     <p>Desain ini adalah pilihan fesyen dan gaya hidup yang bercirikan esensinya yang tidak konvensional dan berjiwa bebas.</p>
                 </div> 
                 <div class="card-3">
-                    <img src="/assets/img/inspirasi3.jpeg" alt="">
+                    <img src=" /IMG/inspirasi3.jpeg" alt="">
                     <h1>Elegant Design</h1>
                     <p>Desain ini yang menekankan pada kesederhanaan, keanggunan, dan kemewahan</p>
                 </div> 
                 <div class="card-3">
-                    <img src="/assets/img/inspirasi4.jpeg" alt="">
+                    <img src="  /IMG/inspirasi4.jpeg" alt="">
                     <h1>Classic Residence</h1>
                     <p>Desain yang terinspirasi dari era Eropa kuno yang mencerminkan kemewahan, elegansi, dan keindahan. </p>
                 </div> 
             </div>
         </div>
         <div class="visi-misi">
-            <img src="/assets/img/rumah_1.jpg" alt="">
+
+            <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+
+            <img src="  /IMG/rumah_1.jpg" alt="">
+
             <div class="content">
                 <h4>|<span>Visi dan Misi</span>|</h4>
                 <h2>Jual Beli Properti Dengan Cara yang Mudah</h2>
@@ -229,26 +295,40 @@
                 </div> 
             </div>
         </div>
+
+    </div>
+    </body>
+
         <div class="ulasan-pengguna">
             <h2>Ulasan Pengguna</h2>
             <h5>Ulasan dari para pengguna website Bimo Property</h5>
             <h3>Website ini memberikan pengalaman belanja properti yang menyenangkan dan informatif. Informasi yang disediakan sangat lengkap, termasuk foto-foto berkualitas tinggi dan deskripsi yang detail tentang setiap properti.</h3>
-            <img src="/assets/img/profile_2.jpg" alt="">
+            <img src="  /IMG/profile_2.jpg" alt="">
             <h4>Dirga Siahaan</h4>
             <p>Pencari Rumah</p>
         </div>
     </div>
     </body>
+
+    
+
     <footer class="footer">
         <div class="main">
             <div class="kiri">
                 <div class="footer-header">
+
                     <img src="/assets/img/Logo_Bimo_Property.png" alt="">
+
+                    <img src="  /IMG/Logo_Bimo_Property.png" alt="">
+
                     <h3>Bimo Property</h3>
                 </div>
                 <div class="deskripsi">
                     <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
+
+
                     <p>Hubungi 08512348765 </p>
+
                 </div>
             </div>
             <div class="kanan">
