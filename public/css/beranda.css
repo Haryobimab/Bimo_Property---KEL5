@@ -173,6 +173,49 @@ h6 {
 }
 
 
+.img-profile {
+     
+        border-radius: 50%;
+        padding: 0%;
+        margin-top: 400px;
+      
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px; 
+  }
+
+.nav-profile {
+    margin-top: 5px;
+    margin-right: 32px;
+    display: inline-flex;
+
+
+}
+.nav-profile img {
+    
+    margin-right: 5px;
+}
+.nav-textprofile {
+    color:black;
+
+}
+
+.hover-link {
+    color: black; /* Warna tautan default */
+    text-decoration: none; /* Menghapus garis bawah */
+    transition: color 0.3s; /* Transisi warna saat hover */
+}
+
+.hover-link:hover {
+    color: #4BA30D;
+    font-weight: bold; /* Warna tautan saat hover */
+  }
+
+
 /* .nav-button:hover {
     background-color: #bbb;
 } */
@@ -287,9 +330,22 @@ h6 {
 --------------------------------------------------------------*/
 
 
+
 /* .description img {
     position: absolute;
 } */
+.description {
+    position: relative;
+    display: inline-block;
+}
+
+.img-description {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    margin: 0 80px;
+    margin-bottom: 40px;
+}
+
 
 
 /*--------------------------------------------------------------
@@ -588,12 +644,69 @@ h6 {
 
 
 /*--------------------------------------------------------------
+
+# Ulasan
+--------------------------------------------------------------*/
+
+.ulasan-pengguna {
+    text-align: center;
+    padding: 48px 0;
+}
+
+.ulasan-pengguna h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.ulasan-pengguna h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 32px;
+}
+
+.ulasan-pengguna h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 16px;
+}
+
+.ulasan-pengguna h5 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 24px;
+    color: #667085;
+}
+
+.ulasan-pengguna p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #667085;
+    margin-top: 4px;
+}
+
+.ulasan-pengguna img {
+    width: 64px;
+    height: 64px;
+    border-radius: 36px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+}
+
+
+/*--------------------------------------------------------------
+
 # Footer
 --------------------------------------------------------------*/
 
 .footer {
     padding: 48px 0;
+
     background-color: #262829;
+
+    background-color: #60a97a;
+
 }
 
 .main {
@@ -613,6 +726,10 @@ h6 {
     margin-top: 40px;
     text-align: center;
     color: white;
+
+
+    opacity: 60%;
+
 }
 
 .footer-header {
