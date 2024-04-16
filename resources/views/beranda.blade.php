@@ -54,14 +54,19 @@
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 </ul>
-            
+
+                <div class="nav-profile" style="align-items:center ">
+                        <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> 
+                        <li><a href="/profile" class="hover-link" > Admin </a></li> 
+
                 <div class="nav-profile">
                         <img src=" /IMG/profile_1.jpg" alt="" class="profile-pic"> 
                         <li><a href="/profile" class="hover-link" > Tripoli </a></li>
 
 
+
                 
-                    
+                
                     {{-- <i class="fas fa-shopping-cart"></i>    
                     <img src=" /IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
                     
@@ -74,7 +79,11 @@
                 
                  {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
 
+    </nav>
+
+
             </nav>
+
     <body>
     <div class="container">
         <div class="welcome">
@@ -117,6 +126,10 @@
 
             <img src=" /IMG/rumah_1.jpg" alt="">
             <div class="img-description">
+                <div class="image-text"> 
+                    <h1>Kita Disini </h1>
+                    <h2>Untuk Kalian</h2>
+                 </div>
                 
             </div>
         </div>
