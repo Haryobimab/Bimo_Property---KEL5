@@ -46,7 +46,6 @@
                     <li><a class="nav-link" href="/berita">Berita</a></li>
                     <li><a class="nav-link" href="/award">Award</a></li>
                     <li><a class="nav-link" href="/faq">FAQ</a></li>
-                    <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 
