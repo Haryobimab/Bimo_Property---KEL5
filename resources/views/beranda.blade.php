@@ -344,6 +344,9 @@
             <img src="  /IMG/profile_2.jpg" alt="">
             <h4>Dirga Siahaan</h4>
             <p>Pencari Rumah</p>
+            <br/>
+            <br/>
+            <a href="{{ route('ulasan.index') }}">Lihat ulasan lainnya</a>
         </div>
     </div>
     </body>
@@ -374,7 +377,7 @@
         <div class="Frame65" style="padding-left: 20px; padding-right: 20px; padding-top: 16px; padding-bottom: 16px; background: white; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 99px; display: inline-flex">
             <div class="SupportingText" style="width: 225px; color: #5C5E61; font-size: 20px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Ulasanmu..</div>
             <div class="Button" style="padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: #4BA30D; border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: flex">
-             <button type="submit" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word; border: none; background: none; cursor: pointer;" onclick="window.location.href='{{route('ulasan.index')}}'">Berikan ulasan</button>
+             <button type="submit" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word; border: none; background: none; cursor: pointer;" onclick="window.location.href='{{route('ulasan.create')}}'">Berikan ulasan</button>
         </div>
             </div>
         </div>
