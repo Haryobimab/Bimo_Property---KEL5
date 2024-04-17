@@ -17,7 +17,8 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-
+// Auth::routes();
+// Authentication Routes...
 // Show login form
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
