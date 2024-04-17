@@ -53,15 +53,8 @@ class UserController extends Controller
         return redirect('/profile')->with('success', 'Profile berhasil terupdate');
 	}
 
-}
 
-
-
-use Illuminate\Http\Request;
-
-class UserController extends Controller
-{
-    public function index(){
+ public function index(){
         return view('beranda');
      }
 }
