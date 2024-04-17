@@ -6,24 +6,9 @@
 
         <title>Bimo Property</title>
 
-
         <!-- Style -->
         
-        <link rel="stylesheet" href="/css/beranda.css" >
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/slicknav.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/flaticon.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/progressbar_barfiller.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/gijgo.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/animated-headline.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/magnific-popup.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/fontawesome-all.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/themify-icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        <link rel="stylesheet" href="/css/profileadmin.css" >
 
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -36,9 +21,8 @@
     </head>
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
-
-                    <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <img src="/assets/img/Logo_Bimo_Property.png" alt="" class="img-nav">
+                    <li><a class="nav-link" href="/beranda">Beranda</a></li>
                     <li><a class="nav-link" href="/beli">Beli</a></li>
                     <li><a class="nav-link" href="/rental">Rental</a></li>
                     <li><a class="nav-link" href="/jual">Jual</a></li>
@@ -48,94 +32,75 @@
                     <li><a class="nav-link" href="/faq">FAQ</a></li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
-                
-
-                     @if(Auth::check() && Auth::user()->role==='admin')
-                        <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
-                            <a href="/pengaturan" class="nav-link">Pengaturan</a>
-                        </li>
-                    @endif
-                    <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
                 </ul>
-                
-    <div class="nav-kanan">
-        <!-- <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
-        <a href="#" class="header-btn2">Make an Appointment</a> -->
-        <!-- Authentication Links -->
-        <ul>
-            @guest
-                @if (Route::has('login'))
-                    <li><a class="btn1"style="display:flex" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                @endif
+            
+                <div class="nav-profile" style="align-items:center ">
+                        <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> 
+                        <li><a href="/profile" class="nav-link active" > Admin </a></li>
+                </div>
+    </nav>
+    <body>
+        <div class="container">
+            <div class="profile">
+            <div class="row">
+                <div class="profile-kiri">
+                    <ul>
+                        <h1> Profile Saya</h1>
+                        <h2> Kelola informasi profil Anda untuk mengontrol, melindungi, dan mengamankan akun anda</h2>
+                    </ul>
+                    <div class="data-diri">
+                        <h3> Username </h3>
+                        <div class="kotak"> bima_admin1 </div>
+                        <h3> Nama </h3>
+                        <div class="kotak"> Admin Bima </div>
+                        <h3> Email </h3>
+                        <div class="kotak"> bima@gmail.com </div>
+                        <h3> No Handphone </h3>
+                        <div class="kotak"> 0876173915 </div>
+        
+                    </div>
+                </div>
+                <div class="profile-kanan">
+                    <img src="/assets/img/profile_1.jpg" alt=""  style="height: 200px; width: 200px; border-radius:50%">
+                    <h1> 
 
-                @if (Route::has('register'))
-                    <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                @endif
-            @else
-                 
-                <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
-                {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
-                <li><a class="btn2" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="GET" class="d-none">
-                        @csrf
-                    </form>
-                </a>
-                </li>
-            @endguest
-        </div>
-        </nav>   
+            
                     
-                    {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
-                    
-                 --}}
-                    
-                    {{-- <button class="btn-secondary">Sign Up</button>
-                    <button class="btn-primary">Login</button> --}}
-                
-
-                
-                 {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
-
-
-            <div class="container mt-4">
-        @yield('content')
+            </div>
             </div>
 
-
-            <footer class="footer">
-        <div class="main">
-            <div class="kiri">
-                <div class="footer-header">
-                    <img src="/IMG/Logo_Bimo_Property.png" alt="">
-                    <h3>Bimo Property</h3>
+        </body>
+        <footer class="footer">
+            <div class="main">
+                <div class="kiri">
+                    <div class="footer-header">
+                        <img src="/assets/img/Logo_Bimo_Property.png" alt="">
+                        <h3>Bimo Property</h3>
+                    </div>
+                    <div class="deskripsi">
+                        <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
+                        <p>Hubungi 08512348765 </p>
+                    </div>
                 </div>
-                <div class="deskripsi">
-                    <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
-                    <p>Hubungi 08512348765 </p>
+                <div class="kanan">
+                    <div class="about">
+                        <h2>About</h2>
+                        <p>Berita</p>
+                        <p>Award</p>
+                    </div>
+                    <div class="resource">
+                        <h2>Resource</h2>
+                        <p>Beli Rumah</p>
+                        <p>Cari Agen</p>
+                        <p>Janji Temu</p>
+                    </div>
                 </div>
             </div>
-            <div class="kanan">
-                <div class="about">
-                    <h2>About</h2>
-                    <p>Berita</p>
-                    <p>Award</p>
-                </div>
-                <div class="resource">
-                    <h2>Resource</h2>
-                    <p>Beli Rumah</p>
-                    <p>Cari Agen</p>
-                    <p>Janji Temu</p>
-                </div>
+            <div class="added">
+                <h6>© 2024 Bimo Property.</h6>
             </div>
-        </div>
-        <div class="added">
-            <h6>© 2024 Bimo Property.</h6>
-        </div>
-    </footer>
-</html>
+        </footer>
+    </html>
     
+
+           
