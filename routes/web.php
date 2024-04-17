@@ -35,21 +35,24 @@ Route::group(['middleware' => ['auth']], function () {
 //Rute Auth
 Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
 
+
 //Rute Fitur Ulasan
-Route::get('/ulasan', [UlasanController::class, 'create'])->name('ulasan.create');
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
-Route::get('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
 //Route Ulasan ke Beranda dan Beranda ke Ulasan
-Route::get('/beranda', function(){
-    return view('beranda');
-})->name('guest');
+//Route::get('/beranda', function(){
+ //   return view('beranda');
+//})->name('guest');
 
-Route::get('/ulasan', function(){
-    return view('Ulasan.ulasan');
-})->name('ulasan');
+//Route::get('/ulasan', function(){
+  //  return view('Ulasan.ulasan');
+//})->name('ulasan');
+
+//Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
 
 // Route untuk menampilkan halaman daftar ulasan (masih belum fix)
-Route::get('/daftar_ulasan', [daftar_ulasan::class, 'index'])->name('daftar_ulasan');
-Route::get('/daftar_ulasan/list', [daftar_ulasan::class, 'list'])->name('daftar_ulasan_list');
-Route::post('/daftar_ulasan/store', [daftar_ulasan::class, 'store'])->name('daftar_ulasan.store');
+//Route::get('/daftar_ulasan', [daftar_ulasan::class, 'index'])->name('daftar_ulasan');
+//Route::get('/daftar_ulasan/list', [daftar_ulasan::class, 'list'])->name('daftar_ulasan_list');
+//Route::post('/daftar_ulasan/store', [daftar_ulasan::class, 'store'])->name('daftar_ulasan.store');

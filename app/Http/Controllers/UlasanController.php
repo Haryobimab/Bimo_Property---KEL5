@@ -7,30 +7,27 @@ use App\Models\Ulasan;
 
 class UlasanController extends Controller
 {
-    public function index()
+    public function create()
     {
-        return view('ulasan.index');
+      return view('Ulasan.ulasan');
     }
-
+  
     public function store(Request $request)
     {
-        
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
-
-        Ulasan::create([
-            'title' => $request->title,
-            'body' => $request->body,
-        ]);
-
-        return redirect()->back()->with('success', 'Ulasan berhasil disimpan.');
-
-
+      $ulasan = $request->validate([
+        'title' => 'required',
+        'body' => 'required',
+      ]);
+  
+      Ulasan::create($ulasan);
+      return redirect()->intended('/ulasan')->with('success', 'Ulasan berhasil disimpan.');
     }
-
-    public function create(){
-        return view('Ulasan.ulasan');
+  
+    public function index()
+    {
+      return view('Ulasan.daftar_ulasan_list', [
+        'ulasans' => Ulasan::latest()->get(),
+      ]);
     }
 }
+
