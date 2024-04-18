@@ -172,48 +172,51 @@ h6 {
     height: 64px; */
 }
 
+.nav-kanan img {
+    size: 40%;
+}
 
 .img-profile {
-     
-        border-radius: 50%;
-        padding: 0%;
-        margin-top: 400px;
-      
+    border-radius: 50%;
+    padding: 0%;
+    margin-top: 400px;
 }
 
 .profile-pic {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin-right: 10px; 
-  }
+    margin-right: 10px;
+}
 
 .nav-profile {
     margin-top: 5px;
     margin-right: 32px;
     display: inline-flex;
-
-
 }
+
 .nav-profile img {
-    
     margin-right: 5px;
 }
-.nav-textprofile {
-    color:black;
 
+.nav-textprofile {
+    color: black;
 }
 
 .hover-link {
-    color: black; /* Warna tautan default */
-    text-decoration: none; /* Menghapus garis bawah */
-    transition: color 0.3s; /* Transisi warna saat hover */
+    color: black;
+    /* Warna tautan default */
+    text-decoration: none;
+    /* Menghapus garis bawah */
+    transition: color 0.3s;
+    /* Transisi warna saat hover */
 }
 
 .hover-link:hover {
     color: #4BA30D;
-    font-weight: bold; /* Warna tautan saat hover */
-  }
+    font-weight: bold;
+    /* Warna tautan saat hover */
+}
 
 
 /* .nav-button:hover {
@@ -330,10 +333,10 @@ h6 {
 --------------------------------------------------------------*/
 
 
-
 /* .description img {
     position: absolute;
 } */
+
 .description {
     position: relative;
     display: inline-block;
@@ -345,7 +348,6 @@ h6 {
     margin: 0 80px;
     margin-bottom: 40px;
 }
-
 
 
 /*--------------------------------------------------------------
@@ -702,11 +704,8 @@ h6 {
 
 .footer {
     padding: 48px 0;
-
     background-color: #262829;
-
     background-color: #60a97a;
-
 }
 
 .main {
@@ -726,10 +725,7 @@ h6 {
     margin-top: 40px;
     text-align: center;
     color: white;
-
-
     opacity: 60%;
-
 }
 
 .footer-header {

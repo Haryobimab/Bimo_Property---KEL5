@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'username', // field baru
         'level', // field baru
+        'photo',
     ];
 
     /**

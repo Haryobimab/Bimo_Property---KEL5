@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -36,8 +37,8 @@ Route::get('/beranda', function () {
 });
 
 
-Route::get('/profile', [UserController::class, 'profile']);
-// Route::get('/profile', [UserController::class, 'update_profile']);
+Route::get('/profile', [ProfileController::class, 'profileView']);
+Route::post('/profile', [ProfileController::class, 'updateProfile']);
 
 
 Route::get('/admin/profile', function () {
@@ -66,6 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('user', UserController::class);
     });
+    
 });
 
 //Rute Auth
@@ -78,3 +80,11 @@ Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
 
+// Route::get('/admin/dashboard', function () {
+//     return view('admin/dashboard');
+// });
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+});

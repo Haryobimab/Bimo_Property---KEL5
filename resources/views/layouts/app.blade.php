@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -38,7 +40,7 @@
                 <ul class="nav-menu">
 
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li><a class="nav-link active" href="/beranda">Beranda</a></li>
                     <li><a class="nav-link" href="/beli">Beli</a></li>
                     <li><a class="nav-link" href="/rental">Rental</a></li>
                     <li><a class="nav-link" href="/jual">Jual</a></li>
@@ -72,8 +74,8 @@
                     <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @endif
             @else
-                 
-                <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                <li><img style="width:60px; border-radius:50%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
+                <li><a class="btn2" style="color: #3B7C0F ; font-size:16px;" href="/profile">{{ Auth::user()->name }}</a></li>
                 {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
                 <li><a class="btn2" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
