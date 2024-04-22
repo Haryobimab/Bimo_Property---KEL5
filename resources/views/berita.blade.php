@@ -7,11 +7,25 @@
         <title>Bimo Property</title>
 
         <!-- Style -->
-        
         <link rel="stylesheet" href="/css/berita.css" >
 
-        <!-- icon -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- CKEditor -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+        
+
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
         <!-- Styles -->
@@ -20,39 +34,61 @@
         </style>
     </head>
     <nav id="navbar" class="navbar">
-                <ul class="nav-menu">
-                    <img src="/assets/img/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link " href="/beranda">Beranda</a></li>
-                    <li><a class="nav-link" href="/beli">Beli</a></li>
-                    <li><a class="nav-link" href="/rental">Rental</a></li>
-                    <li><a class="nav-link" href="/jual">Jual</a></li>
-                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
-                    <li><a class="nav-link active" href="/berita">Berita</a></li>
-                    <li><a class="nav-link" href="/award">Award</a></li>
-                    <li><a class="nav-link" href="/faq">FAQ</a></li>
-                    <!-- <button type="login" class="btn1 ">Login</button>
-                    <button type="sign up" class="btn2 ">Sign Up</button> -->
-                </ul>
-            
-                <div class="nav-profile" style="align-items:center">
-                        <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> 
-                        <li><a href="/profile" class="nav-link active" > Tripoli</a></li>
+        <ul class="nav-menu">
 
+            <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
+            <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+            <li><a class="nav-link" href="/beli">Beli</a></li>
+            <li><a class="nav-link" href="/rental">Rental</a></li>
+            <li><a class="nav-link" href="/jual">Jual</a></li>
+            <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
+            <li><a class="nav-link" href="/berita">Berita</a></li>
+            <li><a class="nav-link" href="/award">Award</a></li>
+            <li><a class="nav-link" href="/faq">FAQ</a></li>
+            <!-- <button type="login" class="btn1 ">Login</button>
+            <button type="sign up" class="btn2 ">Sign Up</button> -->
+        
 
+            @if(Auth::check() && Auth::user()->role==='admin')
+                <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
+                    <a href="/pengaturan" class="nav-link">Pengaturan</a>
+                </li>
+            @endif
+            <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
+        </ul>
                 
-                    
-                    {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top36px;">Tripoli</a>
-                    
-                 --}}
-                    
-                    {{-- <button class="btn-secondary">Sign Up</button>
-                    <button class="btn-primary">Login</button> --}}
-                
+        <div class="nav-kanan">
+            <!-- <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+            <a href="#" class="header-btn2">Make an Appointment</a> -->
+            <!-- Authentication Links -->
+            <ul>
+                @guest
+                    @if (Route::has('login'))
+                        <li><a class="btn1"style="display:flex" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                    @endif
 
-                
-                 {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
+                    @if (Route::has('register'))
+                        <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                    @endif
+                @else
+                    <!-- <li><img style="width:60px; border-radius:36px" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li> -->
+                    <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                    {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
+                    <li><a class="btn2" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="GET" class="d-none">
+                            @csrf
+                        </form>
+                    </a>
+                    </li>
+                @endguest
+            </ul>
+        </div>
     </nav>
+   
     <body>
         <div class="container">
             <div class="welcome">
@@ -61,18 +97,16 @@
                         <div class="kotak">November 02,2021  |  ARCHITECTURE </div>
                             <div class="banner">
                             <ul>
-                                <h3>Rumah Impian Zaman Sekarang</h3>
-                                
-                            
+                                <h3>Rumah Impian Zaman Sekarang</h3>    
                             </ul>
-                            </div>
+                        </div>
                     </div>
                     <div class="header" style="align-item:center">
-                            <img src="/assets/img/profile_1.jpg" alt="">
-                            <ul>
-                                <h2> Deborah Roderick </h2>
-                                <h1> Vloger </h1>
-                            </ul>
+                        <img src="/IMG/profile_1.jpg" alt="">
+                        <ul>
+                            <h2> Deborah Roderick </h2>
+                            <h1> Vloger </h1>
+                        </ul>
                     </div>  
                 </div>
             </div>
@@ -84,15 +118,127 @@
                 <h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</H2>
                 <h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</H2>
             </div>
+
             <div class="trend">
-                <h3> Trend dan Tips Terbaru pada Property</h3>
-                <h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>
-                <ul>
-                    <li>Neque sodales ut etiam sit amet nisl purus non tellus orci ac auctor</li>
-                    <li>Neque sodales ut etiam sit amet nisl purus non tellus orci ac auctor</li>
-                    <li>Neque sodales ut etiam sit amet nisl purus non tellus orci ac auctor</li>
-                </ul>
-            </div>
+                @if(Auth::check() && Auth::user()->username==='admin')
+                    @if($beritaExists)
+                        @foreach($beritas as $berita)
+                            <h3> {{ $berita->title }} </h3>
+                            {!! html_entity_decode($berita->body) !!}
+                        @endforeach
+
+                        <!-- Edit Button -->
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editBeritaModal" style="background-color: #ffc107; border-color: #ffc107;">Edit</button>
+
+                        <!-- Delete Button -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" style="background-color: #dc3545; border-color: #dc3545;">Delete</button>
+
+
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete this?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <form action="{{ route('posts.destroy', $berita->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="editBeritaModal" tabindex="-1" role="dialog" aria-labelledby="editBeritaModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editBeritaModalLabel">Edit Trend dan Tips Terbaru pada Property</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('posts.update', $berita->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="form-group">
+                                                <label for="title" class="col-form-label">Title:</label>
+                                                @isset($berita->title)
+                                                    <input type="text" class="form-control" id="title" name="title" value="{{$berita->title}}" placeholder="Add Title" required >
+                                                @else
+                                                    <input type="text" class="form-control" id="title" name="title" value="Default Title">
+                                                @endisset
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="body" class="col-form-label">Body:</label>
+                                                <div id="editor">{!! html_entity_decode($berita->body) !!}</div>
+                                                <textarea class="form-control" id="body" name="body" style="display: none;"></textarea>
+                                            </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; border-color: #6c757d;">Close</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">Save</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @else
+                        <!-- Add Button -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBeritaModal" style="background-color: #007bff; border-color: #007bff;">Add</button>
+
+
+                        <!-- Add Modal -->
+                        <div class="modal fade" id="addBeritaModal" tabindex="-1" role="dialog" aria-labelledby="addBeritaModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addBeritaModalLabel">Add New Berita</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('berita.store') }}" method="POST">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="title" class="col-form-label">Title:</label>
+                                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="body" class="col-form-label">Body:</label>
+                                                <div id="editor"></div>
+                                                <textarea class="form-control" id="body" name="body" style="display: none;"></textarea>
+                                                <!-- <textarea class="form-control" id="body" name="body" placeholder="Enter Body" required></textarea> -->
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; border-color: #6c757d;">Close</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">Save</button>
+                                    </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
+                
             
             <div class="rekomendasi">
             <div class="header">
@@ -103,25 +249,25 @@
             </div>
             <div class="row-rekomendasi">
                 <div class="card-1">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+                    <img src="/IMG/rumah_1.jpg" alt="">
                     <h1>American Classic</h1>
                     <h2> 1 billion  - 5 billion</h2>
                     <p>Bojongsoang, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-2">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+                    <img src="/IMG/rumah_1.jpg" alt="">
                     <h1 style="font-family:calibri">Indonesia Classic</h1>
                     <h2> 1 billion  - 5 billion</h2>
                     <p>Buah Batu, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-3">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+                    <img src="/IMG/rumah_1.jpg" alt="">
                     <h1>Brazil House</h1>
                     <h2> 1 billion  - 5 billion</h2>
                     <p>Dago, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-3">
-                    <img src="/assets/img/rumah_1.jpg" alt="">
+                    <img src="/IMG/rumah_1.jpg" alt="">
                     <h1>Jepan House</h1>
                     <h2> 1 billion  - 5 billion</h2>
                     <p>Kopo, Bandung, Jawa Barat</p>
@@ -129,25 +275,75 @@
             </div>
         </div>
         <div class="artikel">
-            <div class="header">
-                <div class="content">
-                    <h2>Latest Articles</h2>
-                    <img src="/assets/img/inspirasi1.jpeg" alt="">
-                    <h3 href=""> November 05, 2024| Sale</h3>
-                    <h4>Rumah Berdesain modern dan Starategis</h4>
-                    <h4>Peluang Menjanjikan untuk Investasi Propertasi </h4>
-                    <img src="/assets/img/inspirasi2.jpeg" alt="">
-                    <h3 href=""> November 07, 2024| Sale</h3>
-                    <h4>Potensi Bisnis Properti dan Trend</h4>
-                    <h4>Inovasi Produk Penutup lantai 2024 </h4>
-                </div>
+        <div class="header">
+            <div class="content">
+                <h2>Latest Articles</h2>
+                <img src="/IMG/inspirasi1.jpeg" alt="">
+                <h3 href=""> November 05, 2024| Sale</h3>
+                <h4>Rumah Berdesain modern dan Starategis</h4>
+                <h4>Peluang Menjanjikan untuk Investasi Propertasi </h4>
+                <img src="/IMG/inspirasi2.jpeg" alt="">
+                <h3 href=""> November 07, 2024| Sale</h3>
+                <h4>Potensi Bisnis Properti dan Trend</h4>
+                <h4>Inovasi Produk Penutup lantai 2024 </h4>
             </div>
-            </body>
+        </div>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- <script>
+            $('#editBeritaModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('whatever') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                modal.find('.modal-title').text('Edit message to ' + recipient)
+                modal.find('.modal-body input').val(recipient)
+            })
+        </script> -->
+
+        <!-- CKEditor -->
+        <!-- <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+        <script>
+            var konten = document.getElementById("konten");
+            CKEDITOR.replace(konten,{
+                language:'en-gb'
+            });
+            CKEDITOR.config.allowedContent = true;
+        </script> -->
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                        const data = editor.getData();
+                        document.querySelector('#body').value = data;
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+
+
+
+    </body>
     <footer class="footer">
         <div class="main">
             <div class="kiri">
                 <div class="footer-header">
-                    <img src="/assets/img/Logo_Bimo_Property.png" alt="">
+                    <img src="/IMG/Logo_Bimo_Property.png" alt="">
                     <h3>Bimo Property</h3>
                 </div>
                 <div class="deskripsi">
@@ -174,14 +370,3 @@
         </div>
     </footer>
 </html>
-
-
-
-
-
-
-
-                        
-
-
-
