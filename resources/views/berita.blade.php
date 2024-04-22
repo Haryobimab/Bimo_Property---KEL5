@@ -114,9 +114,8 @@
                 <img src="/assets/img/berita_1.jpg" alt="">
             </div>
             <div class="deskripsi-text">
-                <h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</H2>
-                <h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</H2>
-                <h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</H2>
+                <h2> Tren desain rumah sudah kerap diperbincangkan oleh para ahli desain interior. Desain rumah adalah salah satu aspek yang penting. Setiap pergantian tahun, banyak sekali pemilik rumah yang ingin memperbarui tampilan rumahnya. Rumah tidak hanya berfungsi sebagai tempat tinggal, namun sebagai cerminan kepribadian pemiliknya.</H2>
+                <h2> Namun, desain rumah harus mengikuti perkembangan zaman dan waktu. Setiap tahun, ada tren baru yang muncul di dunia interior. Baik itu dari segi warna, material, hingga fungsi. Tren ini dipengaruhi oleh berbagai faktor, seperti teknologi, lingkungan, budaya, dan ekonomi.</H2>
             </div>
 
             <div class="trend">
