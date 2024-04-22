@@ -11,6 +11,10 @@ use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BeritaController;
+
+
+
 
 
 Route::get('/', function () {
@@ -71,7 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //Rute Auth
-Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
+Route::view('/', 'beranda')->name('beranda')->middleware('auth');
 
 
 //Rute Fitur Ulasan
@@ -90,8 +94,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 });
 
 
+// Route::get('/berita', function () {
+//     return view('berita');
+// });
 Route::get('/berita', [BeritaController::class, "index"])->name('berita.index');
 Route::put('/posts/{id}', [BeritaController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.destroy');
 Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
-
