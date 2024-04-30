@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BelirukoController;
 
 
 
@@ -101,3 +102,7 @@ Route::get('/berita', [BeritaController::class, "index"])->name('berita.index');
 Route::put('/posts/{id}', [BeritaController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.destroy');
 Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+
+
+//route fitu beli ruko 
+Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
