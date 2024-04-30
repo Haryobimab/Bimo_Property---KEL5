@@ -24,8 +24,8 @@
                                 </div>
                                 
                                 
-                                <h3 class="profile-username text-center">{{auth()->user()->name}} </h3>
-                                <p class="email text-center">{{auth()->user()->email}}</p>
+                                <h3 class="profile-username text-center" style="margin-top: 16px;">{{auth()->user()->name}} </h3>
+                                <p class="email text-center" style="margin-top: 4px;">{{auth()->user()->email}}</p>
                                 
                                 <form action="/profile" method = "post" class="form-horizontal" enctype="multipart/form-data" >
                                     @csrf
@@ -50,6 +50,7 @@
                                                     <input type="file" name="photo" class="form-control" id="photo" >
                                                 </div>
                                         </div>
+                                        <p style="color:#98A2B3; font: size 16px; margin-left:208px; margin-top:4px; width:10%; border-radius:12px">Format  :png</p>
                                     </div>
 
                                     <button style="background-color: #4BA30D; color: white;"id="update-profile-btn" type="submit" class="btn btn-info">Update Profile</button>
