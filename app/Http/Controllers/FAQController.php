@@ -10,7 +10,7 @@ class FAQController extends Controller
 {
     public function index()
     {
-        return view('faq');
+        return view('faq/faq');
     }
 
 }
