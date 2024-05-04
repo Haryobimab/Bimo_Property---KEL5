@@ -88,3 +88,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 });
+
+//Rute Keranjang
+Route::get('/keranjang', [KeranjangController::class, 'show'])->name('user.keranjang');
