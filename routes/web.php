@@ -11,6 +11,7 @@ use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KeranjangController;
 
 
 Route::get('/', function () {
@@ -35,6 +36,7 @@ Route::post('/user/create', [RegisterController::class, 'create']);
 Route::get('/beranda', function () {
     return view('beranda');
 });
+
 
 
 Route::get('/profile', [ProfileController::class, 'profileView']);
@@ -71,7 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //Rute Auth
-Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
+Route::view('/', 'beranda')->name('beranda')->middleware('auth');
 
 
 //Rute Fitur Ulasan
@@ -80,14 +82,14 @@ Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
 
-// Route::get('/admin/dashboard', function () {
-//     return view('admin/dashboard');
-// });
 
+//Rute dashboard
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 });
 
-//Rute Keranjang
+// ------- keranjang --------
 Route::get('/keranjang', [KeranjangController::class, 'show'])->name('user.keranjang');
+Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('user.checkout');
+Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');

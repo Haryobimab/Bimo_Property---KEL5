@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -38,16 +39,29 @@
     </head>
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
-
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link active" href="/beranda">Beranda</a></li>
-                    <li><a class="nav-link" href="/beli">Beli</a></li>
-                    <li><a class="nav-link" href="/rental">Rental</a></li>
-                    <li><a class="nav-link" href="/jual">Jual</a></li>
-                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
-                    <li><a class="nav-link" href="/berita">Berita</a></li>
-                    <li><a class="nav-link" href="/award">Award</a></li>
-                    <li><a class="nav-link" href="/faq">FAQ</a></li>
+                    <li><a class="nav-link {{ Request::is('/beranda') ? 'active' : '' }}" href="/beranda">Beranda</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownBeli" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Beli
+                            </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
+                                    <a class="dropdown-item" href="#">Beli Rumah</a>
+                                    <a class="dropdown-item" href="#">Beli Bahan Bangunan</a>
+                                    <a class="dropdown-item" href="#">Beli Furniture</a>
+                                </div>
+                        </li>
+                    <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
+                    <li><a class="nav-link {{ Request::is('/jual') ? 'active' : '' }}" href="/jual">Jual</a></li>
+                    <li><a class="nav-link {{ Request::is('/cari agen') ? 'active' : '' }}]" href="/cariagen">Cari Agen</a></li>
+                    <li><a class="nav-link {{ Request::is('/berita') ? 'active' : '' }}]" href="/berita">Berita</a></li>
+                    <li><a class="nav-link {{ Request::is('/award') ? 'active' : '' }}]" href="/award">Award</a></li>
+                    <li><a class="nav-link {{ Request::is('/faq') ? 'active' : '' }}]" href="/faq">FAQ</a></li>
+                    <li>
+                        <a class="nav-link {{ Request::is('/keranjang') ? 'active' : '' }}]" href="/keranjang">
+                        <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 
@@ -57,7 +71,7 @@
                             <a href="/pengaturan" class="nav-link">Pengaturan</a>
                         </li>
                     @endif
-                    <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
+                     
                 </ul>
                 
     <div class="nav-kanan">
@@ -90,19 +104,13 @@
             @endguest
         </div>
         </nav>   
+                    <!-- <a class="nav-link" href="{{ route('user.keranjang') }}">  
+                        <i class="fas fa-shopping-cart"></i>
+                        
+                    </a>
+                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a> -->
                     
-                    {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
-                    
-                 --}}
-                    
-                    {{-- <button class="btn-secondary">Sign Up</button>
-                    <button class="btn-primary">Login</button> --}}
-                
-
-                
-                 {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
-
+                 
 
             <div class="container mt-4">
         @yield('content')
@@ -139,5 +147,8 @@
             <h6>© 2024 Bimo Property.</h6>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>
     
