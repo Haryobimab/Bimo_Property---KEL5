@@ -11,7 +11,13 @@ use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BelirukoController;
+
+
+
 
 
 Route::get('/', function () {
@@ -89,7 +95,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 });
 
+
 // ------- keranjang --------
 Route::get('/keranjang', [KeranjangController::class, 'show'])->name('user.keranjang');
 Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('user.checkout');
 Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
+
+
+// Route::get('/berita', function () {
+//     return view('berita');
+// });
+Route::get('/berita', [BeritaController::class, "index"])->name('berita.index');
+Route::put('/posts/{id}', [BeritaController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.destroy');
+Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+
+
+//route fitu beli ruko 
+Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
+
