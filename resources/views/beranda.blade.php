@@ -46,6 +46,11 @@
                     <li><a class="nav-link" href="/berita">Berita</a></li>
                     <li><a class="nav-link" href="/award">Award</a></li>
                     <li><a class="nav-link" href="/faq">FAQ</a></li>
+                    <li>
+                        <a class="nav-link" href="/keranjang">
+                        <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 
@@ -55,7 +60,7 @@
                             <a href="/pengaturan" class="nav-link">Pengaturan</a>
                         </li>
                     @endif
-                    <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
+                    
                 </ul>
                 
     <div class="nav-kanan">
@@ -105,11 +110,7 @@
 </div> --}}
 
 
-                {{-- <div class="nav-button">
-                    <i class="fas fa-shopping-cart"></i>
-                    <button class="btn-secondary">Sign Up</button>
-                    <button class="btn-primary">Login</button>
-                </div> --}}
+                
                 <!-- <i class="bi bi-list mobile-nav-toggle"></i> -->
 
                     {{-- <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
