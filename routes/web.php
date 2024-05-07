@@ -10,6 +10,14 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BelirukoController;
+
+
+
 
 
 Route::get('/', function () {
@@ -36,8 +44,9 @@ Route::get('/beranda', function () {
 });
 
 
-Route::get('/profile', [UserController::class, 'profile']);
-// Route::get('/profile', [UserController::class, 'update_profile']);
+
+Route::get('/profile', [ProfileController::class, 'profileView']);
+Route::post('/profile', [ProfileController::class, 'updateProfile']);
 
 
 Route::get('/admin/profile', function () {
@@ -66,27 +75,42 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('user', UserController::class);
     });
+    
 });
 
 //Rute Auth
-Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
+Route::view('/', 'beranda')->name('beranda')->middleware('auth');
+
 
 //Rute Fitur Ulasan
-Route::get('/ulasan', [UlasanController::class, 'create'])->name('ulasan.create');
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
-Route::get('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
-//Route Ulasan ke Beranda dan Beranda ke Ulasan
-Route::get('/beranda', function(){
-    return view('beranda');
-})->name('guest');
 
-Route::get('/ulasan', function(){
-    return view('Ulasan.ulasan');
-})->name('ulasan');
 
-// Route untuk menampilkan halaman daftar ulasan (masih belum fix)
-Route::get('/daftar_ulasan', [daftar_ulasan::class, 'index'])->name('daftar_ulasan');
-Route::get('/daftar_ulasan/list', [daftar_ulasan::class, 'list'])->name('daftar_ulasan_list');
-Route::post('/daftar_ulasan/store', [daftar_ulasan::class, 'store'])->name('daftar_ulasan.store');
+//Rute dashboard
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+});
+
+
+// ------- keranjang --------
+Route::get('/keranjang', [KeranjangController::class, 'show'])->name('user.keranjang');
+Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('user.checkout');
+Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
+
+
+// Route::get('/berita', function () {
+//     return view('berita');
+// });
+Route::get('/berita', [BeritaController::class, "index"])->name('berita.index');
+Route::put('/posts/{id}', [BeritaController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.destroy');
+Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+
+
+//route fitu beli ruko 
+Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
 

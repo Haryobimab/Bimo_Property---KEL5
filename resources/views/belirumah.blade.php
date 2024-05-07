@@ -1,31 +1,4 @@
 <!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>beli Ruko</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-
-@extends('layouts.app')
-@section('content')
-
-<body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Penjualan Ruko</h2>
-        <div class="row">
-            @foreach($belirukos as $ruko)
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset($ruko->gambar) }}" class="card-img-top" alt="{{ $ruko->Gambar }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $ruko->Namaruko}}</h5>
-                        <p class="card-text">{{ $ruko->informasi }}</p>
-                        <p class="card-text">Harga: Rp.{{ number_format($ruko->harga, 2) }}</p>
-=======
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -65,8 +38,8 @@
                 <ul class="nav-menu">
 
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link " href="#beranda">Beranda</a></li>
-                    <li><a class="nav-link active" href="/beli">Beli</a></li>
+                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li><a class="nav-link" href="/beli">Beli</a></li>
                     <li><a class="nav-link" href="/rental">Rental</a></li>
                     <li><a class="nav-link" href="/jual">Jual</a></li>
                     <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
@@ -75,7 +48,14 @@
                     <li><a class="nav-link" href="/faq">FAQ</a></li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
-                 
+                
+
+                     @if(Auth::check() && Auth::user()->role==='admin')
+                        <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
+                            <a href="/pengaturan" class="nav-link">Pengaturan</a>
+                        </li>
+                    @endif
+                    <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
                 </ul>
                 
     <div class="nav-kanan">
@@ -109,30 +89,5 @@
         </div>
         </nav>
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Penjualan Rumah</h2>
-        <div class="row">
-            @foreach($belirumahs as $rumah)
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset($rumah->gambar) }}" class="card-img-top" alt="{{ $rumah->nama }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $rumah->Namarumah}}</h5>
-                        
-                        <p class="card-text">{{ $rumah->informasi }}</p>
-                        <p class="card-text">Harga: ${{ number_format($rumah->harga, 2) }}</p>
-
-                        <a href="#" class="btn btn-primary">Beli</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</body>
-</html>
-
-@endsection
-
 
     

@@ -6,9 +6,27 @@
 
         <title>Bimo Property</title>
 
+
         <!-- Style -->
         
         <link rel="stylesheet" href="/css/beranda.css" >
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/slicknav.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/progressbar_barfiller.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/gijgo.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/animated-headline.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/themify-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -22,37 +40,77 @@
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
-                    <li><a class="nav-link" href="/beli">Beli</a></li>
-                    <li><a class="nav-link" href="/rental">Rental</a></li>
-                    <li><a class="nav-link" href="/jual">Jual</a></li>
-                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
-                    <li><a class="nav-link" href="/berita">Berita</a></li>
-                    <li><a class="nav-link" href="/award">Award</a></li>
-                    <li><a class="nav-link" href="/faq">FAQ</a></li>
+                    <li><a class="nav-link {{ Request::is('/beranda') ? 'active' : '' }}" href="/beranda">Beranda</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownBeli" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Beli
+                            </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
+                                    <a class="dropdown-item" href="#">Beli Rumah</a>
+                                    <a class="dropdown-item" href="#">Beli Bahan Bangunan</a>
+                                    <a class="dropdown-item" href="#">Beli Furniture</a>
+                                </div>
+                        </li>
+                    <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
+                    <li><a class="nav-link {{ Request::is('/jual') ? 'active' : '' }}" href="/jual">Jual</a></li>
+                    <li><a class="nav-link {{ Request::is('/cari agen') ? 'active' : '' }}]" href="/cariagen">Cari Agen</a></li>
+                    <li><a class="nav-link {{ Request::is('/berita') ? 'active' : '' }}]" href="/berita">Berita</a></li>
+                    <li><a class="nav-link {{ Request::is('/award') ? 'active' : '' }}]" href="/award">Award</a></li>
+                    <li><a class="nav-link {{ Request::is('/faq') ? 'active' : '' }}]" href="/faq">FAQ</a></li>
+                    <li>
+                        <a class="nav-link {{ Request::is('/keranjang') ? 'active' : '' }}]" href="/keranjang">
+                        <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
+                
+
+                     @if(Auth::check() && Auth::user()->role==='admin')
+                        <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
+                            <a href="/pengaturan" class="nav-link">Pengaturan</a>
+                        </li>
+                    @endif
+                     
                 </ul>
-            
-                <div class="nav-profile">
-                        <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> 
-                        <li><a href="/profile" class="hover-link" > Tripoli </a></li>
-
-
                 
-                    
-                    {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
-                    
-                 --}}
-                    
-                    {{-- <button class="btn-secondary">Sign Up</button>
-                    <button class="btn-primary">Login</button> --}}
-                
+    <div class="nav-kanan">
+        <!-- <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+        <a href="#" class="header-btn2">Make an Appointment</a> -->
+        <!-- Authentication Links -->
+        <ul>
+            @guest
+                @if (Route::has('login'))
+                    <li><a class="btn1"style="display:flex" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                @endif
 
-                
-                 {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
-            </nav>
+                @if (Route::has('register'))
+                    <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                @endif
+            @else
+                <li><img style="width:60px; border-radius:50%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
+                <li><a class="btn2" style="color: #3B7C0F ; font-size:16px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
+                <li><a class="btn2" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="GET" class="d-none">
+                        @csrf
+                    </form>
+                </a>
+                </li>
+            @endguest
+        </div>
+        </nav>   
+                    <!-- <a class="nav-link" href="{{ route('user.keranjang') }}">  
+                        <i class="fas fa-shopping-cart"></i>
+                        
+                    </a>
+                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a> -->
+                    
+                 
 
             <div class="container mt-4">
         @yield('content')
@@ -89,5 +147,8 @@
             <h6>© 2024 Bimo Property.</h6>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>
     
