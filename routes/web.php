@@ -11,6 +11,8 @@ use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 
+use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return view('Auth.Login');
@@ -78,3 +80,17 @@ Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
 
+//Rute Fitur Beli Bahan bagunan
+Route::get('/materials/belibahanbangunan', [ProductController::class, 'index'])->name('belibahanbangunan.index');
+Route::get('/materials/halaman2', [ProductController::class, 'show'])->name('hal2.index');
+Route::get('/materials/halaman3', [ProductController::class, 'show2'])->name('hal3.index');
+
+//Rute views detail Produk
+Route::get('/materials/ProductDetail/semen', [ProductController::class, 'show3'])->name('semen1.index');
+Route::get('/materials/ProductDetail/Besibeton', [ProductController::class, 'show4'])->name('besi.index');
+Route::get('/materials/ProductDetail/WP', [ProductController::class, 'show5'])->name('wp.index');
+Route::get('/materials/ProductDetail/Cat', [ProductController::class, 'show6'])->name('cat.index');
+Route::get('/materials/ProductDetail/genteng', [ProductController::class, 'show7'])->name('genteng.index');
+Route::get('/materials/ProductDetail/lantai', [ProductController::class, 'show8'])->name('lantai.index');
+Route::get('/materials/ProductDetail/pipa', [ProductController::class, 'show10'])->name('pipa.index');
+Route::get('/materials/ProductDetail/bajari', [ProductController::class, 'show9'])->name('bajari.index');

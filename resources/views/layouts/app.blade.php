@@ -107,7 +107,7 @@
             </div>
 
 
-            <footer class="footer">
+            <footer class="mt-8 footer">
         <div class="main">
             <div class="kiri">
                 <div class="footer-header">
