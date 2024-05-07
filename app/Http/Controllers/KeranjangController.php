@@ -12,22 +12,24 @@ use Illuminate\Support\Facades\Auth;
 
 class KeranjangController extends Controller
 {
-    protected $pesanan;
-    protected $pesanan_details = [];
 
     public function show()
     {
         $title = "Keranjang";
         $keranjang = Keranjang::all();
-        return view('user.keranjang', compact('keranjang', 'title'));
+        $countKeranjang = $keranjang->count();
+        $totalCart = Keranjang::sum('total_harga');
+        return view('user.keranjang', compact('keranjang', 'title', 'countKeranjang', 'totalCart'));
     }
 
     public function checkout()
     {
         $title = "Checkout";
         $keranjang = Keranjang::all();
-        $total = Keranjang::sum('total_harga');
-        return view('user.checkout', compact('keranjang', 'total', 'title'));
+        $subtotal = $keranjang->sum('harga');
+        $tax = $subtotal * 0.1;
+        $total = $subtotal + $tax;
+        return view('user.checkout', compact('keranjang', 'total', 'title',  'subtotal', 'tax'));
     }
 
     public function showDetails($id)

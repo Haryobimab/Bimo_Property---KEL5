@@ -21,18 +21,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="fas fa-chart-line fa-2x mr-3" style="background-color:#ECFDF3; color:#039855; padding:12px; border-radius:12px"></i>
-                        <div>
-                            <h5 class="card-title" style="font-size:12px; color:#98A2B3 ">Penjualan Rumah</h5>
-                            <h4 class="card-text">7 rumah</h4>   
-                        </div>
-                        
-                    </div>
-                </div>
-            </div> -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body d-flex align-items-center">

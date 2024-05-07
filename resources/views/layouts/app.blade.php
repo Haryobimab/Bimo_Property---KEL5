@@ -24,9 +24,10 @@
         <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -132,6 +133,7 @@
             <div class="kanan">
                 <div class="about">
                     <h2>About</h2>
+                    <a href="/berita" class="nav-link"><p>Berita</p></a>
                     <p>Berita</p>
                     <p>Award</p>
                 </div>
@@ -150,5 +152,22 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Hitung jumlah item dalam keranjang
+        var itemCount = {{ count($keranjang) }};
+        
+        // Select element ikon keranjang
+        var cartIcon = document.querySelector(".fa-shopping-cart");
+        
+        // Buat elemen untuk menampilkan notifikasi jumlah item
+        var itemCountBadge = document.createElement("span");
+        itemCountBadge.classList.add("badge", "bg-danger", "rounded-pill");
+        itemCountBadge.textContent = itemCount;
+        
+        // Tambahkan notifikasi ke ikon keranjang
+        cartIcon.appendChild(itemCountBadge);
+    });
+</script>
 </html>
     
