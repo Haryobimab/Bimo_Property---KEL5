@@ -19,6 +19,8 @@ use App\Http\Controllers\BelirukoController;
 
 
 
+use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return view('Auth.Login');
@@ -87,8 +89,6 @@ Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
 Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
-
-
 //Rute dashboard
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
@@ -113,4 +113,20 @@ Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store')
 
 //route fitu beli ruko 
 Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
+
+//Rute Fitur Beli Bahan bagunan
+Route::get('/materials/belibahanbangunan', [ProductController::class, 'index'])->name('belibahanbangunan.index');
+Route::get('/materials/halaman2', [ProductController::class, 'show'])->name('hal2.index');
+Route::get('/materials/halaman3', [ProductController::class, 'show2'])->name('hal3.index');
+
+//Rute views detail Produk
+Route::get('/materials/ProductDetail/semen', [ProductController::class, 'show3'])->name('semen1.index');
+Route::get('/materials/ProductDetail/Besibeton', [ProductController::class, 'show4'])->name('besi.index');
+Route::get('/materials/ProductDetail/WP', [ProductController::class, 'show5'])->name('wp.index');
+Route::get('/materials/ProductDetail/Cat', [ProductController::class, 'show6'])->name('cat.index');
+Route::get('/materials/ProductDetail/genteng', [ProductController::class, 'show7'])->name('genteng.index');
+Route::get('/materials/ProductDetail/lantai', [ProductController::class, 'show8'])->name('lantai.index');
+Route::get('/materials/ProductDetail/pipa', [ProductController::class, 'show10'])->name('pipa.index');
+Route::get('/materials/ProductDetail/bajari', [ProductController::class, 'show9'])->name('bajari.index');
+
 
