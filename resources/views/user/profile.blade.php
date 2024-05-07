@@ -10,6 +10,7 @@
   {{-- CKEditor CDN --}}
   <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 @extends('layouts.app')
 @section('content')
@@ -27,7 +28,7 @@
                                 <h3 class="profile-username text-center" style="margin-top: 16px;">{{auth()->user()->name}} </h3>
                                 <p class="email text-center" style="margin-top: 4px;">{{auth()->user()->email}}</p>
                                 
-                                <form action="/profile" method = "post" class="form-horizontal" enctype="multipart/form-data" >
+                                <form action="/profile" method = "POST" class="form-horizontal" enctype="multipart/form-data" >
                                     @csrf
                                     <div class="card-body">
                                         
@@ -59,9 +60,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
-    
-
-    
+            </div>    
 @endsection
+
+<script>
+    document.getElementById('update-profile-btn').addEventListener('click', function() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated!',
+            text: 'Your profile has been successfully updated.',
+            showConfirmButton: false,
+            timer: 2000 // Durasi notifikasi dalam milidetik
+        });
+    });
+</script>
     

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('keranjang', function (Blueprint $table) {
             $table->id();
             $table->string('nama_produk');
+            $table->string('foto_produk');
             $table->string('tipe_produk');
             $table->string('deskripsi');
             $table->integer('harga');
