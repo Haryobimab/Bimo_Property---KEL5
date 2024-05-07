@@ -1,4 +1,31 @@
 <!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>beli Ruko</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+@extends('layouts.app')
+@section('content')
+
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Penjualan Ruko</h2>
+        <div class="row">
+            @foreach($belirukos as $ruko)
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset($ruko->gambar) }}" class="card-img-top" alt="{{ $ruko->Gambar }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $ruko->Namaruko}}</h5>
+                        <p class="card-text">{{ $ruko->informasi }}</p>
+                        <p class="card-text">Harga: Rp.{{ number_format($ruko->harga, 2) }}</p>
+=======
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -24,10 +51,6 @@
         <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -40,39 +63,19 @@
     </head>
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
+
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link {{ Request::is('/beranda') ? 'active' : '' }}" href="/beranda">Beranda</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownBeli" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Beli
-                            </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
-                                    <a class="dropdown-item" href="#">Beli Rumah</a>
-                                    <a class="dropdown-item" href="#">Beli Bahan Bangunan</a>
-                                    <a class="dropdown-item" href="#">Beli Furniture</a>
-                                </div>
-                        </li>
-                    <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
-                    <li><a class="nav-link {{ Request::is('/jual') ? 'active' : '' }}" href="/jual">Jual</a></li>
-                    <li><a class="nav-link {{ Request::is('/cari agen') ? 'active' : '' }}]" href="/cariagen">Cari Agen</a></li>
-                    <li><a class="nav-link {{ Request::is('/berita') ? 'active' : '' }}]" href="/berita">Berita</a></li>
-                    <li><a class="nav-link {{ Request::is('/award') ? 'active' : '' }}]" href="/award">Award</a></li>
-                    <li><a class="nav-link {{ Request::is('/faq') ? 'active' : '' }}]" href="/faq">FAQ</a></li>
-                    <li>
-                        <a class="nav-link {{ Request::is('/keranjang') ? 'active' : '' }}]" href="/keranjang">
-                        <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
+                    <li><a class="nav-link " href="#beranda">Beranda</a></li>
+                    <li><a class="nav-link active" href="/beli">Beli</a></li>
+                    <li><a class="nav-link" href="/rental">Rental</a></li>
+                    <li><a class="nav-link" href="/jual">Jual</a></li>
+                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
+                    <li><a class="nav-link" href="/berita">Berita</a></li>
+                    <li><a class="nav-link" href="/award">Award</a></li>
+                    <li><a class="nav-link" href="/faq">FAQ</a></li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
-                
-
-                     @if(Auth::check() && Auth::user()->role==='admin')
-                        <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
-                            <a href="/pengaturan" class="nav-link">Pengaturan</a>
-                        </li>
-                    @endif
-                     
+                 
                 </ul>
                 
     <div class="nav-kanan">
@@ -89,8 +92,8 @@
                     <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @endif
             @else
-                <li><img style="width:60px; border-radius:50%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
-                <li><a class="btn2" style="color: #3B7C0F ; font-size:16px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                <li><img style="width:60px; border-radius:36px" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
+                <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
                 {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
                 <li><a class="btn2" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
@@ -104,70 +107,32 @@
                 </li>
             @endguest
         </div>
-        </nav>   
-                    <!-- <a class="nav-link" href="{{ route('user.keranjang') }}">  
-                        <i class="fas fa-shopping-cart"></i>
+        </nav>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Penjualan Rumah</h2>
+        <div class="row">
+            @foreach($belirumahs as $rumah)
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset($rumah->gambar) }}" class="card-img-top" alt="{{ $rumah->nama }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $rumah->Namarumah}}</h5>
                         
-                    </a>
-                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a> -->
-                    
-                 
+                        <p class="card-text">{{ $rumah->informasi }}</p>
+                        <p class="card-text">Harga: ${{ number_format($rumah->harga, 2) }}</p>
 
-            <div class="container mt-4">
-        @yield('content')
-            </div>
-
-
-            <footer class="mt-8 footer">
-        <div class="main">
-            <div class="kiri">
-                <div class="footer-header">
-                    <img src="/IMG/Logo_Bimo_Property.png" alt="">
-                    <h3>Bimo Property</h3>
-                </div>
-                <div class="deskripsi">
-                    <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
-                    <p>Hubungi 08512348765 </p>
+                        <a href="#" class="btn btn-primary">Beli</a>
+                    </div>
                 </div>
             </div>
-            <div class="kanan">
-                <div class="about">
-                    <h2>About</h2>
-                    <a href="/berita" class="nav-link"><p>Berita</p></a>
-                    <p>Berita</p>
-                    <p>Award</p>
-                </div>
-                <div class="resource">
-                    <h2>Resource</h2>
-                    <p>Beli Rumah</p>
-                    <p>Cari Agen</p>
-                    <p>Janji Temu</p>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <div class="added">
-            <h6>© 2024 Bimo Property.</h6>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Hitung jumlah item dalam keranjang
-        var itemCount = {{ count($keranjang) }};
-        
-        // Select element ikon keranjang
-        var cartIcon = document.querySelector(".fa-shopping-cart");
-        
-        // Buat elemen untuk menampilkan notifikasi jumlah item
-        var itemCountBadge = document.createElement("span");
-        itemCountBadge.classList.add("badge", "bg-danger", "rounded-pill");
-        itemCountBadge.textContent = itemCount;
-        
-        // Tambahkan notifikasi ke ikon keranjang
-        cartIcon.appendChild(itemCountBadge);
-    });
-</script>
+    </div>
+</body>
 </html>
+
+@endsection
+
+
     
