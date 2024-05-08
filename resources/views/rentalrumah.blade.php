@@ -42,3 +42,11 @@
                     @endif
                     <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
                 </ul>
+                @if(Auth::check() && Auth::user()->role==='admin')
+                        <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
+                            <a href="/pengaturan" class="nav-link">Pengaturan</a>
+                        </li>
+                    @endif
+                    <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
+                </ul>
+                
