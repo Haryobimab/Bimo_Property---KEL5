@@ -19,7 +19,7 @@
                             @endif
                             <div class="card-header">
                                 <div class="text-center">
-                                    <img src="{{ asset('image/library.png')}}" class="img-responsive img-body">
+                                    <img src="{{ asset('IMG/Logo_Bimo_Property.png')}}" class="img-responsive img-body">
                                 </div>
                                
                                 <h3 class="text-center font-weight-light my-4">Login</h3>
@@ -78,9 +78,9 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center">
-                                <div class="small">
-                                    {{-- <a href="{{route('register')}}">Belum Punya Akun? Daftar!</a> --}}
-                                </div>
+                            <div class="small">
+                         <a href="{{route('register')}}">Belum Punya Akun? Daftar!</a>
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,9 @@
+
+
+@extends('layouts.app')
+@section('content')
+    
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -6,9 +12,24 @@
 
         <title>Bimo Property</title>
 
+
         <!-- Style -->
         
         <link rel="stylesheet" href="/css/beranda.css" >
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/slicknav.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/progressbar_barfiller.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/gijgo.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/animated-headline.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/themify-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -21,7 +42,85 @@
     </head>
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
+
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
+                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li><a class="nav-link" href="/beli">Beli</a></li>
+                    <li><a class="nav-link" href="/rental">Rental</a></li>
+                    <li><a class="nav-link" href="/jual">Jual</a></li>
+                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
+                    <li><a class="nav-link" href="/berita">Berita</a></li>
+                    <li><a class="nav-link" href="/award">Award</a></li>
+                    <li><a class="nav-link" href="/faq">FAQ</a></li>
+                    <li>
+                        <a class="nav-link" href="/keranjang">
+                        <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+
+                    <!-- <button type="login" class="btn1 ">Login</button>
+                    <button type="sign up" class="btn2 ">Sign Up</button> -->
+                
+
+                     @if(Auth::check() && Auth::user()->role==='admin')
+                        <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
+                            <a href="/pengaturan" class="nav-link">Pengaturan</a>
+                        </li>
+                    @endif
+                    
+                </ul>
+                
+    <div class="nav-kanan">
+        <!-- <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+        <a href="#" class="header-btn2">Make an Appointment</a> -->
+        <!-- Authentication Links -->
+        <ul>
+            @guest
+                @if (Route::has('login'))
+                    <li><a class="btn1"style="display:flex" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                @endif
+
+                @if (Route::has('register'))
+                    <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                @endif
+            @else
+                <li><img style="width:60px; border-radius:36px" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
+                <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
+                <li><a class="btn2" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="GET" class="d-none">
+                        @csrf
+                    </form>
+                </a>
+                </li>
+            @endguest
+        </div>
+        </nav>
+
+    <!-- Mobile Menu -->
+    {{-- <div class="col-12">
+        <div class="mobile_menu d-block d-lg-none"></div>
+    </div>
+</div>
+</div>
+<!-- Header End -->
+</header>
+
+<main class="py-4">
+@yield('content')
+</main>
+
+</div> --}}
+
+
+                
+                <!-- <i class="bi bi-list mobile-nav-toggle"></i> -->
+
+                    {{-- <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
                     <li><a class="nav-link active" href="#beranda">Beranda</a></li>
                     <li><a class="nav-link" href="/beli">Beli</a></li>
                     <li><a class="nav-link" href="/rental">Rental</a></li>
@@ -33,18 +132,22 @@
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 </ul>
-            
+
+                <div class="nav-profile" style="align-items:center ">
+                        <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> 
+                        <li><a href="/profile" class="hover-link" > Admin </a></li> 
+
                 <div class="nav-profile">
                         <img src=" /IMG/profile_1.jpg" alt="" class="profile-pic"> 
-                        <li><a href="/profile" class="hover-link" > Tripoli </a></li>
+                        <li><a href="/profile" class="hover-link" > Tripoli </a></li> --}}
+
 
 
                 
+                
+                     
                     
-                    {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src=" /IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
-                    
-                 --}}
+                 
                     
                     {{-- <button class="btn-secondary">Sign Up</button>
                     <button class="btn-primary">Login</button> --}}
@@ -52,7 +155,8 @@
 
                 
                  {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
-            </nav>
+
+
     <body>
     <div class="container">
         <div class="welcome">
@@ -67,7 +171,11 @@
                 </div>
                 <div class="welcome-kanan">
                     <div class="header">
+
+                        <img src="/assets/img/user profile/profile_1.jpg" alt="">
+
                         <img src=" /IMG/profile_1.jpg" alt="">
+
                         <h3>Ulasan Terbaik</h3>
                     </div>
                     <div class="content">
@@ -82,12 +190,16 @@
             </div>
         </div>
         <div class="description">
+
+    
+
             <img src=" /IMG/rumah_1.jpg" alt="">
             <div class="img-description">
-                
+        
             </div>
         </div>
         <div class="fitur-deskripsi">
+
             <h2>Fitur-fitur di Bimo Property akan membawa pengalaman baru dalam menjelajahi dunia properti</h2>
             <p>Selamat datang di Bimo Property, di mana fitur-fitur inovatif mengubah cara Anda menjelajahi pasar properti</p>
             <div class="row-fitur-deskripsi">
@@ -127,22 +239,22 @@
             </div>
             <div class="row-rekomendasi">
                 <div class="card-1">
-                    <img src=" /IMG/rumah_1.jpg" alt="">
+                    <img src="IMG/rumah_1.jpg" alt="">
                     <h1>Reka Residence</h1>
                     <p>Bojongsoang, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-2">
-                    <img src=" /IMG/rumah_1.jpg" alt="">
+                    <img src="IMG/rumah_1.jpg" alt="">
                     <h1>Tamara Residence</h1>
                     <p>Buah Batu, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-3">
-                    <img src=" /IMG/rumah_1.jpg" alt="">
+                    <img src="IMG/rumah_1.jpg" alt="">
                     <h1>Classy Residence</h1>
                     <p>Dago, Bandung, Jawa Barat</p>
                 </div> 
                 <div class="card-3">
-                    <img src="  /IMG/rumah_1.jpg" alt="">
+                    <img src="IMG/rumah_1.jpg" alt="">
                     <h1>Harry Residence</h1>
                     <p>Kopo, Bandung, Jawa Barat</p>
                 </div> 
@@ -180,7 +292,11 @@
             </div>
         </div>
         <div class="visi-misi">
+
+            <img src="/assets/img/rumah/rumah_1.jpg" alt="">
+
             <img src="  /IMG/rumah_1.jpg" alt="">
+
             <div class="content">
                 <h4>|<span>Visi dan Misi</span>|</h4>
                 <h2>Jual Beli Properti Dengan Cara yang Mudah</h2>
@@ -225,46 +341,93 @@
                 </div> 
             </div>
         </div>
-        <div class="ulasan-pengguna">
+
+    </div>
+    </body>
+
+        {{-- <div class="ulasan-pengguna">
             <h2>Ulasan Pengguna</h2>
             <h5>Ulasan dari para pengguna website Bimo Property</h5>
             <h3>Website ini memberikan pengalaman belanja properti yang menyenangkan dan informatif. Informasi yang disediakan sangat lengkap, termasuk foto-foto berkualitas tinggi dan deskripsi yang detail tentang setiap properti.</h3>
             <img src="  /IMG/profile_2.jpg" alt="">
             <h4>Dirga Siahaan</h4>
             <p>Pencari Rumah</p>
+            <br/>
+            <br/>
+            <a href="{{ route('ulasan.index') }}">Lihat ulasan lainnya</a>
         </div>
-    </div>
+    </div> --}}
     </body>
 
     
-    <footer class="footer">
-        <div class="main">
-            <div class="kiri">
-                <div class="footer-header">
-                    <img src="  /IMG/Logo_Bimo_Property.png" alt="">
-                    <h3>Bimo Property</h3>
-                </div>
-                <div class="deskripsi">
-                    <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
-                    <p>Hubungi 08512348765 </p>
-                </div>
-            </div>
-            <div class="kanan">
-                <div class="about">
-                    <h2>About</h2>
-                    <p>Berita</p>
-                    <p>Award</p>
-                </div>
-                <div class="resource">
-                    <h2>Resource</h2>
-                    <p>Beli Rumah</p>
-                    <p>Cari Agen</p>
-                    <p>Janji Temu</p>
-                </div>
+
+    {{-- <center>
+    <div class="Frame67" style="width: 1220px; height: 475px; padding-left: 226px; padding-right: 226px; padding-top: 96px; padding-bottom: 96px; background: #3B7C0F; border-radius: 20px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 68px; display: inline-flex; margin-bottom: 50px">
+        <div class="Frame66" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 19px; display: flex">
+            <div class="Heading" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 36px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Ayo berikan ulasanmu sekarang juga</div>
+            <div class="SupportingText" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 18px; font-family: Poppins; font-weight: 400; line-height: 28px; word-wrap: break-word">Setiap pendapat Anda memiliki kekuatan untuk membantu calon pembeli dalam membuat keputusan yang tepat.</div>
+        </div>
+        <div class="Frame65" style="padding-left: 20px; padding-right: 20px; padding-top: 16px; padding-bottom: 16px; background: white; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 99px; display: inline-flex">
+            <div class="SupportingText" style="width: 225px; color: #5C5E61; font-size: 20px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Ulasanmu..</div>
+            <div class="Button" style="padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: #4BA30D; border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: flex">
+             <button type="submit" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word; border: none; background: none; cursor: pointer;" onclick="window.location.href='{{route('ulasan.index')}}'">Berikan ulasan</button>
+        </div>
             </div>
         </div>
-        <div class="added">
-            <h6>© 2024 Bimo Property.</h6>
+    </div>
+</center> --}}
+
+    <center>
+    <div class="Frame67" style="width: 1220px; height: 475px; padding-left: 226px; padding-right: 226px; padding-top: 96px; padding-bottom: 96px; background: #3B7C0F; border-radius: 20px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 68px; display: inline-flex; margin-bottom: 50px">
+        <div class="Frame66" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 19px; display: flex">
+            <div class="Heading" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 36px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Ayo berikan ulasanmu sekarang juga</div>
+            <div class="SupportingText" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 18px; font-family: Poppins; font-weight: 400; line-height: 28px; word-wrap: break-word">Setiap pendapat Anda memiliki kekuatan untuk membantu calon pembeli dalam membuat keputusan yang tepat.</div>
         </div>
-    </footer>
+        <div class="Frame65" style="padding-left: 20px; padding-right: 20px; padding-top: 16px; padding-bottom: 16px; background: white; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 99px; display: inline-flex">
+            <div class="SupportingText" style="width: 225px; color: #5C5E61; font-size: 20px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Ulasanmu..</div>
+            <div class="Button" style="padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: #4BA30D; border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: flex">
+             <button type="submit" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word; border: none; background: none; cursor: pointer;" onclick="window.location.href='{{route('ulasan.create')}}'">Berikan ulasan</button>
+        </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+    
+
+    {{-- <center>
+    <div class="Frame67" style="width: 1220px; height: 475px; padding-left: 226px; padding-right: 226px; padding-top: 96px; padding-bottom: 96px; background: #3B7C0F; border-radius: 20px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 68px; display: inline-flex; margin-bottom: 50px">
+        <div class="Frame66" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 19px; display: flex">
+            <div class="Heading" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 36px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Ayo berikan ulasanmu sekarang juga</div>
+            <div class="SupportingText" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 18px; font-family: Poppins; font-weight: 400; line-height: 28px; word-wrap: break-word">Setiap pendapat Anda memiliki kekuatan untuk membantu calon pembeli dalam membuat keputusan yang tepat.</div>
+        </div>
+        <div class="Frame65" style="padding-left: 20px; padding-right: 20px; padding-top: 16px; padding-bottom: 16px; background: white; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 99px; display: inline-flex">
+            <div class="SupportingText" style="width: 225px; color: #5C5E61; font-size: 20px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Ulasanmu..</div>
+            <div class="Button" style="padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: #4BA30D; border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: flex">
+             <button type="submit" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word; border: none; background: none; cursor: pointer;" onclick="window.location.href='{{route('ulasan.index')}}'">Berikan ulasan</button>
+        </div>
+            </div>
+        </div>
+    </div>
+</center> --}}
+
+    <center>
+    <div class="Frame67" style="width: 1220px; height: 475px; padding-left: 226px; padding-right: 226px; padding-top: 96px; padding-bottom: 96px; background: #3B7C0F; border-radius: 20px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 68px; display: inline-flex; margin-bottom: 50px">
+        <div class="Frame66" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 19px; display: flex">
+            <div class="Heading" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 36px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Ayo berikan ulasanmu sekarang juga</div>
+            <div class="SupportingText" style="width: 768px; text-align: center; color: #FBFBFB; font-size: 18px; font-family: Poppins; font-weight: 400; line-height: 28px; word-wrap: break-word">Setiap pendapat Anda memiliki kekuatan untuk membantu calon pembeli dalam membuat keputusan yang tepat.</div>
+        </div>
+        <div class="Frame65" style="padding-left: 20px; padding-right: 20px; padding-top: 16px; padding-bottom: 16px; background: white; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 99px; display: inline-flex">
+            <div class="SupportingText" style="width: 225px; color: #5C5E61; font-size: 20px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Ulasanmu..</div>
+            <div class="Button" style="padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: #4BA30D; border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: flex">
+             <button type="submit" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word; border: none; background: none; cursor: pointer;" onclick="window.location.href='{{route('ulasan.create')}}'">Berikan ulasan</button>
+        </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+    
 </html>
+@endsection
