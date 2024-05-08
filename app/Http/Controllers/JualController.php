@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FAQ;
 use Illuminate\Http\Request;
 
-
-class FAQController extends Controller
+class JualController extends Controller
 {
+    // Menampilkan Jual
     public function index()
     {
-        return view('faq/faq');
+        return view('jual');
     }
-
 }
