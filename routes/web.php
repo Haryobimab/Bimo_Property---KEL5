@@ -11,7 +11,6 @@ use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\KeranjangController;
