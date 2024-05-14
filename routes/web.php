@@ -115,6 +115,20 @@ Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store')
 
 //route fitu beli ruko 
 Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
+Route::prefix('admin')->middleware('cek_login:admin')->group(function () {
+ 
+    Route::get('ruko', [AdminController::class, 'ruko'])->name('admin.ruko');
+    Route::post('ruko', [AdminController::class, 'add_ruko'])->name('admin.ruko');
+    Route::get('get_ruko_by_id/{id}', [AdminController::class, 'get_ruko_by_id'])->name('admin.get_ruko_by_id');
+
+    Route::post('update_ruko/{id}', [AdminController::class, 'update_ruko'])->name('admin.update_ruko');
+
+    Route::get('destroy_ruko/{id}', [AdminController::class, 'destroy_ruko'])->name('admin.destroy_ruko');
+
+    Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+   
+});
+
 
 
 //route agen
