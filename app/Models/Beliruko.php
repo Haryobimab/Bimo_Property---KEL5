@@ -13,14 +13,10 @@ class Beliruko extends Model
         protected $table = 'beliruko';
     
         // Kolom-kolom yang dapat diisi (fillable)
-        protected $fillable = [
-            'Nama rumah', 
-            'gambar', 
-            'informasi'
-        ];
+        protected $guarded = [];
     
         // Kolom-kolom yang harus disembunyikan (hidden) saat di-serialisasi
-        protected $hidden = ['password', 'remember_token'];
+        
     
         // Metode untuk mendapatkan data terkait
         public function relatedModel()
