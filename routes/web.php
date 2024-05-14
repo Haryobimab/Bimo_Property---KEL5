@@ -15,8 +15,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BelirukoController;
+use App\Http\Controllers\AgenController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\JualController;
+
 
 
 Route::get('/', function () {
@@ -90,13 +92,18 @@ Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store')
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/tambahagen', [AdminController::class, 'agen'])->name('admin.addAgen');
 });
+
+
 
 
 // ------- keranjang --------
 Route::get('/keranjang', [KeranjangController::class, 'show'])->name('user.keranjang');
 Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('user.checkout');
+Route::post('/checkout', [KeranjangController::class, 'processCheckout'])->name('user.checkout');
 Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
+Route::post('add_cart/{id}', [KeranjangController::class, 'add_cart'])->name('add_cart');
 
 
 // Route::get('/berita', function () {
@@ -110,6 +117,11 @@ Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store')
 
 //route fitu beli ruko 
 Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
+
+
+//route agen
+Route::get('/cariagen', [AgenController::class, 'show']);
+//tambah agen
 
 //Rute Fitur Beli Bahan bagunan
 Route::get('/materials/belibahanbangunan', [ProductController::class, 'index'])->name('belibahanbangunan.index');
