@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keranjang;
-use App\Models\Agen;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller

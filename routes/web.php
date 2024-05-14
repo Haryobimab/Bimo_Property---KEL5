@@ -45,9 +45,8 @@ Route::get('/beranda', function () {
 });
 
 
-
-Route::get('/profile', [ProfileController::class, 'profileView']);
-Route::post('/profile', [ProfileController::class, 'updateProfile']);
+Route::get('/profile', [UserController::class, 'profile']);
+// Route::get('/profile', [UserController::class, 'update_profile']);
 
 
 Route::get('/admin/profile', function () {
@@ -76,11 +75,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('user', UserController::class);
     });
-    
 });
 
 //Rute Auth
-Route::view('/', 'beranda')->name('beranda')->middleware('auth');
+Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
 
 
 //Rute Fitur Ulasan

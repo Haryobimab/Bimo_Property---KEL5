@@ -1,9 +1,3 @@
-
-
-@extends('layouts.app')
-@section('content')
-    
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -56,7 +50,11 @@
 </div> --}}
 
 
-                
+                {{-- <div class="nav-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <button class="btn-secondary">Sign Up</button>
+                    <button class="btn-primary">Login</button>
+                </div> --}}
                 <!-- <i class="bi bi-list mobile-nav-toggle"></i> -->
 
                     {{-- <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
@@ -94,7 +92,6 @@
 
                 
                  {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
-
 
     <body>
     <div class="container">
@@ -315,5 +312,42 @@
     </div>
 </center>
     
+
+    <footer class="footer">
+        <div class="main">
+            <div class="kiri">
+                <div class="footer-header">
+
+                    <img src="/assets/img/Logo_Bimo_Property.png" alt="">
+
+                    <img src="  /IMG/Logo_Bimo_Property.png" alt="">
+
+                    <h3>Bimo Property</h3>
+                </div>
+                <div class="deskripsi">
+                    <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
+
+
+                    <p>Hubungi 08512348765 </p>
+
+                </div>
+            </div>
+            <div class="kanan">
+                <div class="about">
+                    <h2>About</h2>
+                    <p>Berita</p>
+                    <p>Award</p>
+                </div>
+                <div class="resource">
+                    <h2>Resource</h2>
+                    <p>Beli Rumah</p>
+                    <p>Cari Agen</p>
+                    <p>Janji Temu</p>
+                </div>
+            </div>
+        </div>
+        <div class="added">
+            <h6>© 2024 Bimo Property.</h6>
+        </div>
+    </footer>
 </html>
-@endsection
