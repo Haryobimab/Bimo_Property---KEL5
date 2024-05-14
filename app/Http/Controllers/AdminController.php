@@ -152,5 +152,106 @@ public function ruko(){
         $data->delete();
         return redirect()->back()->with(['success' => 'Data ruko berhasil dihapus!']);
     }
+
+ public function rumah(){
+
+      // dd('ok');
+
+      $data = [
+         'house' => Rumah::orderBy('id','DESC')->get() //SELECT * FROM RUMAH ORDER BY ID DESC
+      ];
+
+      return view('admin.rumah', $data);
+
+   }
+
+   public function add_rumah(Request $request)
+   {
+       
+
+       // Menyimpan gambar
+       $imageName = time().'.'.$request->img->extension();
+       $request->img->move(public_path('images'), $imageName);
+
+       // Menyimpan data ke database
+       Rumah::create([
+           'img' => $imageName,
+           'nama_rumah' => $request->nama_rumah,
+           'harga' => $request->harga,
+           'lokasi' => $request->lokasi,
+           'jumlah_kamar' => $request->jumlah_kamar,
+           'jumlah_kamar_mandi' => $request->jumlah_kamar_mandi,
+           'jumlah_parkir' => $request->jumlah_parkir,
+           'informasi' => $request->informasi,
+       ]);
+
+       return redirect()->back()->with('success', 'Data rumah berhasil ditambahkan.');
+   }
+
+   public function get_rumah_by_id($id)
+    {
+        $rumah = Rumah::find($id);
+
+        if (!$rumah) {
+            return response()->json(['message' => 'Rumah not found'], 404);
+        }
+
+        return response()->json(['rumah' => $rumah], 200);
+    }
+
+    public function update_rumah(Request $request, $id)
+    {
+
+        // dd($request->logo_client);
+
+        $client = Rumah::find($id);
+
+        $data = [
+           'nama_rumah' => $request->nama_rumah,
+           'harga' => $request->harga,
+           'lokasi' => $request->lokasi,
+           'jumlah_kamar' => $request->jumlah_kamar,
+           'jumlah_kamar_mandi' => $request->jumlah_kamar_mandi,
+           'jumlah_parkir' => $request->jumlah_parkir,
+           'informasi' => $request->informasi,
+        ];
+
+        if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+            $fileName = $file->getClientOriginalName();
+
+            // dd($fileName);
+
+            if (file_exists(public_path('images/' . $request->img))) {
+                unlink(public_path('images/' . $request->img));
+            }
+
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $imageName);
+            $data['img'] = $imageName;
+        } else {
+            $data['img'] = $request->old_img;
+        }
+
+
+        $client->update($data);
+        return redirect()->back()->with(['success' => 'Data rumah berhasil diubah!']);
+    }
+
+    public function destroy_rumah($id)
+    {
+        $data = Rumah::find($id);// SELECT * FROM RUMAH WHERE ID = 2 
+
+        if (file_exists(public_path('images/' . $data->img))) {
+            unlink(public_path('images/' . $data->img));
+        }
+
+        $data->delete();
+        return redirect()->back()->with(['success' => 'Data rumah berhasil dihapus!']);
+    }
+}
+
+    
 }
 
