@@ -27,23 +27,21 @@ class ProfileController extends Controller
 
     public function updateProfile (Request $request) 
 	{
-		$data=$request->validate([
-            'photo' => 'mimes:png, jpeg, jpg'
+		$request->validate([
+            'photo' => 'image|mimes: png, jpeg, jpg'
         ]);
 
         $id_user = Auth::user()->id;
         $user = User::find($id_user);
+          
 
         if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
-            $imageName = time() . '.' . $photo->getClientOriginalName();
-            $photo->move(public_path('photo/'), $imageName);
+            $photoNew = $request->file('photo');
+            $imageName = time() . '.' . $photoNew->getClientOriginalName();
+            $photoNew->move(public_path('photo'), $imageName);
+            
 
-            if ($user->photo != 'user.jpeg') { 
-                File::delete('img/user profile' . $user->photo);
-            }
-
-            $user->photo = '/photo' .  $imageName;
+            $user->photo = $imageName;
             $user->save();
         }
 

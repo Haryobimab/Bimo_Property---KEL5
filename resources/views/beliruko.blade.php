@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +57,5 @@
         </div>
         @endforeach
     </div>
-    @endsection
-    
-    
+@endsection
+
