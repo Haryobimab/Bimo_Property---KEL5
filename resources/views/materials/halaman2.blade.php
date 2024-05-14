@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>beli Furniture</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
@@ -44,7 +46,7 @@
         <p class="text-gray-600">Genteng beton berkualitas tinggi dengan ketahanan lama dan beragam warna yang menarik. Cocok untuk rumah modern dan minimalis.</p>
         <p class="text-xl font-bold mt-2">Rp25.000/m²</p>
         <div class="mt-4">
-          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
+          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(5)">Tambah Keranjang</button>
           <a href="{{ route('genteng.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
         </div>
       </div>
@@ -57,7 +59,7 @@
         <p class="text-gray-600">Keramik lantai granit berkualitas tinggi dengan desain elegan dan tahan lama. Cocok untuk ruang tamu, kamar tidur, dan dapur.</p>
         <p class="text-xl font-bold mt-2">Rp120.000/m²</p>
         <div class="mt-4">
-          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
+          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(6)">Tambah Keranjang</button>
           <a href="{{ route('lantai.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
         </div>
       </div>
@@ -70,7 +72,7 @@
         <p class="text-gray-600">Rangka atap baja ringan galvalum. Ringan, kuat, dan tahan karat, cocok untuk berbagai kebutuhan konstruksi.</p>
         <p class="text-xl font-bold mt-2">Rp90.500</p>
         <div class="mt-4">
-          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
+          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(7)">Tambah Keranjang</button>
           <a href="{{ route('bajari.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
         </div>
       </div>
@@ -83,7 +85,7 @@
         <p class="text-gray-600">Pipa PVC Rucika Standard terbuat dari bahan PVC berkualitas tinggi yang tahan lama, kuat, dan mudah dipasang. Cocok untuk berbagai aplikasi perpipaan seperti air bersih, irigasi, dan limbah</p>
         <p class="text-xl font-bold mt-2">Rp295.000</p>
         <div class="mt-4">
-          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
+          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(8)">Tambah Keranjang</button>
           <a href="{{ route('pipa.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
         </div>
       </div>
@@ -98,7 +100,7 @@
       <li class="page-item"><a class="page-link" href="{{ route('belibahanbangunan.index') }}">1</a></li>
       <li class="page-item"><a class="page-link" href="">2</a></li>
       <li class="page-item">
-        <a class="page-link" href="{{ route('hal3.index') }}">Next</a>
+        <a class="page-link" href="#">Next</a>
       </li>
     </ul>
   </nav>
@@ -107,14 +109,31 @@
 
 @endsection
 
-<script>
-  function addToCart() {
-    Swal.fire({
-      icon: 'success',
-      title: 'Berhasil ditambahkan ke keranjang!',
-      showConfirmButton: false,
-      timer: 1500
-    });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+ <script>
+  // Function to handle adding item to cart
+  function addToCart(productId) {
+      // Get CSRF token value from the meta tag
+      var csrfToken = $('meta[name="csrf-token"]').attr('content');
+      
+      // Send Ajax request to server
+      $.ajax({
+          url: '/add_cart/' + productId, // Ganti dengan URL endpoint API yang sesuai
+          type: 'POST',
+          data: {_token: csrfToken}, // Sertakan token CSRF dalam data
+          success: function(response) {
+              // Tampilkan notifikasi bahwa item telah ditambahkan ke keranjang
+              toastr.options.toastClass = 'bg-success'; 
+              toastr.success('Item berhasil ditambahkan ke keranjang!');
+          },
+          error: function(xhr, status, error) {
+              // Tampilkan pesan error jika terjadi kesalahan
+              toastr.options.toastClass = 'bg-danger'; 
+              toastr.error('Tidak dapat menambahkan item ke keranjang!');
+          }
+      });
   }
 </script>
 </html>
