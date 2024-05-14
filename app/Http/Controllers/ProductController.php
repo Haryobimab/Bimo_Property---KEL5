@@ -21,7 +21,7 @@ class ProductController extends Controller
     }
 
 
-    //Integrasi ke Keranjang
+
     public function count_cart(){
 
 
