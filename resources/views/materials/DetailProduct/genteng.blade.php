@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail Page</title>
+    <link rel="stylesheet" href="{{ asset('css/Prodetail/hal1.css') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+@extends('layouts.app')
+@section('content')
+<body class="#">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h1 class="text-2xl font-bold">Genteng Beton Metal</h1>
+                <p class="rating mb-4">Stok Total: 600, Terjual 50</p>
+                <p class="price mb-4 text-3xl">Rp25.000/m²</p>
+                <hr class="my-4">
+                <h2 class="text-2xl mb-2">Deskripsi Produk</h2>
+                <p class="text-gray-600 leading-relaxed text-justify mb-2">Genteng Beton Metal adalah solusi ideal untuk atap rumah Anda yang menggabungkan kekuatan, keindahan, dan kepraktisan dalam satu produk. Dibuat dengan material berkualitas tinggi dan proses produksi yang canggih, genteng ini menawarkan ketahanan yang luar biasa terhadap cuaca ekstrem. Desainnya yang ergonomis membuatnya mudah dipasang dan memberikan perlindungan yang kokoh terhadap rumah selama bertahun-tahun. Warna yang tersedia memberikan pilihan yang luas untuk mencocokkan gaya arsitektur rumah modern dan minimalis.</p>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>Kondisi:</strong> Baru</li>
+                    <li>Ringan dan Mudah Dipasang</li>
+                    <li>Kekuatan tahan lama</li>
+                    <li><strong>Kategori:</strong> Bahan Bangunan</li>
+                    <li><strong>Dikirim dari Kota Bandung</strong></li>
+                </ul>
+                <hr class="my-4">
+                <h2 class="text-2xl mb-2 mt-8">Spesifikasi</h2>
+                <ul class="list-disc list-inside mb-2">
+                    <li><strong>Material:</strong>  Beton fiber semen</li>
+                    <li><strong>Berat:</strong> Sekitar 2.5 kg/m² (lebih ringan dari genteng beton biasa)</li>
+                    <li><strong>Warna:</strong> Tersedia dalam 3 pilihan warna</li>
+                </ul>
+                <hr class="my-4">
+            </div>
+            <div id="productDetail">
+                <img src="/IMG/Prodetail/gntng3.jpg" alt="Product Image 1" class="w-full mb-4 rounded-lg border border-green-500">
+                <div class="grid grid-cols-3 gap-4" id="productGallery">
+                    <img src="/IMG/Prodetail/gntng3.jpg" alt="Product Image 2" class="w-full rounded-lg productImage border border-green-500" onclick="changeMainImage(this)">
+                    <img src="/IMG/Prodetail/gntng1.jpg" alt="Product Image 3" class="w-full rounded-lg productImage border border-green-500" onclick="changeMainImage(this)">
+                    <img src="/IMG/Prodetail/gntng2.jpg" alt="Product Image 4" class="w-full rounded-lg productImage border border-green-500" onclick="changeMainImage(this)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changeMainImage(element) {
+            var mainImage = document.getElementById('productDetail').querySelector('img');
+            mainImage.src = element.src;
+        }
+    </script>
+</body>
+</html>
+@endsection
