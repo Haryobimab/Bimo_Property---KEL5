@@ -9,13 +9,18 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function show(){
-        return view('admin.dashboard');
+      $agen = Agen::all();
+      $countFurniture = $this->countFurnitureProducts();
+      $countBahanBangunan = $this->countBahanBangunanProducts();
+      return view('admin.dashboard', compact('countFurniture', 'countBahanBangunan', 'agen'));
      }
     
      public function index(){
+      $agen = Agen::all();
       $countFurniture = $this->countFurnitureProducts();
       $countBahanBangunan = $this->countBahanBangunanProducts();
-      return view('admin.dashboard', compact('countFurniture', 'countBahanBangunan'));
+      return view('admin.dashboard', compact('countFurniture', 'countBahanBangunan', 'agen'));
+      return view('admin.dashboard',);
      }
     
      public function profile (){
@@ -32,6 +37,10 @@ class AdminController extends Controller
    {
       $count = Keranjang::where('tipe_produk', 'Bahan Bangunan')->count();
       return $count;
+   }
+
+   public function agen(){
+      return view('admin.addAgen');
    }
 
    public function addAgen(Request $request)

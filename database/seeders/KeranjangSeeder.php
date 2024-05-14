@@ -18,7 +18,7 @@ class KeranjangSeeder extends Seeder
             // Furniture
             [
                 'nama_produk' => 'Meja Makan',
-                'foto_produk' => 'https://unsplash.com/photos/a-desk-with-a-computer-on-it-9MhxuDn7ymM',
+                'foto_produk' => 'meja makan.jpg',
                 'tipe_produk' => 'Furniture',
                 'deskripsi' => 'Meja Makan Kayu Solid',
                 'harga' => 1500000,
@@ -26,7 +26,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Sofa Ruang Tamu',
-                'foto_produk' => 'https://unsplash.com/photos/green-fabric-sofa-fZuleEfeA1Q',
+                'foto_produk' => 'sofa.jpg',
                 'tipe_produk' => 'Furniture',
                 'deskripsi' => 'Sofa dengan Bahan Kain Berkualitas Tinggi',
                 'harga' => 3000000,
@@ -34,7 +34,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Lemari Pakaian',
-                'foto_produk' => 'https://unsplash.com/photos/brown-wooden-2-door-cabinet-3fFBoEHee28',
+                'foto_produk' => 'lemari.jpg',
                 'tipe_produk' => 'Furniture',
                 'deskripsi' => 'Lemari Pakaian dengan Desain Minimalis',
                 'harga' => 2500000,
@@ -42,7 +42,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Rak Buku',
-                'foto_produk' => 'https://unsplash.com/photos/books-on-brown-wooden-shelf-YbLitAY8bPA',
+                'foto_produk' => 'rak buku.jpg',
                 'tipe_produk' => 'Furniture',
                 'deskripsi' => 'Rak Buku Kayu Berkualitas',
                 'harga' => 800000,
@@ -50,7 +50,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Kursi Lipat',
-                'foto_produk' => 'https://unsplash.com/photos/white-and-gray-metal-armless-chair-80VTQEkRh1c',
+                'foto_produk' => 'kursi lipat.jpg',
                 'tipe_produk' => 'Furniture',
                 'deskripsi' => 'Kursi Lipat Praktis untuk Outdoor',
                 'harga' => 500000,
@@ -63,14 +63,14 @@ class KeranjangSeeder extends Seeder
             [
                 'nama_produk' => 'Cat Tembok',
                 'tipe_produk' => 'Bahan Bangunan',
-                'foto_produk' => 'https://unsplash.com/photos/a-close-up-of-a-paint-can-with-a-toothbrush-in-it-CtHBjG9CwDs',
+                'foto_produk' => 'cat tembok.jpg',
                 'deskripsi' => 'Cat Tembok Tahan Lama',
                 'harga' => 500000,
                 'total_harga' => 500000
             ],
             [
                 'nama_produk' => 'Paku Besi',
-                'foto_produk' => 'https://unsplash.com/photos/a-bag-filled-with-lots-of-screws-and-nails-LxI4v4dPo0k',
+                'foto_produk' => 'paku.jpg',
                 'tipe_produk' => 'Bahan Bangunan',
                 'deskripsi' => 'Paku Besi Anti Karat',
                 'harga' => 100000,
@@ -78,7 +78,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Semua Jenis Teralis',
-                'foto_produk' => 'https://unsplash.com/photos/a-bag-filled-with-lots-of-screws-and-nails-LxI4v4dPo0k',
+                'foto_produk' => 'teralis.jpg',
                 'tipe_produk' => 'Bahan Bangunan',
                 'deskripsi' => 'Teralis Baja, Aluminium, dan Besi',
                 'harga' => 2000000,
@@ -86,7 +86,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Batu Bata Merah',
-                'foto_produk' => 'https://unsplash.com/photos/a-bag-filled-with-lots-of-screws-and-nails-LxI4v4dPo0k',
+                'foto_produk' => 'batu bata.jpg',
                 'tipe_produk' => 'Bahan Bangunan',
                 'deskripsi' => 'Batu Bata Merah untuk Konstruksi',
                 'harga' => 150000,
@@ -94,7 +94,7 @@ class KeranjangSeeder extends Seeder
             ],
             [
                 'nama_produk' => 'Genteng Beton',
-                'foto_produk' => 'https://unsplash.com/photos/brown-concrete-brick-t4DuoDHjxrQ',
+                'foto_produk' => 'genteng.jpeg',
                 'tipe_produk' => 'Bahan Bangunan',
                 'deskripsi' => 'Genteng Beton Ringan',
                 'harga' => 700000,

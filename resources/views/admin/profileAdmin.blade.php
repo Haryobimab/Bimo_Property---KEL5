@@ -11,15 +11,20 @@
                     </ul>
                     <!-- Foto dan data diri -->
                     <img src="{{ asset('photo/' . auth()->user()->photo) }}" alt=""  style=" scale:80%; border-radius:50%">  
-                    <div style="margin-bottom:80px"class="data-diri">
-                        <h3> Username </h3>
-                        <div class="kotak"> {{auth()->user()->username}}  </div>
-                        <h3> Nama </h3>
-                        <div class="kotak"> {{auth()->user()->name}} </div>
-                        <h3> Email </h3>
-                        <div class="kotak"> {{auth()->user()->email}} </div>
+                    <div style="margin-bottom:100px"class="data-diri">
+                        <form class="form-floating">
+                            <label for="floatingInputValue">Username</label>
+                            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="{{auth()->user()->username}}">
+                        </form>
+                        <form class="form-floating">
+                            <label for="floatingInputValue">Nama</label>
+                            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="{{auth()->user()->name}}">
+                        </form>
+                        <form class="form-floating">
+                            <label for="floatingInputValue">Email</label>
+                            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="{{auth()->user()->email}}">
+                        </form>
                     </div>
-                </div>
      </div>
 </div>
 
