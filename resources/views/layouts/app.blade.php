@@ -24,6 +24,10 @@
         <link rel="stylesheet" href="{{ asset('/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
         <!-- icon -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -36,16 +40,29 @@
     </head>
     <nav id="navbar" class="navbar">
                 <ul class="nav-menu">
-
                     <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link active" href="#beranda">Beranda</a></li>
-                    <li><a class="nav-link" href="/beli">Beli</a></li>
-                    <li><a class="nav-link" href="/rental">Rental</a></li>
-                    <li><a class="nav-link" href="/jual">Jual</a></li>
-                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
-                    <li><a class="nav-link" href="/berita">Berita</a></li>
-                    <li><a class="nav-link" href="/award">Award</a></li>
-                    <li><a class="nav-link" href="/faq">FAQ</a></li>
+                    <li><a class="nav-link {{ Request::is('/beranda') ? 'active' : '' }}" href="/beranda">Beranda</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownBeli" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Beli
+                            </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
+                                    <a class="dropdown-item" href="">Beli Rumah</a>
+                                    <a class="dropdown-item" href="{{ route('belibahanbangunan.index') }}">Beli Bahan Bangunan</a>
+                                    <a class="dropdown-item" href="#">Beli Furniture</a>
+                                </div>
+                        </li>
+                    <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
+                    <li><a class="nav-link {{ Request::is('/jual') ? 'active' : '' }}" href="/jual">Jual</a></li>
+                    <li><a class="nav-link {{ Request::is('/cari agen') ? 'active' : '' }}]" href="/cariagen">Cari Agen</a></li>
+                    <li><a class="nav-link {{ Request::is('/berita') ? 'active' : '' }}]" href="/berita">Berita</a></li>
+                    <li><a class="nav-link {{ Request::is('/award') ? 'active' : '' }}]" href="/award">Award</a></li>
+                    <li><a class="nav-link {{ Request::is('/faq') ? 'active' : '' }}]" href="/faq">FAQ</a></li>
+                    <li>
+                        <a class="nav-link {{ Request::is('/keranjang') ? 'active' : '' }}]" href="/keranjang">
+                        <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
                 
@@ -55,7 +72,7 @@
                             <a href="/pengaturan" class="nav-link">Pengaturan</a>
                         </li>
                     @endif
-                    <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
+                     
                 </ul>
                 
     <div class="nav-kanan">
@@ -72,8 +89,8 @@
                     <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @endif
             @else
-                 
-                <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                <li><img style="width:60px; border-radius:50%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
+                <li><a class="btn2" style="color: #3B7C0F ; font-size:16px;" href="/profile">{{ Auth::user()->name }}</a></li>
                 {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
                 <li><a class="btn2" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
@@ -88,19 +105,13 @@
             @endguest
         </div>
         </nav>   
+                    <!-- <a class="nav-link" href="{{ route('user.keranjang') }}">  
+                        <i class="fas fa-shopping-cart"></i>
+                        
+                    </a>
+                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a> -->
                     
-                    {{-- <i class="fas fa-shopping-cart"></i>    
-                    <img src="/IMG/profile_1.jpg" alt="" class="profile-pic"> <a href="/profile" style="color: black; padding:0; margin-top:36px;">Tripoli</a>
-                    
-                 --}}
-                    
-                    {{-- <button class="btn-secondary">Sign Up</button>
-                    <button class="btn-primary">Login</button> --}}
-                
-
-                
-                 {{-- class="bi bi-list mobile-nav-toggle"></i>  --}}
-
+                 
 
             <div class="container mt-4">
         @yield('content')
@@ -122,6 +133,7 @@
             <div class="kanan">
                 <div class="about">
                     <h2>About</h2>
+                    <a href="/berita" class="nav-link"><p>Berita</p></a>
                     <p>Berita</p>
                     <p>Award</p>
                 </div>
@@ -137,5 +149,51 @@
             <h6>© 2024 Bimo Property.</h6>
         </div>
     </footer>
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var cartIcon = $(".fa-shopping-cart");
+    
+            // Fungsi untuk memperbarui item count
+            function updateItemCount() {
+                $.ajax({
+                    url: "/material/count_cart",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        var itemCount = response.itemCount;
+    
+                        // Hapus item count sebelumnya
+                        cartIcon.find(".badge").remove();
+    
+                        // Buat elemen untuk menampilkan notifikasi jumlah item
+                        var itemCountBadge = $("<span>").addClass("badge bg-danger rounded-pill").text(itemCount);
+    
+                        // Tambahkan notifikasi ke ikon keranjang
+                        cartIcon.append(itemCountBadge);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Failed to fetch item count:", error);
+                    }
+                });
+            }
+    
+            // Panggil fungsi untuk pertama kali saat halaman dimuat
+            updateItemCount();
+    
+            // Atur interval untuk memperbarui item count setiap detik
+            setInterval(updateItemCount, 1000);
+        });
+    </script>
+    
+    
+    
+    
 </html>
+    
     
