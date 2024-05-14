@@ -10,15 +10,16 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
-
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BelirukoController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\JualController;
+use App\Http\Controllers\CommentController;
+
+
 
 
 Route::get('/', function () {
@@ -127,3 +128,31 @@ Route::get('/materials/ProductDetail/genteng', [ProductController::class, 'show7
 Route::get('/materials/ProductDetail/lantai', [ProductController::class, 'show8'])->name('lantai.index');
 Route::get('/materials/ProductDetail/pipa', [ProductController::class, 'show10'])->name('pipa.index');
 Route::get('/materials/ProductDetail/bajari', [ProductController::class, 'show9'])->name('bajari.index');
+
+// FAQ Admin
+Route::get('/admin/faq/faq', [FAQController::class, 'adminIndex'])->name('admin.faq.index');
+// Route::get('/admin/faq/faq', [FAQController::class, 'index'])->name('admin.faq.index');
+// Route::post('/admin/faq/faq/store', [FAQController::class, 'delete'])->name('faq.store');
+Route::delete('/admin/faq/{id}', [FAQController::class, 'delete'])->name('faq.delete');
+Route::get('/faq/{id}', [FAQController::class, 'show'])->name('faq.show');
+Route::get('/faq/edit/{id}', [FAQController::class, 'edit'])->name('faq.edit');
+Route::put('/faq/{id}', [FAQController::class, 'update'])->name('faq.update');
+Route::match(['post', 'put'], '/faq', [FAQController::class, 'storeOrUpdate'])->name('faq.storeOrUpdate');
+Route::post('/admin/faq/faq', [FAQController::class, 'store'])->name('faq.store');
+Route::put('/faq/edit/{id}', [FAQController::class, 'edit'])->name('faq.edit');
+
+// FAQ
+// Route::get('/faq', [FAQController::class, "index"])->name('faq.index');
+Route::get('/faq', [FAQController::class, 'userIndex'])->name('user.faq.index');
+
+// Jual
+Route::resource('jual', JualController::class);
+Route::get('/juals', [JualController::class, 'index']);
+Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('comments.store');
+
+
+
+
+
+
+
