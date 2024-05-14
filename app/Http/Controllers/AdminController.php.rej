@@ -1,0 +1,19 @@
+diff a/app/Http/Controllers/AdminController.php b/app/Http/Controllers/AdminController.php	(rejected hunks)
+@@ -6,7 +6,15 @@
+ 
+ class AdminController extends Controller
+ {
+-    public function index(){
+-        return view('beranda');
++    public function show(){
++        return view('admin.dashboard');
++     }
++    
++     public function index(){
++        return view('admin.dashboard');
++     }
++    
++     public function profile (){
++        return view('admin.profileAdmin');
+      }
+ }
