@@ -7,11 +7,25 @@
         <title>Bimo Property</title>
 
         <!-- Style -->
-        
-        <link rel="stylesheet" href="/css/profileadmin.css" >
+        <link rel="stylesheet" href="/css/berita.css" >
 
-        <!-- icon -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- CKEditor -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+        
+
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
         <!-- Styles -->
@@ -20,90 +34,57 @@
         </style>
     </head>
     <nav id="navbar" class="navbar">
-                <ul class="nav-menu">
-                    <img src="/assets/img/Logo_Bimo_Property.png" alt="" class="img-nav">
-                    <li><a class="nav-link" href="/beranda">Beranda</a></li>
-                    <li><a class="nav-link" href="/beli">Beli</a></li>
-                    <li><a class="nav-link" href="/rental">Rental</a></li>
-                    <li><a class="nav-link" href="/jual">Jual</a></li>
-                    <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
-                    <li><a class="nav-link" href="/berita">Berita</a></li>
-                    <li><a class="nav-link" href="/award">Award</a></li>
-                    <li><a class="nav-link" href="/faq">FAQ</a></li>
-                    <!-- <button type="login" class="btn1 ">Login</button>
-                    <button type="sign up" class="btn2 ">Sign Up</button> -->
-                </ul>
-            
-                <div class="nav-profile" style="align-items:center ">
-                        <img src="/assets/img/profile_1.jpg" alt="" class="profile-pic"> 
-                        <li><a href="/profile" class="nav-link active" > Admin </a></li>
-                </div>
+        <ul class="nav-menu">
+
+            <img src="/IMG/Logo_Bimo_Property.png" alt="" class="img-nav">
+            <li><a class="nav-link active" href="#beranda">Beranda</a></li>
+            <li><a class="nav-link" href="/beli">Beli</a></li>
+            <li><a class="nav-link" href="/rental">Rental</a></li>
+            <li><a class="nav-link" href="/jual">Jual</a></li>
+            <li><a class="nav-link" href="/cariagen">Cari Agen</a></li>
+            <li><a class="nav-link" href="/berita">Berita</a></li>
+            <li><a class="nav-link" href="/award">Award</a></li>
+            <li><a class="nav-link" href="/faq">FAQ</a></li>
+            <!-- <button type="login" class="btn1 ">Login</button>
+            <button type="sign up" class="btn2 ">Sign Up</button> -->
+        
+
+            @if(Auth::check() && Auth::user()->role==='admin')
+                <li class="{{ Request::is('pengaturan') ? 'active' : '' }}">
+                    <a href="/pengaturan" class="nav-link">Pengaturan</a>
+                </li>
+            @endif
+            <i class="fas fa-shopping-cart" style="margin-left: 20px" href="#"></i>  
+        </ul>
+                
+        <div class="nav-kanan">
+            <!-- <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+            <a href="#" class="header-btn2">Make an Appointment</a> -->
+            <!-- Authentication Links -->
+            <ul>
+                @guest
+                    @if (Route::has('login'))
+                        <li><a class="btn1"style="display:flex" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li><a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                    @endif
+                @else
+                    <!-- <li><img style="width:60px; border-radius:36px" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li> -->
+                    <li><a class="btn1" style="color: #3B7C0F ; font-size:20px;" href="/profile">{{ Auth::user()->name }}</a></li>
+                    {{-- <li><a class="nav-link" href="{{url('logout')}}">Log Out</a></li> --}}
+                    <li><a class="btn2" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="GET" class="d-none">
+                            @csrf
+                        </form>
+                    </a>
+                    </li>
+                @endguest
+            </ul>
+        </div>
     </nav>
-    <body>
-        <div class="container">
-            <div class="profile">
-            <div class="row">
-                <div class="profile-kiri">
-                    <ul>
-                        <h1> Profile Saya</h1>
-                        <h2> Kelola informasi profil Anda untuk mengontrol, melindungi, dan mengamankan akun anda</h2>
-                    </ul>
-                    <!-- Foto dan data diri -->
-                    <img src="{{ asset('photo/' . auth()->user()->photo) }}" alt=""  style=" scale:80%; border-radius:50%">  
-                    <div style="margin-bottom:100px"class="data-diri">
-                        <form class="form-floating">
-                            <label for="floatingInputValue">Username</label>
-                            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="{{auth()->user()->username}}">
-                        </form>
-                        <form class="form-floating">
-                            <label for="floatingInputValue">Nama</label>
-                            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="{{auth()->user()->name}}">
-                        </form>
-                        <form class="form-floating">
-                            <label for="floatingInputValue">Email</label>
-                            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="{{auth()->user()->email}}">
-                        </form>
-                    </div>
-     </div>
-</div>
-
-            
-                    
-            </div>
-            </div>
-
-        </body>
-        <footer class="footer">
-            <div class="main">
-                <div class="kiri">
-                    <div class="footer-header">
-                        <img src="/assets/img/Logo_Bimo_Property.png" alt="">
-                        <h3>Bimo Property</h3>
-                    </div>
-                    <div class="deskripsi">
-                        <p>Jelajahi Dunia Properti dengan Lebih Mudah, Lebih Cepat dengan Bimo Property</p>
-                        <p>Hubungi 08512348765 </p>
-                    </div>
-                </div>
-                <div class="kanan">
-                    <div class="about">
-                        <h2>About</h2>
-                        <p>Berita</p>
-                        <p>Award</p>
-                    </div>
-                    <div class="resource">
-                        <h2>Resource</h2>
-                        <p>Beli Rumah</p>
-                        <p>Cari Agen</p>
-                        <p>Janji Temu</p>
-                    </div>
-                </div>
-            </div>
-            <div class="added">
-                <h6>© 2024 Bimo Property.</h6>
-            </div>
-        </footer>
-    </html>
-    
-
-           

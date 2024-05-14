@@ -5,13 +5,20 @@ use App\Http\Controllers\Auth\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\daftar_ulasan;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 
+use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BelirukoController;
+use App\Http\Controllers\AgenController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\JualController;
+
 
 
 Route::get('/', function () {
@@ -79,6 +86,40 @@ Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
 Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
+//Rute dashboard
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/tambahagen', [AdminController::class, 'agen'])->name('admin.addAgen');
+});
+
+
+
+
+// ------- keranjang --------
+Route::get('/keranjang', [KeranjangController::class, 'show'])->name('user.keranjang');
+Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('user.checkout');
+Route::post('/checkout', [KeranjangController::class, 'processCheckout'])->name('user.checkout');
+Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
+Route::post('add_cart/{id}', [KeranjangController::class, 'add_cart'])->name('add_cart');
+
+
+// Route::get('/berita', function () {
+//     return view('berita');
+// });
+Route::get('/berita', [BeritaController::class, "index"])->name('berita.index');
+Route::put('/posts/{id}', [BeritaController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.destroy');
+Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+
+
+//route fitu beli ruko 
+Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
+
+
+//route agen
+Route::get('/cariagen', [AgenController::class, 'show']);
+//tambah agen
 
 //Rute Fitur Beli Bahan bagunan
 Route::get('/materials/belibahanbangunan', [ProductController::class, 'index'])->name('belibahanbangunan.index');
