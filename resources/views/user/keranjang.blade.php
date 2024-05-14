@@ -124,7 +124,7 @@
                                                         <img src="{{ ('IMG/' . $item->foto_produk) }}" alt="Gambar Produk" class="object-cover rounded" style="width:100px; height:100px">
                                                     </div>
                                                     <div >
-                                                        <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->nama_produk}</a></h5>
+                                                        <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->nama_produk}}</a></h5>
                                                         <p class="mb-1 text-slate-500 dark:text-zink-200" style="font-size:12px;">{{ $item->deskripsi }}</p>
                                                         <p class="mb-2  text-slate-500 dark:text-zink-200" style="margin-bottom:24px; font-size:12px;"> <a href="/belifurniture"> Tipe Produk: <span class="text-slate-800 dark:text-zink-50">{{ $item->tipe_produk }}</span></a></p>
                                                         <h6 class="mt-auto text-16 ltr:lg:text-right rtl:lg:text-left"><span class="products-line-price" >Rp {{ number_format($item->harga, 0, ',', '.') }}</span></h6>
