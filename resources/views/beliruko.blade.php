@@ -13,7 +13,8 @@
 @extends('layouts.app')
         @section('content')
 
-      
+
+    
     <div class="container mx-auto px-4 text-center mb-8">
         <h1 class="text-2xl font-bold">Beli Ruko</h1>
             <p class="text-gray-600">Telusuri beragam pilihan ruko yang sesuai dengan kebutuhan Anda</p>
