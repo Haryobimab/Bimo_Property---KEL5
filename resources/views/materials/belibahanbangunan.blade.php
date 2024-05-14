@@ -1,26 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>beli Furniture</title>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-  <style>
-    .red-text {
-      color: red; /* Important to override default styles */
-    }
-  </style>
-
 </head>
 
 @extends('layouts.app')
@@ -58,7 +46,7 @@
       <p class="text-gray-600">PCC Tiga Roda dibuat untuk konstruksi umum seperti rumah, bangunan tinggi, jembatan, jalan beton, beton precast dan beton pre-stress. PCC mempunyai kekuatan yang sama dengan Portland Cement Tipe I</p>
       <p class="text-xl font-bold mt-2">Rp65.000</p>
       <div class="mt-4">
-      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(1)">Tambah Keranjang</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
       <a href="{{ route('semen1.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
       </div>
     </div>
@@ -71,7 +59,7 @@
       <p class="text-gray-600">Material struktural yang kuat untuk konstruksi bangunan, memberikan kekuatan dan stabilitas pada bangunan</p>
       <p class="text-xl font-bold mt-2">Rp61.000</p>
       <div class="mt-4">
-      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(2)">Tambah Keranjang</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
       <a href="{{ route('besi.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
       </div>
     </div>
@@ -84,7 +72,7 @@
       <p class="text-gray-600">Wallpaper Roll 45 x 10 M adalah solusi ideal untuk mempercantik dinding rumah Anda dengan mudah dan hemat biaya. Dapatkan berbagai motif dan warna menarik yang sesuai dengan selera dan gaya interior Anda.</p>
       <p class="text-xl font-bold mt-2">Rp33.500</p>
       <div class="mt-4">
-      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(3)">Tambah Keranjang</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
       <a href="{{ route('wp.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
       </div>
     </div>
@@ -97,7 +85,7 @@
       <p class="text-gray-600">Dulux AmbianceTM Premium Interior Paint adalah cat interior dengan kualitas superior yang memberikan hasil akhir yang sangat halus memberikan rangkaian warna yang tak tertandingi.</p>
       <p class="text-xl font-bold mt-2">Rp295.000</p>
       <div class="mt-4">
-      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart(4)">Tambah Keranjang</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md mr-2" onclick="addToCart()">Tambah Keranjang</button>
       <a href="{{ route('cat.index')}}" class="border border-green-600 hover:bg-green-100 text-green-600 font-bold py-2 px-4 rounded-md">Lihat Detail</a>
       </div>
       </div>
@@ -124,38 +112,14 @@
 
  @endsection
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
  <script>
-  // Function to handle adding item to cart
-  function addToCart(productId) {
-      // Get CSRF token value from the meta tag
-      var csrfToken = $('meta[name="csrf-token"]').attr('content');
-      
-      // Send Ajax request to server
-      $.ajax({
-          url: '/add_cart/' + productId, // Ganti dengan URL endpoint API yang sesuai
-          type: 'POST',
-          data: {_token: csrfToken}, // Sertakan token CSRF dalam data
-          success: function(response) {
-              // Tampilkan notifikasi bahwa item telah ditambahkan ke keranjang
-              toastr.options.toastClass = 'bg-success'; 
-              toastr.success('Item berhasil ditambahkan ke keranjang!');
-          },
-          error: function(xhr, status, error) {
-              // Tampilkan pesan error jika terjadi kesalahan
-              toastr.options.toastClass = 'bg-danger'; 
-              toastr.error('Tidak dapat menambahkan item ke keranjang!');
-          }
-      });
+  function addToCart() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Berhasil ditambahkan ke keranjang!',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 </script>
-
-
-
-
-
-
-
 </html>

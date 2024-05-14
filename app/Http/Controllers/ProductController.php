@@ -20,18 +20,12 @@ class ProductController extends Controller
         return view('materials.halaman2');
     }
 
-
-
-    public function count_cart(){
-
-
-        $id_login = auth()->user()->id;
-        $data = Keranjang::where('id_user', $id_login)->count();
-
-        // Berikan respons dalam bentuk JSON yang berisi jumlah item dalam keranjang
-        return response()->json(['itemCount' => $data]);
+    public function show2()
+    {
+        return view('materials.halaman3');
 
     }
+
 
     //untuk ke halaman detail
     public function show3()
