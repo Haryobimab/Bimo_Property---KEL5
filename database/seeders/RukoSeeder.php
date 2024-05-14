@@ -15,24 +15,39 @@ class RukoSeeder extends Seeder
     public function run(): void
     {
         Beliruko::create([
-            'Nama Ruko' => 'Ruko Asri',
-            'img' => 'IMG/inspirasi1.jpeg',
+            'nama_ruko' => 'Ruko Asri',
+            'img' => 'inspirasi1.jpeg',
             'informasi' => 'Ruko ini terletak di kawasan bebas banjir',
             'updated_at' => Carbon::now(), 
         ]);
 
         Beliruko::create([
-            'Nama Ruko' => 'Ruko Damai',
-            'img' => 'IMG/inspirasi2.jpeg',
+            'nama_ruko' => 'Ruko Damai',
+            'img' => 'inspirasi2.jpeg',
             'informasi' => 'Ruko ini terletak di kawasan bebas banjir',
             'updated_at' => Carbon::now(), 
         ]);
 
         Beliruko::create([
-            'Nama Ruko' => 'Ruko Bagus',
-            'img' => 'IMG/inspirasi3.jpeg',
+            'nama_ruko' => 'Ruko Bagus',
+            'img' => 'inspirasi3.jpeg',
+            'informasi' => 'Ruko ini terletak di kawasan bebas banjir',
+            'updated_at' => Carbon::now(), 
+        ]);
+
+        Beliruko::create([
+            'nama_ruko' => 'Ruko Bagus',
+            'img' => 'inspirasi3.jpeg',
+            'informasi' => 'Ruko ini terletak di kawasan bebas banjir',
+            'updated_at' => Carbon::now(), 
+        ]);
+
+        Beliruko::create([
+            'nama_ruko' => 'Ruko Bagus',
+            'img' => 'inspirasi3.jpeg',
             'informasi' => 'Ruko ini terletak di kawasan bebas banjir',
             'updated_at' => Carbon::now(), 
         ]);
     }
 }
+

@@ -20,7 +20,13 @@ class BelirukoController extends Controller
     public function show($id)
     {
         $belirukos = Beliruko::findOrFail($id);
-        return view('beliruko', ['data' => $beliruko]);
+        // return view();
+
+        $data = [
+            'ruko' => $belirukos
+        ];
+
+        return view('materials.DetailProduct.ruko', $data);
     }
 
     // Metode untuk menampilkan halaman form untuk membuat data baru
