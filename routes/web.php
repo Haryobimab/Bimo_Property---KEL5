@@ -149,3 +149,19 @@ Route::get('/materials/ProductDetail/genteng', [ProductController::class, 'show7
 Route::get('/materials/ProductDetail/lantai', [ProductController::class, 'show8'])->name('lantai.index');
 Route::get('/materials/ProductDetail/pipa', [ProductController::class, 'show10'])->name('pipa.index');
 Route::get('/materials/ProductDetail/bajari', [ProductController::class, 'show9'])->name('bajari.index');
+
+
+
+// Route Rental Rumah
+ Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+
+    Route::get('rumah', [AdminController::class, 'rumah'])->name('admin.rumah');
+    Route::post('rumah', [AdminController::class, 'add_rumah'])->name('admin.rumah');
+    Route::get('get_rumah_by_id/{id}', [AdminController::class, 'get_rumah_by_id'])->name('admin.get_rumah_by_id');
+
+    Route::post('update_rumah/{id}', [AdminController::class, 'update_rumah'])->name('admin.update_rumah');
+   
+    Route::get('destroy_rumah/{id}', [AdminController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
+
+});
+
