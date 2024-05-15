@@ -187,6 +187,6 @@ Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('
    
     Route::get('destroy_rumah/{id}', [AdminController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
 
-});
+
 
 
