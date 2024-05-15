@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Keranjang;
 use App\Models\Agen;
+use App\Models\Rumah;
 use App\Models\Beliruko;
+
 
 
 class AdminController extends Controller
@@ -58,6 +60,9 @@ class AdminController extends Controller
 
       return redirect()->back()->with('success', 'Agen added successfully');
    }
+
+
+
 public function ruko(){
 
       // dd('ok');
@@ -156,6 +161,7 @@ public function ruko(){
         $data->delete();
         return redirect()->back()->with(['success' => 'Data ruko berhasil dihapus!']);
     }
+
 
  public function rumah(){
 
