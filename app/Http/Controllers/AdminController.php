@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Keranjang;
+use App\Models\Agen;
+use App\Models\Beliruko;
+
 
 class AdminController extends Controller
 {
