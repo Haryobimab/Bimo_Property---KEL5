@@ -28,26 +28,35 @@ class ProfileController extends Controller
     public function updateProfile (Request $request) 
 	{
 		$request->validate([
-            'photo' => 'image|mimes: png, jpeg, jpg'
+            'name' => 'required',
+            'email' => 'required',
+            'confirm_password' => 'required_with:password|same:password',
+            'photo' => '',
         ]);
-
-        $id_user = Auth::user()->id;
-        $user = User::find($id_user);
+  
+        $input = $request->all();
           
-
         if ($request->hasFile('photo')) {
-            $photoNew = $request->file('photo');
-            $imageName = time() . '.' . $photoNew->getClientOriginalName();
-            $photoNew->move(public_path('photo'), $imageName);
+            $photoName = time().'.'.$request->photo->getClientOriginalExtension();
+            $request->photo->move(public_path('photo'), $photoName);
             
-
-            $user->photo = $imageName;
-            $user->save();
+  
+            $input['photo'] = $photoName;
+            
+        
+        } else {
+            unset($input['photo']);
         }
-
-        $user->name = $request->name == '' ? Auth::user()->name : $request->name;
-        $user->email= $request->email == '' ? Auth::user()->email : $request->email;
-        $user->save();
-        return redirect()->back()->with('success', 'Profile berhasil terupdate');
+  
+        if ($request->filled('password')) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            unset($input['password']);
+        }
+  
+        auth()->user()->update($input);
+        
+    
+        return back()->with('success', 'Profile updated successfully.');
 	}
 }

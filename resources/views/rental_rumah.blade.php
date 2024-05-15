@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beli Ruko</title>
+  <title>Rental Rumah</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -13,11 +14,10 @@
 @extends('layouts.app')
         @section('content')
 
-
-    
+      
     <div class="container mx-auto px-4 text-center mb-8">
-        <h1 class="text-2xl font-bold">Beli Ruko</h1>
-            <p class="text-gray-600">Telusuri beragam pilihan ruko yang sesuai dengan kebutuhan Anda</p>
+        <h1 class="text-2xl font-bold">Rental Rumah</h1>
+            <p class="text-gray-600">Telusuri beragam pilihan rumah yang sesuai dengan kebutuhan Anda</p>
     </div>
     
     <div class="flex justify-center">
@@ -39,18 +39,19 @@
     </div>
     
 
+    
 
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 justify-center">
-        @foreach($belirukos as $ruko)
-        <div class="bg-white shadow-md rounded-md overflow-hidden m-2 max-w-xs">
-            <img src="{{ asset('images/' .$ruko->img) }}" class="card-img-top" alt="{{ $ruko->img }}" style="height: 250px">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6 justify-center mt-2 container-fluid">
+        @foreach($rumah as $item)
+        <div class="bg-white shadow-md rounded-md">
+            <img src="{{ asset('images/' .$item->img) }}" class="card-img-top" alt="{{ $item->img }}" style="height: 250px">
             <div class="p-4 text-center">
-                <h5 class="text-lg font-bold">{{ $ruko->nama_ruko}}</h5>
-                <p class="text-gray-600">{{ $ruko->informasi }}</p>
-                <p class="text-xl font-bold mt-2">Harga: Rp.{{ number_format($ruko->harga, 2) }}</p>
+                <h5 class="text-lg font-bold">{{ $item->nama_rumah}}</h5>
+                <p class="text-gray-600">{{ $item->informasi }}</p>
+                <p class="text-xl font-bold mt-2">Harga: Rp.{{ number_format($item->harga, 2) }}</p>
                 <div class="mt-4">
-                    <a href="{{ route('ruko', $ruko->id)}}"
+                    <a href="{{ route('rumah',$item->id) }}"
                         class="rounded-md btn btn-success w-100">Lihat
                         Detail</a>
                 </div>
@@ -58,5 +59,8 @@
         </div>
         @endforeach
     </div>
-@endsection
 
+
+    @endsection
+    
+    

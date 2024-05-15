@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Ulasan extends Model
+class Barang extends Model
 {
     use HasFactory;
 
-    protected $table = 'ulasans';
+    protected $table = 'barang';
+
     protected $guarded = [];
-    // Tambahan properti 
+
+    
 }
+
+
+//

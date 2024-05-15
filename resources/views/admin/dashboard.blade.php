@@ -1,20 +1,27 @@
+<style>
+    
+</style>
+
 @extends('layouts.admin_beranda')
 @section('content')
 <!-- Main Content -->
 
 <div class="content">
-        <div class="title" style="margin-top:36px">
-            <h1 class="text-center">Selamat datang di Dashboard Admin Bimo Property </h1>
-            <p style="margin-bottom: 20px;" class="lead text-center">tempat di mana Anda dapat mengelola dan mengontrol semua aspek dari situs web Anda dengan mudah dan efisien</p>
+        <div class="title" style="margin-top:36px; display: flex; ">
+            <h1 class="" style="font-size:36px">Dashboard </h1>
+            <div class="biodata" style="margin-left:800px">
+                <img style="width:40px; height:40px; border-radius:30%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture">
+                <a class="btn2" style="color: #05603A ; font-size:18px; font-weight:400; margin-left:20px" href="/admin/profile">{{ Auth::user()->name }}</a>
+            </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top:32px">
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="fas fa-newspaper fa-2x mr-3" style="background-color:#ECFDF3; color:#039855; padding:12px; border-radius:12px"></i>
+                <div class="card" style="border:none; border-radius:20px">
+                    <div class="card-body d-flex align-items-center" style="display: flex; ">
+                        <i class="fas fa-newspaper fa-1x mr-3" style="background-color:#16B364; color: #ECFDF3; padding:12px; border-radius:12px"></i>
                         <div>
-                            <h5 class="card-title" style="font-size:12px; color:#98A2B3">Berita</h5>
-                            <h4 class="card-text">15 Berita</h4>
+                            <h5 class="card-title" style="font-size:18px; color:#164C63">Berita</h5>
+                            <h4 class="card-text" style="font-size:16px; color:#16B364;">15 Berita</h4>
                            
                         </div>
                         
@@ -22,92 +29,63 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" style="border:none; border-radius:20px">
                     <div class="card-body d-flex align-items-center">
-                        <i class="fas fa-star fa-2x mr-3" style="background-color:#ECFDF3; color:#039855; padding:12px; border-radius:12px"></i>
-                        <div>
-                            <h5 class="card-title" style="font-size:12px; color:#98A2B3">Penjualan Bahan Bangunan</h5>
-                            <h4 class="card-text">{{$countBahanBangunan}} Produk</h4>
+                        <i class="fas fa-star fa-1x mr-2" style=" margin-right:12px; background-color:#3538CD; color:#E0EAFF; padding:12px; border-radius:12px"></i>
+                        <div >
+                            <h5 class="card-title" style="font-size:18px; color:#164C633">Penjualan Bahan Bangunan</h5>
+                            <h4 class="card-text" style="font-size:16px; color:#3538CD ">{{$countBahanBangunan}} Produk</h4>
                         </div>
                         
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" style="border:none; border-radius:20px">
                     <div class="card-body d-flex align-items-center">
-                        <i class="fas fa-couch fa-2x mr-3" style="background-color:#ECFDF3; color:#039855; padding:12px; border-radius:12px"></i>
+                        <i class="fas fa-couch fa-1x mr-3" style="background-color:#E31B54; color:#FFE4E8; padding:12px; border-radius:12px"></i>
                         <div>
-                            <h5 class="card-title" style="font-size:12px; color:#98A2B3">Penjualan Furniture</h5>
-                            <h4 class="card-text">{{$countFurniture}} Produk</h4>
+                            <h5 class="card-title" style="font-size:18px; color:#164C63">Penjualan Furniture</h5>
+                            <h4 class="card-text" style="font-size:16px; color:#E31B54; ">{{$countFurniture}} Produk</h4>
                         </div>
                         
                     </div>
                 </div>
             </div>
                 <div class="col-md-8" style="margin-top:24px">
-                    <div class="card">
+                    <div class="card" style="border:none">
                         <div class="card-header">
                             <h5 class="card-title">List Agen</h5>
-                            <p class="card-description" style="color:#98A2B3">Daftar agen yang bekerjasama</p>
+                           
                         </div>
                         <div class="card-body" >
                             <table class="table">
                                 <thead >
                                     <tr>
-                                        <th scope="col">Nomor</th>
+                                        
                                         <th scope="col">Nama Agen</th>
                                         <th scope="col">Lokasi Agen</th>
                                         <th scope="col">Rating</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($agen as $agent)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Agen 1</td>
-                                        <td>Lokasi 1</td>
+                                        
+                                        <td>{{ $agent->nama_agen }}</td>
+                                        <td>{{ $agent->alamat }}</td>
                                         <td >
-                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">4.9</p>
+                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">{{ $agent->rating }}</p>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Agen 2</td>
-                                        <td>Lokasi 2</td>
-                                        <td >
-                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">4.9</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Agen 3</td>
-                                        <td>Lokasi 3</td>
-                                        <td >
-                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">4.9</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Agen 4</td>
-                                        <td>Lokasi 4</td>
-                                        <td >
-                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">4.9</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" style="margin:16px">5</th>
-                                        <td>Agen 5</td>
-                                        <td>Lokasi 5</td>
-                                        <td >
-                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">4.9</p>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                   
                                     <!-- Tambahkan baris data agen sesuai kebutuhan -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="card" style="margin-top:24px">
+                    <div class="card" style="margin-top:24px; border:none">
                         <div class="card-header" >
                             <h5 class="card-title">Ketersediaan Rumah</h5>
                             <p class="card-description" style="color:#98A2B3">Daftar pertanyaan yang dipunyai</p>
@@ -123,7 +101,7 @@
                     </div>
                 </div>
                 <div class="col-md-4" style="margin-top:24px">
-                    <div class="card">
+                    <div class="card" style="border:none">
                         <div class="card-header">
                             <h5 class="card-title">List FAQ</h5>
                             <p class="card-description" style="color:#98A2B3">Daftar pertanyaan yang dipunyai</p>
@@ -137,7 +115,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="card" style="margin-top:24px">
+                    <div class="card" style="margin-top:24px; border:none">
                         <div class="card-header" >
                             <h5 class="card-title">List Ulasan</h5>
                             <p class="card-description" style="color:#98A2B3">Daftar pertanyaan yang dipunyai</p>
