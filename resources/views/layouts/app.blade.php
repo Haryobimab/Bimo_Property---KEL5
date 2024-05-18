@@ -48,7 +48,7 @@
                             </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
                                     <a class="dropdown-item" href="#">Beli Rumah</a>
-                                    <a class="dropdown-item" href="#">Beli Bahan Bangunan</a>
+                                    <a class="dropdown-item" href="/materials/belibahanbangunan">Beli Bahan Bangunan</a>
                                     <a class="dropdown-item" href="#">Beli Furniture</a>
                                 </div>
                         </li>
@@ -153,21 +153,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Hitung jumlah item dalam keranjang
-        var itemCount = {{ count($keranjang) }};
-        
-        // Select element ikon keranjang
-        var cartIcon = document.querySelector(".fa-shopping-cart");
-        
-        // Buat elemen untuk menampilkan notifikasi jumlah item
-        var itemCountBadge = document.createElement("span");
-        itemCountBadge.classList.add("badge", "bg-danger", "rounded-pill");
-        itemCountBadge.textContent = itemCount;
-        
-        // Tambahkan notifikasi ke ikon keranjang
-        cartIcon.appendChild(itemCountBadge);
-    });
+    
 </script>
 </html>
     
