@@ -116,7 +116,7 @@ Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.
 Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
 
 
-//route fitu beli ruko 
+// ROUTE ADMIN ruko
 Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
 Route::prefix('admin')->middleware('cek_login:admin')->group(function () {
  
@@ -131,6 +131,9 @@ Route::prefix('admin')->middleware('cek_login:admin')->group(function () {
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
    
 });
+//route fitu beli ruko 
+Route::get('/beliruko', [BelirukoController::class, 'index']);
+Route::get('ruko/{id}', [BelirukoController::class, 'show'])->name('ruko');
 
 
 
