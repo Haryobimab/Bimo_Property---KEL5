@@ -133,10 +133,10 @@ Route::prefix('admin')->middleware('cek_login:admin')->group(function () {
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
    
 });
+
 //route fitu beli ruko 
 Route::get('/beliruko', [BelirukoController::class, 'index']);
 Route::get('ruko/{id}', [BelirukoController::class, 'show'])->name('ruko');
-
 
 
 //route agen
