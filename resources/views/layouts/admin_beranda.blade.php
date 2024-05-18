@@ -84,7 +84,7 @@
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-couch" ></i> Tambah Furniture</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-trophy" ></i> Award</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-home" ></i> Tambah Rumah</a></li>
-            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="{{ route('admin.ruko') }}" ><i class="fas fa-home" ></i> Tambah Ruko</a></li>
+            <li><a class="nav-link {{ Request::is('/admin/ruko') ? 'active' : '' }}" href="{{ route('admin.ruko') }}" ><i class="fas fa-home" ></i> Tambah Ruko</a></li>
 
             <li ><a class="nav-link {{ Request::is('/admin/profile') ? 'active' : '' }}" href="/admin/profile" ><i class="fas fa-user" ></i> Profile</a></li>
             <li style=" margin-left:20px"><a class="btn2" style="; color:#9AA4B2" href="{{ route('logout') }}"
