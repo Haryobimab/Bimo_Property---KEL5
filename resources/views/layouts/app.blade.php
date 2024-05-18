@@ -50,7 +50,7 @@
                                     <a class="dropdown-item" href="">Beli Rumah</a>
                                     <a class="dropdown-item" href="{{ route('belibahanbangunan.index') }}">Beli Bahan Bangunan</a>
                                     <a class="dropdown-item" href="#">Beli Furniture</a>
-                                    <a class="dropdown-item" href="#">Beli Ruko</a>
+                                    <a class="dropdown-item" href="beliruko">Beli Ruko</a>
                                 </div>
                         </li>
                     <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
