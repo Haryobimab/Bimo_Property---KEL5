@@ -9,8 +9,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RentalRumahController;
 
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BelirukoController;
@@ -190,6 +192,8 @@ Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('
    
     Route::get('destroy_rumah/{id}', [AdminController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
 
-
+//route fitur rental rumah
+Route::get('/rental', [RentalRumahController::class, 'index']);
+Route::get('rumah/{id}', [RentalRumahController::class, 'show'])->name('rumah');
 
 
