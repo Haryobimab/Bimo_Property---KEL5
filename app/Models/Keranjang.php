@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Keranjang extends Model
@@ -12,14 +14,11 @@ class Keranjang extends Model
 
     protected $table = 'keranjang';
 
-    protected $fillable = [
-        'id',
-        'nama_produk',
-        'tipe_produk',
-        'deskripsi',
-        'harga',
-        'total_harga',
+    protected $guarded = [];
 
-    ];
+    public function barang(): BelongsTo
+    {
+        return $this->belongsTo(Barang::class, 'id_barang');
+    }
 
 }

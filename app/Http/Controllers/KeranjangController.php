@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\Keranjang;
-use App\Models\Order;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +20,7 @@ class KeranjangController extends Controller
         $countKeranjang = $keranjang->count();
         $selectedItems = $request->input('selected_items', []);
         // Mengitung total amount berdasarkan item yang dicentang
-        $totalAmount = Keranjang::whereIn('id', $selectedItems)->sum('harga');
+        $totalAmount = $keranjang->sum('barang.harga');
         // Menyimpan total amount ke dalam session
         session(['totalAmount' => $totalAmount]);
     
@@ -32,11 +31,10 @@ class KeranjangController extends Controller
     {
         $title = "Checkout";
         $keranjang = Keranjang::all();
-        $subtotal = $keranjang->sum('total_harga');
+        $subtotal = $keranjang->sum('barang.harga');
         $tax = $subtotal * 0.1;
         $total = $subtotal + $tax;
-        $selectedItems =session('selectedItems', []);
-        return view('user.checkout', compact('keranjang', 'total', 'title',  'subtotal', 'tax', 'selectedItems'));
+        return view('user.checkout', compact('keranjang', 'total', 'title',  'subtotal', 'tax'));
     }
 
     public function showDetails($id)
@@ -66,31 +64,7 @@ class KeranjangController extends Controller
 
     }
 
-    public function processCheckout(Request $request)
-    {
-        $selectedItems = $request->input('selected_items', []);
-        // Simpan daftar item yang dicentang ke dalam session atau dalam suatu tempat yang dapat diakses di view checkout
-        session(['selectedItems' => $selectedItems]);
-
-        // Tangkap data dari formulir checkout
-        $nama = $request->input('nama');
-        $email = $request->input('email');
-        $alamat = $request->input('alamat');
-        $nomor_hp = $request->input('nomor_hp');
-        $jenis_pengiriman = $request->input('deliveryChoose');
-
-        // Simpan data ke dalam tabel order
-        $order = new Order();
-        $order->nama = $nama;
-        $order->email = $email;
-        $order->alamat = $alamat;
-        $order->nomor_hp = $nomor_hp;
-        $order->jenis_pengiriman = $jenis_pengiriman;
-        $order->save();
-
-        // Redirect ke view checkout
-        return redirect()->route('user.checkout');
-    }
+    
 
     
 }
