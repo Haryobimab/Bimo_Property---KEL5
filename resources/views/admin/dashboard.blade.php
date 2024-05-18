@@ -1,141 +1,107 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimo Property Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    @yield('addStyle')
+
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #05603A;
+            padding-top: 20px; /* Height of navbar */
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 8px 16px;
+            color: white;
+        }
+        .sidebar ul li:hover {
+            background-color: #054F31;
+        }
+
+        .sidebar ul li:active {
+            background-color: #054F31;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    </style>
     
-</style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <div class="profile-admin" style="margin-left:20px">
+                <li><img style="width:60px; border-radius:50%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture"></li>
+                <li><a class="btn2" style="color: white ; font-size:24px;" href="/admin/profile">{{ Auth::user()->name }}</a></li>
+            </div>
+            <li ><a class="nav-link {{ Request::is('/admin/dashboard') ? 'active' : '' }}" href="/admin/dashboard" style="color:white"><i class="fas fa-tachometer-alt" style="color:#D0D5DD"></i> Dashboard</a></li>
 
-@extends('layouts.admin_beranda')
-@section('content')
-<!-- Main Content -->
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" style="color:white"><i class="fas fa-home" style="color:#D0D5DD"></i> Tambah Rumah</a></li>
 
-<div class="content">
-        <div class="title" style="margin-top:36px; display: flex; ">
-            <h1 class="" style="font-size:36px">Dashboard </h1>
-            <div class="biodata" style="margin-left:800px">
-                <img style="width:40px; height:40px; border-radius:30%" src="{{ asset('photo/' . auth()->user()->photo) }}" alt="User Profile Picture">
-                <a class="btn2" style="color: #05603A ; font-size:18px; font-weight:400; margin-left:20px" href="/admin/profile">{{ Auth::user()->name }}</a>
-            </div>
-        </div>
-        <div class="row" style="margin-top:32px">
-            <div class="col-md-4">
-                <div class="card" style="border:none; border-radius:20px">
-                    <div class="card-body d-flex align-items-center" style="display: flex; ">
-                        <i class="fas fa-newspaper fa-1x mr-3" style="background-color:#16B364; color: #ECFDF3; padding:12px; border-radius:12px"></i>
-                        <div>
-                            <h5 class="card-title" style="font-size:18px; color:#164C63">Berita</h5>
-                            <h4 class="card-text" style="font-size:16px; color:#16B364;">15 Berita</h4>
-                           
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="border:none; border-radius:20px">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="fas fa-star fa-1x mr-2" style=" margin-right:12px; background-color:#3538CD; color:#E0EAFF; padding:12px; border-radius:12px"></i>
-                        <div >
-                            <h5 class="card-title" style="font-size:18px; color:#164C633">Penjualan Bahan Bangunan</h5>
-                            <h4 class="card-text" style="font-size:16px; color:#3538CD ">{{$countBahanBangunan}} Produk</h4>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="border:none; border-radius:20px">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="fas fa-couch fa-1x mr-3" style="background-color:#E31B54; color:#FFE4E8; padding:12px; border-radius:12px"></i>
-                        <div>
-                            <h5 class="card-title" style="font-size:18px; color:#164C63">Penjualan Furniture</h5>
-                            <h4 class="card-text" style="font-size:16px; color:#E31B54; ">{{$countFurniture}} Produk</h4>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-                <div class="col-md-8" style="margin-top:24px">
-                    <div class="card" style="border:none">
-                        <div class="card-header">
-                            <h5 class="card-title">List Agen</h5>
-                           
-                        </div>
-                        <div class="card-body" >
-                            <table class="table">
-                                <thead >
-                                    <tr>
-                                        
-                                        <th scope="col">Nama Agen</th>
-                                        <th scope="col">Lokasi Agen</th>
-                                        <th scope="col">Rating</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- @foreach ($agen as $agent) --}}
-                                    <tr>
-                                        
-                                        {{-- <td>{{ $agent->nama_agen }}</td>
-                                        <td>{{ $agent->alamat }}</td> --}}
-                                        <td >
-                                            {{-- <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">{{ $agent->rating }}</p>
-                                        </td> --}}
-                                    </tr>
-                                    {{-- @endforeach --}}
-                                   
-                                    <!-- Tambahkan baris data agen sesuai kebutuhan -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card" style="margin-top:24px; border:none">
-                        <div class="card-header" >
-                            <h5 class="card-title">Ketersediaan Rumah</h5>
-                            <p class="card-description" style="color:#98A2B3">Daftar pertanyaan yang dipunyai</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">Keren</li>
-                                <li class="list-group-item">Bagus</li>
-                                <li class="list-group-item">mantap</li>
-                                <!-- Tambahkan daftar FAQ sesuai kebutuhan -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" style="margin-top:24px">
-                    <div class="card" style="border:none">
-                        <div class="card-header">
-                            <h5 class="card-title">List FAQ</h5>
-                            <p class="card-description" style="color:#98A2B3">Daftar pertanyaan yang dipunyai</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">1. Apa itu FAQ?</li>
-                                <li class="list-group-item">2. Bagaimana cara menggunakan FAQ?</li>
-                                <li class="list-group-item">3. Apakah FAQ dapat membantu?</li>
-                                <!-- Tambahkan daftar FAQ sesuai kebutuhan -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card" style="margin-top:24px; border:none">
-                        <div class="card-header" >
-                            <h5 class="card-title">List Ulasan</h5>
-                            <p class="card-description" style="color:#98A2B3">Daftar pertanyaan yang dipunyai</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item"></li>
-                                <li class="list-group-item">Bagus</li>
-                                <li class="list-group-item">mantap</li>
-                                <li class="list-group-item">mantap</li>
-                                <li class="list-group-item">mantap</li>
-                                <!-- Tambahkan daftar FAQ sesuai kebutuhan -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" style="margin-top:24px">
-                    
-                </div>
-        </div>
+            <li>
+                <a class="nav-link {{ Request::is('/admin/ruko') ? 'active' : '' }}" href="{{ route('admin.ruko') }}" style="color:white"><i class="fas fa-home" style="color:#D0D5DD"></i> Tambah Ruko</a>
+            </li>
+            
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" style="color:white"><i class="fas fa-couch" style="color:#D0D5DD"></i> Tambah Furniture</a></li>
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" style="color:white"><i class="fas fa-newspaper" style="color:#D0D5DD"></i> Tambah Berita</a></li>
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}"href="#" style="color:white"><i class="fas fa-question-circle" style="color:#D0D5DD"></i> Tambah FAQ</a></li>
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" style="color:white"><i class="fas fa-user-plus" style="color:#D0D5DD"></i> Agen</a></li>
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" style="color:white"><i class="fas fa-trophy" style="color:#D0D5DD"></i> Award</a></li>
+
+            <li ><a class="nav-link {{ Request::is('/admin/profile') ? 'active' : '' }}" href="/admin/profile" style="color:white"><i class="fas fa-user" style="color:white"></i> Profile</a></li>
+            <li style=" margin-left:20px"><a class="btn2" style="; color:white" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="GET" class="d-none">
+                        @csrf
+                    </form>
+                </a>
+            </li>
+            <!-- Add more sidebar items as needed -->
+        </ul>
+    </div>
     </div>
 
-@endsection
+    <!-- Page content -->
+    <div id="content">
+        @yield('content')
+    </div>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Toggle sidebar
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('.sidebar').toggleClass('active');
+                $('.nav-link').removeClass('active'); // Hapus kelas active dari semua navbar
+                $(this).addClass('active'); 
+            });
+        });
+    </script>
+
+    @yield('addScript')
+
+</body>
+</html>
