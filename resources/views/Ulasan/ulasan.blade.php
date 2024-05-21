@@ -22,7 +22,7 @@
             layanan, atau pengalaman</p>
         </section>
       </main>
-      <form action="{{ route('ulasan.store') }}" method="POST">
+      <form action="{{ route('ulasan.store') }}" method="POST" id="form-ulasan">
       <!-- <form action="daftar_ulasan/store" method="POST"> -->
         @csrf
         <div class="row">
@@ -133,14 +133,10 @@
                   timer: 30000
                 });
               }, 1000);
-              // Jika pengguna mengklik "Ya, simpan", tunggu sebentar dan arahkan ke halaman daftar ulasan
-              //   setTimeout(function() {
-              // window.location.href = "{{-- route('daftar_ulasan') --}}";
-              //   }, 3000);
-
-              // Jika pengguna mengklik "Ya, simpan", submit form
+            
+             
               setTimeout(function() {
-                document.querySelector("form").submit();
+                $('#form-ulasan').submit();
               }, 5000);
             }
           });

@@ -18,9 +18,11 @@ class UlasanController extends Controller
         'title' => 'required',
         'body' => 'required',
       ]);
+      
   
       Ulasan::create($ulasan);
-      return redirect()->intended('/ulasan')->with('success', 'Ulasan berhasil disimpan.');
+
+      return redirect()->route('ulasan.create')->with('success', 'Ulasan berhasil disimpan.');
     }
   
     public function index()
@@ -30,4 +32,3 @@ class UlasanController extends Controller
       ]);
     }
 }
-

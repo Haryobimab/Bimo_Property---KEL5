@@ -10,7 +10,6 @@ class Ulasan extends Model
     use HasFactory;
 
     protected $table = 'ulasans';
-    protected $fillable = ['title', 'body'];
+    protected $guarded = [];
     // Tambahan properti 
 }
-

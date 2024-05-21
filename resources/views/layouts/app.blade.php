@@ -47,9 +47,11 @@
                             Beli
                             </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
+
                                     <a class="dropdown-item" href="#">Beli Rumah</a>
                                     <a class="dropdown-item" href="/materials/belibahanbangunan">Beli Bahan Bangunan</a>
                                     <a class="dropdown-item" href="#">Beli Furniture</a>
+                                    <a class="dropdown-item" href="/beliruko">Beli Ruko</a>
                                 </div>
                         </li>
                     <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
@@ -149,11 +151,52 @@
             <h6>© 2024 Bimo Property.</h6>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script>
+
+        $(document).ready(function() {
+            var cartIcon = $(".fa-shopping-cart");
     
-</script>
+            // Fungsi untuk memperbarui item count
+            function updateItemCount() {
+                $.ajax({
+                    url: "/material/count_cart",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        var itemCount = response.itemCount;
+    
+                        // Hapus item count sebelumnya
+                        cartIcon.find(".badge").remove();
+    
+                        // Buat elemen untuk menampilkan notifikasi jumlah item
+                        var itemCountBadge = $("<span>").addClass("badge bg-danger rounded-pill").text(itemCount);
+    
+                        // Tambahkan notifikasi ke ikon keranjang
+                        cartIcon.append(itemCountBadge);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Failed to fetch item count:", error);
+                    }
+                });
+            }
+    
+            // Panggil fungsi untuk pertama kali saat halaman dimuat
+            updateItemCount();
+    
+            // Atur interval untuk memperbarui item count setiap detik
+            setInterval(updateItemCount, 1000);
+        });
+    </script>
+    
+    
+    
+    
 </html>
+    
     

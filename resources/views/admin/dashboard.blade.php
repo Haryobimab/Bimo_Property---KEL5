@@ -69,16 +69,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($agen as $agent)
+                                    {{-- @foreach ($agen as $agent) --}}
                                     <tr>
                                         
-                                        <td>{{ $agent->nama_agen }}</td>
-                                        <td>{{ $agent->alamat }}</td>
+                                        {{-- <td>{{ $agent->nama_agen }}</td>
+                                        <td>{{ $agent->alamat }}</td> --}}
                                         <td >
-                                            <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">{{ $agent->rating }}</p>
-                                        </td>
+                                            {{-- <p style="background-color:#FEF0C7; color:#DC6803; padding-left:16px; border-radius:12px; width:50%">{{ $agent->rating }}</p>
+                                        </td> --}}
                                     </tr>
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                    
                                     <!-- Tambahkan baris data agen sesuai kebutuhan -->
                                 </tbody>

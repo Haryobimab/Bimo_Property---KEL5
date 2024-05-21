@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RentalRumahController;
 
 use App\Http\Controllers\ProfileController;
 
@@ -17,7 +18,11 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BelirukoController;
 use App\Http\Controllers\AgenController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\JualController;
+use App\Http\Controllers\CommentController;
+
+
 
 
 
@@ -45,9 +50,8 @@ Route::get('/beranda', function () {
 });
 
 
-
-Route::get('/profile', [ProfileController::class, 'profileView']);
-Route::post('/profile', [ProfileController::class, 'updateProfile']);
+Route::get('/profile', [UserController::class, 'profile']);
+// Route::get('/profile', [UserController::class, 'update_profile']);
 
 
 Route::get('/admin/profile', function () {
@@ -76,11 +80,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('user', UserController::class);
     });
-    
 });
 
 //Rute Auth
-Route::view('/', 'beranda')->name('beranda')->middleware('auth');
+Route::view('/beranda', 'beranda')->name('beranda')->middleware('auth');
 
 
 //Rute Fitur Ulasan
@@ -115,8 +118,25 @@ Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.
 Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
 
 
-//route fitu beli ruko 
+// ROUTE ADMIN ruko
 Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
+Route::prefix('admin')->middleware('cek_login:admin')->group(function () {
+ 
+    Route::get('ruko', [AdminController::class, 'ruko'])->name('admin.ruko');
+    Route::post('ruko', [AdminController::class, 'add_ruko'])->name('admin.ruko');
+    Route::get('get_ruko_by_id/{id}', [AdminController::class, 'get_ruko_by_id'])->name('admin.get_ruko_by_id');
+
+    Route::post('update_ruko/{id}', [AdminController::class, 'update_ruko'])->name('admin.update_ruko');
+
+    Route::get('destroy_ruko/{id}', [AdminController::class, 'destroy_ruko'])->name('admin.destroy_ruko');
+
+    Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+   
+});
+//route fitu beli ruko 
+Route::get('/beliruko', [BelirukoController::class, 'index']);
+Route::get('ruko/{id}', [BelirukoController::class, 'show'])->name('ruko');
+
 
 
 //route agen
@@ -137,3 +157,43 @@ Route::get('/materials/ProductDetail/genteng', [ProductController::class, 'show7
 Route::get('/materials/ProductDetail/lantai', [ProductController::class, 'show8'])->name('lantai.index');
 Route::get('/materials/ProductDetail/pipa', [ProductController::class, 'show10'])->name('pipa.index');
 Route::get('/materials/ProductDetail/bajari', [ProductController::class, 'show9'])->name('bajari.index');
+
+
+// FAQ Admin
+Route::get('/admin/faq/faq', [FAQController::class, 'adminIndex'])->name('admin.faq.index');
+// Route::get('/admin/faq/faq', [FAQController::class, 'index'])->name('admin.faq.index');
+// Route::post('/admin/faq/faq/store', [FAQController::class, 'delete'])->name('faq.store');
+Route::delete('/admin/faq/{id}', [FAQController::class, 'delete'])->name('faq.delete');
+Route::get('/faq/{id}', [FAQController::class, 'show'])->name('faq.show');
+Route::get('/faq/edit/{id}', [FAQController::class, 'edit'])->name('faq.edit');
+Route::put('/faq/{id}', [FAQController::class, 'update'])->name('faq.update');
+Route::match(['post', 'put'], '/faq', [FAQController::class, 'storeOrUpdate'])->name('faq.storeOrUpdate');
+Route::post('/admin/faq/faq', [FAQController::class, 'store'])->name('faq.store');
+Route::put('/faq/edit/{id}', [FAQController::class, 'edit'])->name('faq.edit');
+
+// FAQ
+// Route::get('/faq', [FAQController::class, "index"])->name('faq.index');
+Route::get('/faq', [FAQController::class, 'userIndex'])->name('user.faq.index');
+
+// Jual
+Route::resource('jual', JualController::class);
+Route::get('/juals', [JualController::class, 'index']);
+Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('comments.store');
+
+
+// Route Rental Rumah
+ Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+
+    Route::get('rumah', [AdminController::class, 'rumah'])->name('admin.rumah');
+    Route::post('rumah', [AdminController::class, 'add_rumah'])->name('admin.rumah');
+    Route::get('get_rumah_by_id/{id}', [AdminController::class, 'get_rumah_by_id'])->name('admin.get_rumah_by_id');
+
+    Route::post('update_rumah/{id}', [AdminController::class, 'update_rumah'])->name('admin.update_rumah');
+   
+    Route::get('destroy_rumah/{id}', [AdminController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
+
+//route fitur rental rumah
+Route::get('/rental', [RentalRumahController::class, 'index']);
+Route::get('rumah/{id}', [RentalRumahController::class, 'show'])->name('rumah');
+
+
