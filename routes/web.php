@@ -21,6 +21,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\JualController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\BeliRumahController;
 
 
 
@@ -195,5 +196,9 @@ Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('
 //route fitur rental rumah
 Route::get('/rental', [RentalRumahController::class, 'index']);
 Route::get('rumah/{id}', [RentalRumahController::class, 'show'])->name('rumah');
+
+//Route Beli Rumah
+Route::get('/belirumah', [BeliRumahController::class, 'index'])->name('belirumah.index');
+Route::get('/rumah/{id}', [BeliRumahController::class, 'show'])->name('rumah1');
 
 
