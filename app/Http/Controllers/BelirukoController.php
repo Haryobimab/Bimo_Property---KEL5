@@ -8,102 +8,90 @@ use App\Models\Beliruko;
 class BelirukoController extends Controller
 {
     // Metode untuk menampilkan semua data dari model
-    public function ruko(){
+    public function index()
+    {
+        $belirukos = Beliruko::all();
+        $belirukoExists = $belirukos->isNotEmpty(); // Check if any berita exists
 
-        // dd('ok');
-  
+       return view("beliruko", compact("belirukos", "belirukoExists"));
+    }
+
+    // Metode untuk menampilkan detail data
+    public function show($id)
+    {
+        $belirukos = Beliruko::findOrFail($id);
+        // return view();
+
         $data = [
-           'ruko' => Beliruko::orderBy('id','DESC')->get()
+            'ruko' => $belirukos
         ];
-  
-        return view('admin.ruko', $data);
-  
-     }
-  
-     public function add_ruko(Request $request)
-      {
-          
-  
-          // Menyimpan gambar
-          $imageName = time().'.'.$request->img->extension();
-          $request->img->move(public_path('images'), $imageName);
-  
-          // Menyimpan data ke database
-          Beliruko::create([
-              'img' => $imageName,
-              'nama_ruko' => $request->nama_ruko,
-              'harga' => $request->harga,
-              'lokasi' => $request->lokasi,
-              'jumlah_kamar' => $request->jumlah_kamar,
-              'jumlah_kamar_mandi' => $request->jumlah_kamar_mandi,
-              'jumlah_parkir' => $request->jumlah_parkir,
-              'informasi' => $request->informasi,
-          ]);
-  
-          return redirect()->back()->with('success', 'Data ruko berhasil ditambahkan.');
-      }
-  
-      public function get_ruko_by_id($id)
-      {
-          $ruko = Beliruko::find($id);
-  
-          if (!$ruko) {
-              return response()->json(['message' => 'Ruko not found'], 404);
-          }
-  
-          return response()->json(['ruko' => $ruko], 200);
-      }
-  
-  
-      public function update_ruko(Request $request, $id)
-      {
-  
-          // dd($request->logo_client);
-  
-          $client = Beliruko::find($id);
-  
-          $data = [
-             'nama_ruko' => $request->nama_ruko,
-             'harga' => $request->harga,
-             'lokasi' => $request->lokasi,
-             'jumlah_kamar' => $request->jumlah_kamar,
-             'jumlah_kamar_mandi' => $request->jumlah_kamar_mandi,
-             'jumlah_parkir' => $request->jumlah_parkir,
-             'informasi' => $request->informasi,
-          ];
-  
-          if ($request->hasFile('img')) {
-  
-              $file = $request->file('img');
-              $fileName = $file->getClientOriginalName();
-  
-              // dd($fileName);
-  
-              if (file_exists(public_path('images/' . $request->img))) {
-                  unlink(public_path('images/' . $request->img));
-              }
-  
-              $imageName = time() . '.' . $request->img->extension();
-              $request->img->move(public_path('images'), $imageName);
-              $data['img'] = $imageName;
-          } else {
-              $data['img'] = $request->old_img;
-          }
-  
-  
-          $client->update($data);
-          return redirect()->back()->with(['success' => 'Data ruko berhasil diubah!']);
-      }
-  
-      public function destroy_ruko($id)
-      {
-          $data = Beliruko::find($id);
-  
-          if (file_exists(public_path('images/' . $data->img))) {
-              unlink(public_path('images/' . $data->img));
-          }
-  
-          $data->delete();
-          return redirect()->back()->with(['success' => 'Data ruko berhasil dihapus!']);
-      }
+
+        return view('materials.DetailProduct.ruko', $data);
+    }
+
+    // Metode untuk menampilkan halaman form untuk membuat data baru
+    public function create()
+    {
+        return view('form_create');
+    }
+
+    // Metode untuk menyimpan data baru ke dalam database
+    public function store(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'Nama ruko' => 'required',
+            'Gambar' => 'required',
+            'Informasi' => 'required',
+            // tambahkan aturan validasi lainnya di sini
+        ]);
+
+        // Simpan data ke dalam database
+        Beliruko::create([
+            'Nama ruko' => $request->input('field1'),
+            'Gambar' => $request->input('field2'),
+            'Informasi' => $request->input('field2'),
+            // tambahkan field lainnya sesuai kebutuhan
+        ]);
+
+        return redirect()->route('route.index')->with('success', 'Data berhasil disimpan.');
+    }
+
+    // Metode untuk menampilkan halaman form untuk mengedit data
+    public function edit($id)
+    {
+        $beliruko = Beliruko::findOrFail($id);
+        return view('form_edit', ['data' => $beliruko]);
+    }
+
+    // Metode untuk menyimpan perubahan data yang telah diedit
+    public function update(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'Nama ruko' => 'required',
+            'Gambar' => 'required',
+            'Informasi' => 'required',
+            // tambahkan aturan validasi lainnya di sini
+        ]);
+
+        // Perbarui data di dalam database
+        $beliruko = Beliruko::findOrFail($id);
+        $beliruko->update([
+            'Nama ruko' => $request->input('field1'),
+            'Gambar' => $request->input('field2'),
+            'Informasi' => $request->input('field2'),
+            // tambahkan field lainnya sesuai kebutuhan
+        ]);
+
+        return redirect()->route('route.index')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    // Metode untuk menghapus data
+    public function destroy($id)
+    {
+        $beliruko = Beliruko::findOrFail($id);
+        $beliruk->delete();
+        return redirect()->route('route.index')->with('success', 'Data berhasil dihapus.');
+    }
 }

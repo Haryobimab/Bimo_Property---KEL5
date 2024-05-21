@@ -118,16 +118,9 @@
                                             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                                                 <div class="flex  gap-6" style="position: relative;">
                                                     <div >
-                                                        <input type="checkbox" class="custom-checkbox" name="selected_items[]" value="{{ $item->id }}" data-price="{{ $item->harga }}">
-                                                    </div>
-                                                    <div>
-                                                        <img src="{{ ('IMG/' . $item->foto_produk) }}" alt="Gambar Produk" class="object-cover rounded" style="width:100px; height:100px">
-                                                    </div>
-                                                    <div >
-                                                        <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->nama_produk}}</a></h5>
-                                                        <p class="mb-1 text-slate-500 dark:text-zink-200" style="font-size:12px;">{{ $item->deskripsi }}</p>
-                                                        <p class="mb-2  text-slate-500 dark:text-zink-200" style="margin-bottom:24px; font-size:12px;"> <a href="/belifurniture"> Tipe Produk: <span class="text-slate-800 dark:text-zink-50">{{ $item->tipe_produk }}</span></a></p>
-                                                        <h6 class="mt-auto text-16 ltr:lg:text-right rtl:lg:text-left"><span class="products-line-price" >Rp {{ number_format($item->harga, 0, ',', '.') }}</span></h6>
+                                                        <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->barang->nama_barang}}</a></h5>
+                                                        <p class="mb-1 text-slate-500 dark:text-zink-200" style="font-size:12px;">{{ $item->barang->deskripsi }}</p>
+                                                        <h6 class="mt-auto text-16 ltr:lg:text-right rtl:lg:text-left"><span class="products-line-price" >Rp {{ number_format($item->barang->harga, 0, ',', '.') }}</span></h6>
                                                     </div>
                                                     <div style="position: absolute; bottom: 0; right: 0;">
                                                         <button onclick="deleteItem({{ $item->id }})" class="btn btn-link text-danger" style="background-color:rgb(251, 225, 225)">
@@ -155,18 +148,14 @@
                                             <div class="overflow-x-auto">
                                                 <table class="w-full">
                                                     <tbody style="padding-top: 8px; padding-bottom: 8px;">
-                                                    @php
-                                                        $selectedItems = [];
-                                                        if (isset($_POST['selected_items'])) {
-                                                            $selectedItems = $_POST['selected_items'];
-                                                        }
-                                                    @endphp
+                                                   
                                                         <tr class="font-semibold" style="color:#05603A">
                                                             <td class="px-3.5 pt-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200" >
                                                                 <p id="summary">
                                                                     Total Amount (Rp) 
                                                                 </p>
                                                             </td>
+                                                            <td class="px-3.5 pt-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">Rp {{ number_format($totalAmount, 0, ',', '.') }}</td>
                                                         </tr>
                                                     
                                                     </tbody>
@@ -213,31 +202,7 @@
     });
 
     // Function to update summary based on selected items
-    function updateSummary() {
-        // Select summary element
-        var summaryElement = document.getElementById('summary');
-        // Select all checked checkboxes
-        var checkedCheckboxes = document.querySelectorAll('input[name="selected_items[]"]:checked');
-        // Get total amount
-        var totalAmount = 0;
-        checkedCheckboxes.forEach(function(checkbox) {
-            // Get the price of the checked item
-            var price = parseFloat(checkbox.dataset.price);
-            // Add to total amount
-            totalAmount += price;
-        });
-        // Update summary text
-        summaryElement.textContent = 'Total Amount Rp ' + totalAmount.toLocaleString('id-ID');
-    }
-
-    // Add event listener to checkboxes
-    var checkboxes = document.querySelectorAll('input[name="selected_items[]"]');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            // Update summary when checkbox status changes
-            updateSummary();
-        });
-    });
+    
 
     // Update summary when page loads
     document.addEventListener('DOMContentLoaded', function() {

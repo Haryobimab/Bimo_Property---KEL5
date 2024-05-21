@@ -47,9 +47,11 @@
                             Beli
                             </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
-                                    <a class="dropdown-item" href="">Beli Rumah</a>
-                                    <a class="dropdown-item" href="{{ route('belibahanbangunan.index') }}">Beli Bahan Bangunan</a>
+
+                                    <a class="dropdown-item" href="#">Beli Rumah</a>
+                                    <a class="dropdown-item" href="/materials/belibahanbangunan">Beli Bahan Bangunan</a>
                                     <a class="dropdown-item" href="#">Beli Furniture</a>
+                                    <a class="dropdown-item" href="/beliruko">Beli Ruko</a>
                                 </div>
                         </li>
                     <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="/rental">Rental</a></li>
@@ -156,6 +158,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+
         $(document).ready(function() {
             var cartIcon = $(".fa-shopping-cart");
     
