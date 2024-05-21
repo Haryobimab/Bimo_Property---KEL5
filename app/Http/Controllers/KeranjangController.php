@@ -19,7 +19,7 @@ class KeranjangController extends Controller
         $keranjang = Keranjang::all();
         $countKeranjang = $keranjang->count();
         $selectedItems = $request->input('selected_items', []);
-        // Mengitung total amount berdasarkan item yang dicentang
+        // Mengitung total amount
         $totalAmount = $keranjang->sum('barang.harga');
         // Menyimpan total amount ke dalam session
         session(['totalAmount' => $totalAmount]);

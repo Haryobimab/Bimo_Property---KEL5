@@ -117,10 +117,6 @@
                                         <div class="card-body">
                                             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                                                 <div class="flex  gap-6" style="position: relative;">
-                                                    
-                                                    <div>
-                                                        <img src="{{ ('IMG/' . $item->foto_produk) }}" alt="Gambar Produk" class="object-cover rounded" style="width:100px; height:100px">
-                                                    </div>
                                                     <div >
                                                         <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->barang->nama_barang}}</a></h5>
                                                         <p class="mb-1 text-slate-500 dark:text-zink-200" style="font-size:12px;">{{ $item->barang->deskripsi }}</p>
@@ -206,31 +202,7 @@
     });
 
     // Function to update summary based on selected items
-    function updateSummary() {
-        // Select summary element
-        var summaryElement = document.getElementById('summary');
-        // Select all checked checkboxes
-        var checkedCheckboxes = document.querySelectorAll('input[name="selected_items[]"]:checked');
-        // Get total amount
-        var totalAmount = 0;
-        checkedCheckboxes.forEach(function(checkbox) {
-            // Get the price of the checked item
-            var price = parseFloat(checkbox.dataset.price);
-            // Add to total amount
-            totalAmount += price;
-        });
-        // Update summary text
-        summaryElement.textContent = 'Total Amount Rp ' + totalAmount.toLocaleString('id-ID');
-    }
-
-    // Add event listener to checkboxes
-    var checkboxes = document.querySelectorAll('input[name="selected_items[]"]');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            // Update summary when checkbox status changes
-            updateSummary();
-        });
-    });
+    
 
     // Update summary when page loads
     document.addEventListener('DOMContentLoaded', function() {
