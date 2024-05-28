@@ -10,13 +10,10 @@ class CreateJualsTable extends Migration
     {
         Schema::create('juals', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('nama_properti');
             $table->text('deskripsi');
             $table->string('lokasi');
-            $table->integer('harga');
-            $table->integer('kamar_tidur');
-            $table->integer('kamar_mandi');
-            $table->integer('garasi');
+            $table->decimal('harga', 10, 2);
             $table->timestamps();
         });
     }

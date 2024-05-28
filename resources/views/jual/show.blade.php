@@ -1,71 +1,36 @@
-@extends('layouts.layout')
+<!-- resources/views/jual/show.blade.php -->
+@extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
-    <h2 class="mb-4">{{ $jual->judul }}</h2>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach($jual->images as $image)
-                    <div class="carousel-item @if ($loop->first) active @endif">
-                        <img class="d-block w-100" src="{{ asset('images/' . $image->image_path) }}" alt="Gambar Properti">
-                    </div>
-                    @endforeach
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+    <h1>{{ $jual->nama_properti }}</h1>
+    <p>{{ $jual->deskripsi }}</p>
+    <p>Lokasi: {{ $jual->lokasi }}</p>
+    <p>Harga: {{ $jual->harga }}</p>
+    <div>
+        <h3>Foto Properti:</h3>
+        @foreach($jual->images as $image)
+            <img src="{{ Storage::url($image->image_path) }}" width="200" height="200" alt="{{ $jual->nama_properti }}">
+        @endforeach
+    </div>
+    <div>
+        <h3>Komentar:</h3>
+        <form action="{{ route('comments.store', $jual->id) }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="comment">Komentar:</label>
+                <textarea name="comment" class="form-control" id="comment" required></textarea>
             </div>
-        </div>
-        <div class="col-md-4">
-            <ul class="list-group mb-4">
-                <li class="list-group-item"><strong>Lokasi:</strong> {{ $jual->lokasi }}</li>
-                <li class="list-group-item"><strong>Harga:</strong> Rp{{ number_format($jual->harga, 0, ',', '.') }}</li>
-                <li class="list-group-item"><strong>Kamar Tidur:</strong> {{ $jual->kamar_tidur }}</li>
-                <li class="list-group-item"><strong>Kamar Mandi:</strong> {{ $jual->kamar_mandi }}</li>
-                <li class="list-group-item"><strong>Garasi:</strong> {{ $jual->garasi }}</li>
-            </ul>
-
-            <div class="accordion" id="faqAccordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                FAQ 1
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            Jawaban untuk FAQ 1.
-                        </div>
+            <button type="submit" class="btn btn-primary" style="background-color: #4BA30D;">Tambahkan Komentar</button>
+        </form>
+        <div class="mt-3">
+            @foreach($jual->comments as $comment)
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <p>{{ $comment->comment }}</p>
+                        <small>Ditulis oleh: {{ $comment->user->name }} pada {{ $comment->created_at }}</small>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                FAQ 2
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            Jawaban untuk FAQ 2.
-                        </div>
-                    </div>
-                </div>
-                <!-- Tambahkan FAQ lainnya di sini -->
-            </div>
+            @endforeach
         </div>
     </div>
-</div>
 @endsection

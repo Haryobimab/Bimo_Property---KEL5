@@ -177,13 +177,9 @@ Route::put('/faq/edit/{id}', [FAQController::class, 'edit'])->name('faq.edit');
 Route::get('/faq', [FAQController::class, 'userIndex'])->name('user.faq.index');
 
 // Jual
-Route::get('/jual', [JualController::class, 'index'])->name('jual.index');
-Route::get('/jual/create', [JualController::class, 'create'])->name('jual.create');
-Route::post('/jual/store', [JualController::class, 'store'])->name('jual.store');
-Route::get('/jual/{id}', [JualController::class, 'show'])->name('jual.show');
-Route::get('/jual/{id}/edit', [JualController::class, 'edit'])->name('jual.edit');
-Route::put('/jual/{id}', [JualController::class, 'update'])->name('jual.update');
-Route::delete('/jual/{id}', [JualController::class, 'destroy'])->name('jual.destroy');
+Route::resource('jual', JualController::class);
+Route::get('/juals', [JualController::class, 'index']);
+Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('comments.store');
 
 
 // Route Rental Rumah
