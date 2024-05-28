@@ -10,13 +10,9 @@ class JualImage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'jual_id',
-        'path',
+        'jual_id', 'image_path',
     ];
 
-    /**
-     * Get the jual that owns the JualImage.
-     */
     public function jual()
     {
         return $this->belongsTo(Jual::class);

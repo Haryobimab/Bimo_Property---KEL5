@@ -1,17 +1,18 @@
-<!-- resources/views/jual/create.blade.php -->
-@extends('layouts.app')
+@extends('layouts.layout')
 
 @section('content')
-    <h1>Tambah Properti</h1>
+<div class="container mt-5">
+    <h2 class="mb-4">Tambah Properti Baru</h2>
+
     <form action="{{ route('jual.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="nama_properti">Nama Properti</label>
-            <input type="text" name="nama_properti" class="form-control" id="nama_properti" required>
+            <label for="judul">Judul</label>
+            <input type="text" name="judul" class="form-control" id="judul" required>
         </div>
         <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
-            <textarea name="deskripsi" class="form-control" id="deskripsi" required></textarea>
+            <textarea name="deskripsi" class="form-control" id="deskripsi" rows="4" required></textarea>
         </div>
         <div class="form-group">
             <label for="lokasi">Lokasi</label>
@@ -19,12 +20,25 @@
         </div>
         <div class="form-group">
             <label for="harga">Harga</label>
-            <input type="text" name="harga" class="form-control" id="harga" required>
+            <input type="number" name="harga" class="form-control" id="harga" required>
         </div>
         <div class="form-group">
-            <label for="images">Foto Properti</label>
-            <input type="file" name="images[]" class="form-control" id="images" multiple>
+            <label for="kamar_tidur">Jumlah Kamar Tidur</label>
+            <input type="number" name="kamar_tidur" class="form-control" id="kamar_tidur" required>
         </div>
-        <button type="submit" class="btn btn-primary" style="background-color: #4BA30D;">Simpan</button>
+        <div class="form-group">
+            <label for="kamar_mandi">Jumlah Kamar Mandi</label>
+            <input type="number" name="kamar_mandi" class="form-control" id="kamar_mandi" required>
+        </div>
+        <div class="form-group">
+            <label for="garasi">Jumlah Garasi</label>
+            <input type="number" name="garasi" class="form-control" id="garasi" required>
+        </div>
+        <div class="form-group">
+            <label for="images">Gambar</label>
+            <input type="file" name="images[]" class="form-control-file" id="images" multiple required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</div>
 @endsection
