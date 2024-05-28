@@ -9,7 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .content-layout{
-        background-color: #EDFCF2;
+        background-color: #FAFEF5;
         }
         
         .sidebar {
@@ -80,11 +80,11 @@
 
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}"href="#" ><i class="fas fa-question-circle" ></i> Tambah FAQ</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-newspaper" ></i> Tambah Berita</a></li>
-            <li><a class="nav-link {{ Request::is('/admin/tambahagen') ? 'active' : '' }}" href="/admin/tambahagen" ><i class="fas fa-user-plus" ></i> Agen</a></li>
+            <li><a class="nav-link {{ Request::is('/admin/tambahagen') ? 'active' : '' }}" href="{{ route('admin.addAgen') }}" ><i class="fas fa-user-plus" ></i> Agen</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-couch" ></i> Tambah Furniture</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-trophy" ></i> Award</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-home" ></i> Tambah Rumah</a></li>
-            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="{{ route('admin.ruko') }}" ><i class="fas fa-home" ></i> Tambah Ruko</a></li>
+            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-home" ></i> Tambah Ruko</a></li>
 
             <li ><a class="nav-link {{ Request::is('/admin/profile') ? 'active' : '' }}" href="/admin/profile" ><i class="fas fa-user" ></i> Profile</a></li>
             <li style=" margin-left:20px"><a class="btn2" style="; color:#9AA4B2" href="{{ route('logout') }}"
