@@ -24,5 +24,10 @@ class Agen extends Model
         'customer_satisfaction',
         'property_transaction'
     ];
+
+    public function janjiTemu()
+    {
+        return $this->hasMany(JanjiTemu::class);
+    }
     
 }

@@ -11,12 +11,9 @@ class JualImage extends Model
 
     protected $fillable = [
         'jual_id',
-        'path',
+        'image_path',
     ];
 
-    /**
-     * Get the jual that owns the JualImage.
-     */
     public function jual()
     {
         return $this->belongsTo(Jual::class);

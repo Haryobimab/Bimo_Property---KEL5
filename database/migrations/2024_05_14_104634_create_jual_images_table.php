@@ -6,26 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateJualImagesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('jual_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jual_id')->constrained()->onDelete('cascade');
-            $table->string('path');
+            $table->unsignedBigInteger('jual_id');
+            $table->string('image_path');
             $table->timestamps();
+
+            $table->foreign('jual_id')->references('id')->on('juals')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('jual_images');

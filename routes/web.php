@@ -21,6 +21,10 @@ use App\Http\Controllers\JualController;
 
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\JanjiTemuController;
+use App\Http\Controllers\RentalRumahController;
+
 use App\Http\Controllers\BeliRumahController;
 
 
@@ -57,9 +61,10 @@ Route::get('/profile', [ProfileController::class, 'profileView']);
 Route::post('/profile', [ProfileController::class, 'updateProfile']);
 
 
-Route::get('/admin/profile', function () {
-    return view('admin/profileAdmin');
-});
+
+
+
+
 
 
 
@@ -114,13 +119,6 @@ Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name(
 Route::post('add_cart/{id}', [KeranjangController::class, 'add_cart'])->name('add_cart');
 
 
-// Route::get('/berita', function () {
-//     return view('berita');
-// });
-Route::get('/berita', [BeritaController::class, "index"])->name('berita.index');
-Route::put('/posts/{id}', [BeritaController::class, 'update'])->name('posts.update');
-Route::delete('/posts/{id}', [BeritaController::class, 'destroy'])->name('posts.destroy');
-Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
 
 
 
@@ -208,6 +206,22 @@ Route::get('rumah/{id}', [RentalRumahController::class, 'show'])->name('rumah');
 //Route Beli Rumah
 Route::get('/belirumah', [BeliRumahController::class, 'index'])->name('belirumah.index');
 Route::get('/rumah/{id}', [BeliRumahController::class, 'show'])->name('rumah1');
+
+
+//Route Janji Temu
+Route::get('/list-janji-temu/{id}', [JanjiTemuController::class, 'index'])->name('janji-temu.index');
+Route::get('/janji-temu/create/{id}', [JanjiTemuController::class, 'create'])->name('janji-temu.create');
+Route::post('/janji-temu', [JanjiTemuController::class, 'store'])->name('janji-temu.store');
+
+Route::get('/janji-temu/{janjiTemu}', [JanjiTemuController::class, 'show'])->name('janji-temu.show');
+Route::get('/janji-temu/{janjiTemu}/edit', [JanjiTemuController::class, 'edit'])->name('janji-temu.edit');
+Route::put('/janji-temu/{janjiTemu}', [JanjiTemuController::class, 'update'])->name('janji-temu.update');
+Route::delete('/janji-temu/{janjiTemu}', [JanjiTemuController::class, 'destroy'])->name('janji-temu.destroy');
+
+Route::post('/janji-temu/{id}/complete', [JanjiTemuController::class, 'complete'])->name('janji-temu.complete');
+Route::post('/janji-temu/{id}/cancel', [JanjiTemuController::class, 'cancel'])->name('janji-temu.cancel');
+Route::get('/janji-temu/{id}/reschedule', [JanjiTemuController::class, 'rescheduleForm'])->name('janji-temu.rescheduleForm');
+Route::post('/janji-temu/{id}/reschedule', [JanjiTemuController::class, 'reschedule'])->name('janji-temu.reschedule');  
 
 
 
