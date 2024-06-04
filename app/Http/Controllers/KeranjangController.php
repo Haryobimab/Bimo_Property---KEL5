@@ -16,7 +16,11 @@ class KeranjangController extends Controller
     public function show(Request $request)
     {
         $title = "Keranjang";
-        $keranjang = Keranjang::all();
+        $id_user = auth()->user()->id;
+
+        // dd($id_user);
+
+        $keranjang = Keranjang::where('id_user',$id_user)->get();
         $countKeranjang = $keranjang->count();
         $selectedItems = $request->input('selected_items', []);
         // Mengitung total amount

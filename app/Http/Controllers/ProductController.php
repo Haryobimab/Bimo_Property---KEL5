@@ -11,7 +11,17 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('materials.belibahanbangunan');
+
+        $id_user = auth()->user()->id;
+
+        // dd($id_user);
+
+        $keranjang = Keranjang::where('id_user',$id_user)->get();
+        $data = [
+            'keranjang' => $keranjang
+        ];
+
+        return view('materials.belibahanbangunan', $data);
     
     }
 

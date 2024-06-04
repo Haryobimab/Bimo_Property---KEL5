@@ -82,9 +82,11 @@
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-newspaper" ></i> Tambah Berita</a></li>
             <li><a class="nav-link {{ Request::is('/admin/tambahagen') ? 'active' : '' }}" href="{{ route('admin.addAgen') }}" ><i class="fas fa-user-plus" ></i> Agen</a></li>
             <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-couch" ></i> Tambah Furniture</a></li>
-            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-trophy" ></i> Award</a></li>
-            <li><a class="nav-link {{ Request::is('/rental') ? 'active' : '' }}" href="#" ><i class="fas fa-home" ></i> Tambah Rumah</a></li>
+            <li><a class="nav-link {{ Request::segment(2) == 'rumah' ? 'active' : '' }}" href="#" ><i class="fas fa-trophy" ></i> Award</a></li>
+            <li><a class="nav-link {{ Request::segment(2) == 'rumah' ? 'bg-success text-white' : '' }}" href="/admin/rumah" ><i class="fas fa-home" ></i> Tambah Rumah</a></li>
+            <li><a class="nav-link {{ Request::segment(2) == 'beli_rumah' ? 'bg-success text-white' : '' }}" href="{{ route('admin.beli_rumah') }}" ><i class="fas fa-home"></i> Tambah Beli Rumah</a></li>
             <li><a class="nav-link {{ Request::is('/admin/ruko') ? 'active' : '' }}" href="{{ route('admin.ruko') }}" ><i class="fas fa-home" ></i> Tambah Ruko</a></li>
+
 
 
             <li ><a class="nav-link {{ Request::is('/admin/profile') ? 'active' : '' }}" href="/admin/profile" ><i class="fas fa-user" ></i> Profile</a></li>
@@ -126,5 +128,8 @@
             });
         });
     </script>
+
+    @yield('addScript')
+
 </body>
 </html>

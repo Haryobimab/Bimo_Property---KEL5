@@ -47,7 +47,7 @@
                             Beli
                             </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownBeli" style="padding-left:16px; padding-right:16px;">
-                                    <a class="dropdown-item" href="#">Beli Rumah</a>
+                                    <a class="dropdown-item" href="/belirumah">Beli Rumah</a>
                                     <a class="dropdown-item" href="/materials/belibahanbangunan">Beli Bahan Bangunan</a>
                                     <a class="dropdown-item" href="#">Beli Furniture</a>
                                 </div>
@@ -62,6 +62,8 @@
                         <a class="nav-link {{ Request::is('/keranjang') ? 'active' : '' }}]" href="/keranjang">
                         <i class="fas fa-shopping-cart"></i>
                         </a>
+                    <li><a class="nav-link {{ Request::is('/favorite') ? 'active' : '' }}]" href="/favorite">Favorite 
+                    <i class="fas fav"></i></a></li>
                     </li>
                     <!-- <button type="login" class="btn1 ">Login</button>
                     <button type="sign up" class="btn2 ">Sign Up</button> -->
@@ -152,8 +154,52 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    @php
+        use App\Models\Favorite;
+        use App\Models\Keranjang;
+
+        $fav = Favorite::where('id_user', auth()->user()->id)->get();
+        $keranjang = Keranjang::where('id_user', auth()->user()->id)->get();
+
+    @endphp
+
     <script>
-    
-</script>
+        document.addEventListener("DOMContentLoaded", function() {
+              // Hitung jumlah item dalam keranjang
+              var itemCount = {{ count($fav) }};
+              
+              // Select element ikon keranjang
+              var cartIcon = document.querySelector(".fav");
+              
+              // Buat elemen untuk menampilkan notifikasi jumlah item
+              var itemCountBadge = document.createElement("span");
+              itemCountBadge.classList.add("badge", "bg-danger", "rounded-pill");
+              itemCountBadge.textContent = itemCount;
+              
+              // Tambahkan notifikasi ke ikon keranjang
+              cartIcon.appendChild(itemCountBadge);
+          });
+       </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+          // Hitung jumlah item dalam keranjang
+          var itemCount = {{ count($keranjang) }};
+          
+          // Select element ikon keranjang
+          var cartIcon = document.querySelector(".fa-shopping-cart");
+          
+          // Buat elemen untuk menampilkan notifikasi jumlah item
+          var itemCountBadge = document.createElement("span");
+          itemCountBadge.classList.add("badge", "bg-danger", "rounded-pill");
+          itemCountBadge.textContent = itemCount;
+          
+          // Tambahkan notifikasi ke ikon keranjang
+          cartIcon.appendChild(itemCountBadge);
+      });
+   </script>
+    @yield('addScript')
 </html>
     
