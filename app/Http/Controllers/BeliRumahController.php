@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\belirumah;
 use Illuminate\Http\Request;
-use App\Models\Rumah;
+
 
 class BeliRumahController extends Controller
 {
     // Metode untuk menampilkan semua data dari model
     public function index()
     {
-        $rumah = Rumah::all();
+        $rumah = belirumah::all();
 
         $data = [
             'rumah' => $rumah
@@ -23,7 +24,7 @@ class BeliRumahController extends Controller
     // Metode untuk menampilkan detail data
     public function show($id)
     {
-        $rumah = Rumah::findOrFail($id);
+        $rumah = Belirumah::findOrFail($id);
         // return view();
 
         $data = [
@@ -36,11 +37,10 @@ class BeliRumahController extends Controller
     
     public function rumah()
     {
-        \Log::info('Metode rumah dipanggil'); // Tambahkan logging di sini
+        Log::info('Metode rumah dipanggil'); // Tambahkan logging di sini
 
         $data = [
-
-            'house' => Rumah::orderBy('id', 'DESC')->get()
+            'house' => Belirumah::orderBy('id', 'DESC')->get()
         ];
     
         return view('admin.belirumah1', $data);
@@ -56,7 +56,7 @@ class BeliRumahController extends Controller
          $request->img->move(public_path('images'), $imageName);
   
          // Menyimpan data ke database
-         Rumah::create([
+         Belirumah::create([
              'img' => $imageName,
              'nama_rumah' => $request->nama_rumah,
              'harga' => $request->harga,
@@ -72,7 +72,7 @@ class BeliRumahController extends Controller
   
      public function get_rumah_by_id($id)
       {
-          $rumah = Rumah::find($id);
+          $rumah = Belirumah::find($id);
   
           if (!$rumah) {
               return response()->json(['message' => 'Rumah not found'], 404);
@@ -86,7 +86,7 @@ class BeliRumahController extends Controller
   
           // dd($request->logo_client);
   
-          $client = Rumah::find($id);
+          $client = Belirumah::find($id);
   
           $data = [
              'nama_rumah' => $request->nama_rumah,

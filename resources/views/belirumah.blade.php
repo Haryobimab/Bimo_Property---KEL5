@@ -5,10 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beli Rumah</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <style>
+    .red-text {
+      color: red; /* Important to override default styles */
+    }
+  </style>
+
 </head>
 
 @extends('layouts.app')
@@ -45,21 +59,59 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6 justify-center mt-2 container-fluid">
         @foreach($rumah as $item)
         <div class="bg-white shadow-md rounded-md">
-            <img src="{{ asset('images/' .$item->img) }}" class="card-img-top" alt="{{ $item->img }}" style="height: 250px">
-            <div class="p-4 text-center">
-                <h5 class="text-lg font-bold">{{ $item->nama_rumah}}</h5>
-                <p class="text-gray-600">{{ $item->informasi }}</p>
-                <p class="text-xl font-bold mt-2">Harga: Rp.{{ number_format($item->harga, 2) }}</p>
-                <div class="mt-4">
-                    <a href="{{ route('belirumah',$item->id) }}"
-                        class="rounded-md btn btn-success w-100">Lihat
-                        Detail</a>
-                </div>
-            </div>
-        </div>
+          <div class="relative">
+              <img src="{{ asset('images/' .$item->img) }}" class="card-img-top" alt="{{ $item->img }}" style="height: 250px">
+              <!-- Favorite icon -->
+              <button class="absolute top-2 right-2 text-red-500 hover:text-red-700" style="font-size: 20px;" onclick="addToFavorites({{ $item->id }})">
+                  <i class="fas fa-heart"></i>
+              </button>
+          </div>
+          <div class="p-4 text-center">
+              <h5 class="text-lg font-bold">{{ $item->nama_rumah}}</h5>
+              <p class="text-gray-600">{{ $item->informasi }}</p>
+              <p class="text-xl font-bold mt-2">Harga: Rp.{{ number_format($item->harga, 2) }}</p>
+              <div class="mt-4">
+                  <a href="{{ route('rumah1',$item->id) }}" class="rounded-md btn btn-success w-100">Lihat Detail</a>
+              </div>
+          </div>
+      </div>
+      
         @endforeach
     </div>
 
 
+    @endsection
+
+
+    @section('addScript')
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+      // Function to handle adding item to cart
+      function addToFavorites(productId) {
+          // alert(productId)
+          // Get CSRF token value from the meta tag
+          var csrfToken = $('meta[name="csrf-token"]').attr('content');
+          
+          // Send Ajax request to server
+          $.ajax({
+              url: '/add_favorite/' + productId, // Ganti dengan URL endpoint API yang sesuai
+              type: 'POST',
+              data: {_token: csrfToken}, // Sertakan token CSRF dalam data
+              success: function(response) {
+                  // Tampilkan notifikasi bahwa item telah ditambahkan ke keranjang
+                  toastr.options.toastClass = 'bg-success'; 
+                  toastr.success('Item berhasil ditambahkan ke daftar favorite!');
+              },
+              error: function(xhr, status, error) {
+                  // Tampilkan pesan error jika terjadi kesalahan
+                  toastr.options.toastClass = 'bg-danger'; 
+                  toastr.error('Tidak dapat menambahkan item ke daftar favorite!');
+              }
+          });
+      }
+    </script>
     @endsection
     

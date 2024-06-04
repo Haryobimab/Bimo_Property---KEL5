@@ -100,27 +100,27 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/beranda">Beranda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Keranjang</li>
+                    <li class="breadcrumb-item active" aria-current="page">Favorite</li>
                 </ol>
             </nav>
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-x-5">
                 <div class="xl:col-span-9 md:col-span-1 products-list">
                     <div class="flex items-center gap-3 mb-5">
-                        <h5 class="underline text-16 grow">Shopping Cart ({{ $countKeranjang }}) </h5>
+                        <h5 class="underline text-16 grow">Favorite List ({{ $countFavorite }}) </h5>
                     </div>
                     <div class="container" style="margin-top:20px">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-12">
                                 <form action="">
-                                    @forelse($keranjang as $item)
+                                    @forelse($favorite as $item)
                                     <div class="card products" id="product1" style="margin-bottom:24px; border:none;">
                                         <div class="card-body">
                                             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                                                 <div class="flex  gap-6" style="position: relative;">
                                                     <div >
-                                                        <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->barang->nama_barang}}</a></h5>
-                                                        <p class="mb-1 text-slate-500 dark:text-zink-200" style="font-size:12px;">{{ $item->barang->deskripsi }}</p>
-                                                        <h6 class="mt-auto text-16 ltr:lg:text-right rtl:lg:text-left"><span class="products-line-price" >Rp {{ number_format($item->barang->harga, 0, ',', '.') }}</span></h6>
+                                                        <h5 class="mb-1 text-16"><a href="apps-ecommerce-product-overview.html">{{ $item->rumah->nama_rumah}}</a></h5>
+                                                        <p class="mb-1 text-slate-500 dark:text-zink-200" style="font-size:12px;">{{ $item->rumah->informasi }}</p>
+                                                        <h6 class="mt-auto text-16 ltr:lg:text-right rtl:lg:text-left"><span class="products-line-price" >Rp {{ number_format($item->rumah->harga, 0, ',', '.') }}</span></h6>
                                                     </div>
                                                     <div style="position: absolute; bottom: 0; right: 0;">
                                                         <button onclick="deleteItem({{ $item->id }})" class="btn btn-link text-danger" style="background-color:rgb(251, 225, 225)">
@@ -135,43 +135,13 @@
                                     @empty
                                     <!-- If cart is empty -->
                                     <tr>
-                                        <td colspan="6" class="text-center">Keranjang kosong</td>
+                                        <td colspan="6" class="text-center">Daftar Favorite kosong</td>
                                     </tr>
                                     @endforelse
                                     
                                 </form>
                             </div>
-                            <div class="col-md-4" >
-                                <div class="card" style="position: sticky; top: 20px; border:none;">
-                                        <div class="card-body" style="color:#05603A">
-                                            <h6 class="mb-4 text-20">Ringkasan Belanja</h6>
-                                            <div class="overflow-x-auto">
-                                                <table class="w-full">
-                                                    <tbody style="padding-top: 8px; padding-bottom: 8px;">
-                                                   
-                                                        <tr class="font-semibold" style="color:#05603A">
-                                                            <td class="px-3.5 pt-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200" >
-                                                                <p id="summary">
-                                                                    Total Amount (Rp) 
-                                                                </p>
-                                                            </td>
-                                                            <td class="px-3.5 pt-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">Rp {{ number_format($totalAmount, 0, ',', '.') }}</td>
-                                                        </tr>
-                                                    
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <button type="button"  class="btn btn-primary" style="background-color:green; font-color:white; width:180px">
-                                                <div class="d-flex justify-content-between">
-                                                    <a href="/checkout" style="text-align:center">
-                                                        Checkout
-                                                    </a>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                          <!-- Closing foreach loop -->
                         </div>
                     </div>
@@ -185,9 +155,7 @@
 
 
     <script>
-    
 
-    // Function to update summary based on selected items
     
 
     // Update summary when page loads
@@ -197,7 +165,7 @@
 
     function deleteItem(itemId) {
         if (confirm('Apakah Anda yakin ingin menghapus item ini?')) {
-            fetch(`/keranjang/${itemId}`, {
+            fetch(`/favorite/${itemId}`, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',

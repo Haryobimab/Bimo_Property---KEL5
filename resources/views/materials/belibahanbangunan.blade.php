@@ -24,7 +24,8 @@
 </head>
 
 @extends('layouts.app')
-    @section('content')
+
+@section('content')
 <body class="">
   <div class="container mx-auto px-4 text-center mb-8">
     <h1 class="text-2xl font-bold">Beli Bahan Bangunan</h1>
@@ -124,8 +125,15 @@
 
  @endsection
 
+ @section('addScript')
+
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+
+
+
 
  <script>
   // Function to handle adding item to cart
@@ -151,4 +159,5 @@
       });
   }
 </script>
+@endsection
 </html>

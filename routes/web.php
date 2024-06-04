@@ -1,6 +1,4 @@
 <?php
-
-
 use App\Http\Controllers\Auth\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -13,11 +11,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BelirukoController;
 use App\Http\Controllers\AgenController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\JualController;
+use App\Http\Controllers\RentalRumahController;
 
 
 use App\Http\Controllers\CommentController;
@@ -62,6 +62,9 @@ Route::get('/admin/profile', function () {
 });
 
 
+Route::get('/admin/rumah', [AdminController::class, 'rumah'])->name('admin.rumah');
+Route::get('/admin/beli_rumah', [AdminController::class, 'rumah'])->name('admin.beli_rumah');
+Route::post('/admin/rumah', [AdminController::class, 'add_rumah'])->name('admin.rumah');
 
 
 
@@ -96,7 +99,10 @@ Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
 //Rute dashboard
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin'], function () {
+
+    
+
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/admin/tambahagen', [AdminController::class, 'addAgen'])->name('admin.addAgen');
@@ -113,6 +119,11 @@ Route::post('/checkout', [KeranjangController::class, 'processCheckout'])->name(
 Route::delete('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
 Route::post('add_cart/{id}', [KeranjangController::class, 'add_cart'])->name('add_cart');
 
+// add fav
+Route::get('/favorite', [FavoriteController::class, 'show'])->name('favorite');
+Route::delete('/favorite/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
+Route::post('add_favorite/{id}', [FavoriteController::class, 'add_favorite'])->name('add_favorite');
+
 
 // Route::get('/berita', function () {
 //     return view('berita');
@@ -127,17 +138,23 @@ Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store')
 // ROUTE ADMIN ruko
 Route::get('/beli', [BelirukoController::class, 'index'])->name('beli.index');
 Route::prefix('admin')->middleware('cek_login:admin')->group(function () {
+
+    
+
  
     Route::get('ruko', [AdminController::class, 'ruko'])->name('admin.ruko');
     Route::post('ruko', [AdminController::class, 'add_ruko'])->name('admin.ruko');
     Route::get('get_ruko_by_id/{id}', [AdminController::class, 'get_ruko_by_id'])->name('admin.get_ruko_by_id');
+
+    Route::get('get_rumah_by_id/{id}', [AdminController::class, 'get_rumah_by_id'])->name('admin.get_rumah_by_id');
+
+Route::post('update_rumah/{id}', [AdminController::class, 'update_rumah'])->name('admin.update_rumah');
 
     Route::post('update_ruko/{id}', [AdminController::class, 'update_ruko'])->name('admin.update_ruko');
 
     Route::get('destroy_ruko/{id}', [AdminController::class, 'destroy_ruko'])->name('admin.destroy_ruko');
 
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
-   
 });
 
 
@@ -191,23 +208,31 @@ Route::post('jual/{jual}/comments', [CommentController::class, 'store'])->name('
 
 
 // Route Rental Rumah
- Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
 
-    Route::get('rumah', [AdminController::class, 'rumah'])->name('admin.rumah');
-    Route::post('rumah', [AdminController::class, 'add_rumah'])->name('admin.rumah');
-    Route::get('get_rumah_by_id/{id}', [AdminController::class, 'get_rumah_by_id'])->name('admin.get_rumah_by_id');
+Route::get('rumah', [AdminController::class, 'rumah'])->name('admin.rumah');
+Route::post('rumah', [AdminController::class, 'add_rumah'])->name('admin.rumah');
+Route::get('get_rumah_by_id/{id}', [AdminController::class, 'get_rumah_by_id'])->name('admin.get_rumah_by_id');
 
-    Route::post('update_rumah/{id}', [AdminController::class, 'update_rumah'])->name('admin.update_rumah');
-   
-    Route::get('destroy_rumah/{id}', [AdminController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
+Route::post('update_rumah/{id}', [AdminController::class, 'update_rumah'])->name('admin.update_rumah');
+
+Route::get('destroy_rumah/{id}', [AdminController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
+
 
 //route fitur rental rumah
-Route::get('/rental', [RentalRumahController::class, 'index']);
-Route::get('rumah/{id}', [RentalRumahController::class, 'show'])->name('rumah');
+Route::get('/rental', [RentalRumahController::class, 'index'])->name('rental_rumah.index');
+Route::get('/rumah/{id}', [RentalRumahController::class, 'show'])->name('rumah2');
 
 //Route Beli Rumah
 Route::get('/belirumah', [BeliRumahController::class, 'index'])->name('belirumah.index');
 Route::get('/rumah/{id}', [BeliRumahController::class, 'show'])->name('rumah1');
+Route::get('/admin/belirumah1', [BeliRumahController::class, 'rumah'])->name('admin.belirumah1');
+Route::post('/admin/belirumah1', [BeliRumahController::class, 'add_rumah'])->name('admin.belirumah1');
+Route::get('get_rumah_by_id/{id}', [BeliRumahController::class, 'get_rumah_by_id'])->name('admin.get_rumah_by_id');
+
+    Route::post('update_rumah/{id}', [BeliRumahController::class, 'update_rumah'])->name('admin.update_rumah');
+   
+    Route::get('destroy_rumah/{id}', [BeliRumahController::class, 'destroy_rumah'])->name('admin.destroy_rumah');
 
 
 
