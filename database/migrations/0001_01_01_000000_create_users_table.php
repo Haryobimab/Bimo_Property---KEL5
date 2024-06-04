@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique(); //baru
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('level');// baru
+            $table->string('level');
+            $table->string('photo');// baru
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

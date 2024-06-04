@@ -21,7 +21,8 @@ class AkunKW extends Seeder
                 'name'=>'AkunAdmin',
                 'email'=>'admin@gmail.com',
                 'level'=>'admin',
-                'password'=>Hash::make('123456')
+                'password'=>Hash::make('123456'),
+                'photo'=>'user.jpeg'
             ],
             
             [
@@ -29,14 +30,16 @@ class AkunKW extends Seeder
                 'name'=>'AkunUser1',
                 'email'=>'user1@gmail.com',
                 'level'=>'user',
-                'password'=>Hash::make('123456')
+                'password'=>Hash::make('123456'),
+                'photo'=>'user.jpeg'
             ],
             [
                 'username'=>'user2',
                 'name'=>'AkunUser2',
                 'email'=>'user2@gmail.com',
                 'level'=>'user',
-                'password'=>Hash::make('123456')
+                'password'=>Hash::make('123456'),
+                'photo'=>'user.jpeg'
             ],
 
         ];
