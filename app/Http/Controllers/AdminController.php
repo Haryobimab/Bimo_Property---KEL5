@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function show(){
-      $agen = Agen::all();
+    //   $agen = Agen::all();
       $countFurniture = $this->countFurnitureProducts();
       $countBahanBangunan = $this->countBahanBangunanProducts();
-      return view('admin.dashboard', compact('countFurniture', 'countBahanBangunan', 'agen'));
+      return view('admin.dashboard', compact('countFurniture', 'countBahanBangunan', ));
      }
     
      public function index(){
