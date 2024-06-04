@@ -9,15 +9,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <div class="title" style="margin-top: 36px; display: flex; justify-content: space-between;">
-            @if ($topAward)
-            <h2 style="font-size: 25px; font-weight:400">Selamat Kepada Agen  {{ $topAward->nama_agen }}</h2>
-        </div>
-        <p style="margin-top: 10px;">{{ $topAward->nama_agen }} telah menjadi agen terpopuler dan paling terpercaya berkat dedikasi serta komitmen tinggi dalam memberikan pelayanan yang berkualitas dan solusi properti yang tepat untuk setiap klien. Dengan reputasi yang solid dan jejak rekam yang mengesankan, {{ $topAward->nama_agen }} telah memenangkan kepercayaan pelanggan.</p>
-        @endif
-        <div class="biodata">
-            <!-- Biodata content here -->
+    <div class="container" style="background-color:#F3FEE7; padding:32px; margin-top:32px; max-width:2800px">
+        <div class="row">
+            <div class="col-md-8 text-container">
+                <div class="title" style="display: flex; justify-content: space-between;">
+                    @if ($topAward)
+                        <h2 style="font-size: 25px; font-weight:bold;">Selamat Kepada Agen {{ $topAward->nama_agen }}</h2>
+                    @endif
+                </div>
+                @if ($topAward)
+                    <p style="margin-top: 10px;">
+                        {{ $topAward->nama_agen }} telah menjadi agen terpopuler dan paling terpercaya berkat dedikasi serta komitmen tinggi dalam memberikan pelayanan yang berkualitas dan solusi properti yang tepat untuk setiap klien. Dengan reputasi yang solid dan jejak rekam yang mengesankan, {{ $topAward->nama_agen }} telah memenangkan kepercayaan pelanggan.
+                    </p>
+                @endif
+                <div class="biodata">
+                    <!-- Biodata content here -->
+                </div>
+            </div>
+            <div class="col-md-4 img-container" >
+                <img src="IMG/otri.jpg" alt="Agen Terpopuler" style="width:200px" >
+            </div>
         </div>
     </div>
     
