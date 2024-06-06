@@ -45,8 +45,10 @@
                         </div> 
                     </div>
                     <div class="button">
-                        <button class="btn btn-primary" style="background-color:green">Buat Janji Temu</button>
+                        <a href="{{ route('janji-temu.index', ['id' => $agen->id]) }}" class="btn btn-primary" style="background-color:green">Buat Janji Temu</a>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
             <!-- <div style="display: grid; grid-template-columns: repeat(3, 5fr); grid-gap: 60px; max-width:50%">
