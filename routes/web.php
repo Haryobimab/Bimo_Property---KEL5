@@ -61,6 +61,16 @@ Route::get('/admin/profile', function () {
 
 
 
+Route::get('/admin/ruko', [AdminController::class, 'ruko'])->name('admin.ruko');
+Route::post('/admin/ruko/add', [AdminController::class, 'add_ruko'])->name('admin.add_ruko');
+Route::get('/admin/ruko/{id}', [AdminController::class, 'get_ruko_by_id'])->name('admin.get_ruko_by_id');
+Route::post('/admin/ruko/update/{id}', [AdminController::class, 'update_ruko'])->name('admin.update_ruko');
+Route::delete('/admin/ruko/delete/{id}', [AdminController::class, 'destroy_ruko'])->name('admin.destroy_ruko');
+
+// Rute untuk pengguna
+Route::get('/beliruko', [BelirukoController::class, 'index']);
+
+
 
 Route::get('login', [AuthController::class,'index'])->name('login');
 Route::get('register', [AuthController::class,'register'])->name('register');
